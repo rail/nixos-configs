@@ -7,6 +7,7 @@
       ../services/ntp.nix
       ../services/neovim.nix
       ../services/nix.nix
+      ../modules/users.nix
     ];
 
   i18n = {
@@ -32,6 +33,7 @@
     netcat-gnu
     pwgen
     rsync
+    silver-searcher
     sshfs
     strace
     tcpdump
@@ -46,7 +48,21 @@
   ];
 
   programs.bash.enableCompletion = true;
+  programs.zsh.enable = true;
+  programs.zsh.enableAutosuggestions = true;
+  programs.zsh.ohMyZsh.enable = true;
+  programs.zsh.ohMyZsh.plugins = [ "git" "systemd" "colorize" "colored-man-pages" ]; 
+  programs.zsh.ohMyZsh.theme = "agnoster";
+  programs.zsh.syntaxHighlighting.enable = true;
+  programs.zsh.shellAliases =  	{
+    l = "ls -alh";
+    ll = "ls -l";
+    ls = "ls --color=tty";
+    vi = "vim";
+  };
+
 
   # copy the system configuration into nix-store
   system.copySystemConfiguration = true;
+  security.sudo.wheelNeedsPassword = false;
 }
