@@ -16,4 +16,7 @@
   services.xserver.windowManager.i3.enable = true;
 
   # services.crashplan.enable = true;
+  services.redshift.enable = true;
+  services.redshift.provider = "geoclue2";
+
 }
