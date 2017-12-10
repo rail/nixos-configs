@@ -39,7 +39,6 @@
     tcpdump
     telnet
     tig
-    tmux
     tree
     unzip
     wget
@@ -61,7 +60,12 @@
     vi = "vim";
   };
 
-
+  programs.tmux.enable = true;
+  programs.tmux.clock24 = true;
+  programs.tmux.terminal = "screen-256color";
+  programs.tmux.extraTmuxConf = ''
+    # hh
+  '';
   # copy the system configuration into nix-store
   system.copySystemConfiguration = true;
   security.sudo.wheelNeedsPassword = false;
