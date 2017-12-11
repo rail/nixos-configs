@@ -22,6 +22,7 @@
   environment.systemPackages = with pkgs; [
     curl
     file
+    fzf
     gitAndTools.gitFull
     htop
     jq
@@ -50,7 +51,7 @@
   programs.zsh.enable = true;
   programs.zsh.enableAutosuggestions = true;
   programs.zsh.ohMyZsh.enable = true;
-  programs.zsh.ohMyZsh.plugins = [ "git" "systemd" "colorize" "colored-man-pages" ]; 
+  programs.zsh.ohMyZsh.plugins = [ "git" "systemd" "colorize" "colored-man-pages" ];
   programs.zsh.ohMyZsh.theme = "agnoster";
   programs.zsh.syntaxHighlighting.enable = true;
   programs.zsh.shellAliases =  	{

@@ -25,13 +25,14 @@ in
 
   # services.xserver.windowManager.i3.package = pkgs.i3-gaps;
   services.xserver.windowManager.i3.extraPackages = with pkgs; [
-    dmenu
-    i3status
-    i3lock
-    rofi
     compton
+    dmenu
+    dunst
     feh
+    i3lock
+    i3status
     py3status
+    rofi
   ];
 
 }

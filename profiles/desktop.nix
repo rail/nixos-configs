@@ -13,11 +13,12 @@
     firefox
     mc
     iw
-    # simplescreenrecorder
+    simplescreenrecorder
     # crashplan
     jetbrains.pycharm-professional
   ];
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "overlay2";
 
 }
