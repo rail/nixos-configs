@@ -10,12 +10,13 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    firefox
+    firefox-devedition-bin
     mc
     iw
     simplescreenrecorder
     # crashplan
     jetbrains.pycharm-professional
+    libreoffice
   ];
 
   virtualisation.docker.enable = true;
