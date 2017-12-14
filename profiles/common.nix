@@ -20,6 +20,7 @@
 
   # install basic packages
   environment.systemPackages = with pkgs; [
+    binutils
     curl
     file
     fzf
@@ -77,8 +78,13 @@
   programs.tmux.enable = true;
   programs.tmux.clock24 = true;
   programs.tmux.terminal = "screen-256color";
+  programs.tmux.baseIndex = 1;
+  programs.tmux.historyLimit = 10000;
   programs.tmux.extraTmuxConf = ''
-    # hh
+    unbind %
+    bind - split-window -v
+    unbind '"'
+    bind | split-window -h
   '';
   # copy the system configuration into nix-store
   system.copySystemConfiguration = true;
