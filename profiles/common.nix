@@ -8,6 +8,8 @@
       ../services/neovim.nix
       ../services/nix.nix
       ../modules/users.nix
+      ../modules/mail.nix
+      # TODO: python (flake8, etc)
     ];
 
   i18n = {

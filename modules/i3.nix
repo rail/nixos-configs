@@ -31,6 +31,7 @@ in
     feh
     i3lock
     i3status
+    libnotify
     py3status
     rofi
   ];
