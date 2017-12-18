@@ -1,9 +1,9 @@
-
 { config, pkgs, ... }:
 
 let
   pubkey = import ../services/pubkey.nix;
 in
+
 {
   users.extraUsers.rail = {
     isNormalUser = true;
@@ -19,4 +19,4 @@ in
     dataDir = "/home/rail/.syncthing";
   };
 
- }
+}

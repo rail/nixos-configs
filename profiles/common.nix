@@ -94,4 +94,5 @@
   environment.variables = {
     EDITOR = "vim";
   };
+  boot.cleanTmpDir = true;
 }
