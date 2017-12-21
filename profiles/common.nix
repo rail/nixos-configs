@@ -9,6 +9,7 @@
       ../services/nix.nix
       ../modules/users.nix
       ../modules/mail.nix
+      ../modules/dev.nix
       # TODO: python (flake8, etc)
     ];
 
