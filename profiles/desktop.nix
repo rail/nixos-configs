@@ -15,16 +15,19 @@ in
     firefox-devedition-bin
     caffeine
     mc
+    networkmanagerapplet
     iw
     simplescreenrecorder
     # crashplan
     jetbrains.pycharm-professional
     libreoffice
+    polkit_gnome
     xorg.xbacklight
     xorg.xhost
     # TODO: caffeine
   ];
 
+  networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "overlay2";
 
