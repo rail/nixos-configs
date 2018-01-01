@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 
+let
+  nerd-fonts-source-code-pro = pkgs.nerdfonts.override {
+    withFont = "SourceCodePro";
+  };
+
+in
+
 {
 
   fonts.fonts = with pkgs; [
@@ -13,7 +20,7 @@
     font-awesome-ttf
     hack-font
     noto-fonts
-    source-code-pro
+    nerd-fonts-source-code-pro
   ];
 
 }
