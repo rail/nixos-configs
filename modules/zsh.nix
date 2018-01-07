@@ -25,7 +25,7 @@ in
     ls = "ls --color=tty";
     vi = "vim";
   };
-  programs.zsh.shellInit = ''
+  programs.zsh.interactiveShellInit = ''
     setopt print_exit_value
     unsetopt share_history
     FIGNORE=".o:~"
@@ -38,13 +38,13 @@ in
     setopt NOCLOBBER
     setopt no_nomatch # when pattern matching fails, simply use the command as is
 
-    source ${zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme
     POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv root_indicator time)
     POWERLEVEL9K_MODE='nerdfont-complete'
     POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
     POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
     POWERLEVEL9K_SHOW_CHANGESET=true
+    source ${zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme
 
   '';
 

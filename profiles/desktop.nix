@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
   caffeine = pkgs.callPackage ../packages/caffeine.nix { };
+  scripts = pkgs.callPackage ../packages/scripts.nix { };
 in
 {
   imports =
@@ -8,23 +9,25 @@ in
       ./common.nix
       ../services/desktop.nix
       ../modules/fonts.nix
+      # ../modules/firefox-overlay.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    firefox-devedition-bin
-    caffeine
-    mc
-    networkmanagerapplet
-    iw
-    simplescreenrecorder
+    # TODO: caffeine
     # crashplan
+    caffeine
+    firefox-devedition-bin
+    iw
     jetbrains.pycharm-professional
     libreoffice
+    mc
+    networkmanagerapplet
     polkit_gnome
+    scripts
+    simplescreenrecorder
     xorg.xbacklight
     xorg.xhost
-    # TODO: caffeine
   ];
 
   networking.networkmanager.enable = true;
