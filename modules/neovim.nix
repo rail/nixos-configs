@@ -8,5 +8,5 @@ let
 in
 
 {
-  environment.systemPackages = [ nvim ];
+  environment.systemPackages = [ pkgs.vim ];
 }

@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 let
   caffeine = pkgs.callPackage ../packages/caffeine.nix { };
-  scripts = pkgs.callPackage ../packages/scripts.nix { };
+  vidyo = pkgs.callPackage ../packages/VidyoDesktop { };
+  firefoxEnv = pkgs.callPackage ../packages/nightly.nix { };
+  # crashplan-pro = pkgs.callPackage ../packages/crashplan-proe.nix { };
 in
 {
   imports =
@@ -15,7 +17,7 @@ in
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # TODO: caffeine
-    # crashplan
+    # TODO: crashplan pro
     caffeine
     firefox-devedition-bin
     iw
@@ -24,14 +26,21 @@ in
     mc
     networkmanagerapplet
     polkit_gnome
-    scripts
+    firefoxEnv
     simplescreenrecorder
     xorg.xbacklight
     xorg.xhost
+    xmind
+    vidyo
+    # crashplan-pro
   ];
 
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "overlay2";
+
+  #nixpkgs.config.packageOverrides = pkgs:
+  #  { pycurl = pkgs.python36Packages.pycurl.override { checkPhase = ''; };
+  #  };
 
 }
