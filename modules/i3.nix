@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  py3status = pkgs.python3Packages.py3status.override {
+  mypy3status = pkgs.python3Packages.py3status.override {
     propagatedBuildInputs = with pkgs.python3Packages; [ pytz tzlocal requests ];
     prePatch = ''
       sed -i -e "s|'file|'${pkgs.file}/bin/file|" py3status/parse_config.py
@@ -32,7 +32,7 @@ in
     i3lock
     i3status
     libnotify
-    py3status
+    mypy3status
     rofi
   ];
 

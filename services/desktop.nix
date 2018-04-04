@@ -18,5 +18,9 @@
   # services.crashplan.enable = true;
   services.redshift.enable = true;
   services.redshift.provider = "geoclue2";
+  services.xserver.deviceSection = ''
+    Option      "Backlight"  "intel_backlight"
+  '';
+  programs.light.enable = true;
 
 }

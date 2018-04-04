@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     nix-repl
     yarn
+    nodejs
   ];
 }
 

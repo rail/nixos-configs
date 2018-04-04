@@ -3,10 +3,11 @@
 let
   nvim = pkgs.neovim.override {
     vimAlias = true;
+    viAlias = true;
   };
 
 in
 
 {
-  environment.systemPackages = [ pkgs.vim ];
+  environment.systemPackages = [ nvim ];
 }

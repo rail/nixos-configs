@@ -18,7 +18,7 @@ in
   environment.systemPackages = with pkgs; [
     # TODO: caffeine
     # TODO: crashplan pro
-    caffeine
+    # caffeine
     firefox-devedition-bin
     iw
     jetbrains.pycharm-professional
@@ -27,12 +27,13 @@ in
     networkmanagerapplet
     polkit_gnome
     firefoxEnv
-    simplescreenrecorder
+    # simplescreenrecorder
     xorg.xbacklight
     xorg.xhost
-    xmind
+    # xmind
     vidyo
     # crashplan-pro
+    # lightlocker
   ];
 
   networking.networkmanager.enable = true;
@@ -42,5 +43,12 @@ in
   #nixpkgs.config.packageOverrides = pkgs:
   #  { pycurl = pkgs.python36Packages.pycurl.override { checkPhase = ''; };
   #  };
+
+  system.activationScripts.etcX11sessions = ''
+    echo "setting up /etc/X11/sessions..."
+    mkdir -p /etc/X11
+    [[ ! -L /etc/X11/sessions ]] || rm /etc/X11/sessions
+    ln -sf ${config.services.xserver.displayManager.session.desktops} /etc/X11/sessions
+  '';
 
 }

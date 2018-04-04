@@ -37,6 +37,8 @@
     lsof
     mercurial
     mtr
+    gnupg
+    pinentry
     netcat-gnu
     pwgen
     rsync
@@ -61,4 +63,5 @@
     EDITOR = "vim";
   };
   boot.cleanTmpDir = true;
+  programs.gnupg.agent.enable = true;
 }
