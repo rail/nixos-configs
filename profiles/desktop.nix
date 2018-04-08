@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
   caffeine = pkgs.callPackage ../packages/caffeine.nix { };
-  vidyo = pkgs.callPackage ../packages/VidyoDesktop { };
   firefoxEnv = pkgs.callPackage ../packages/nightly.nix { };
   # crashplan-pro = pkgs.callPackage ../packages/crashplan-proe.nix { };
 in
@@ -11,14 +10,17 @@ in
       ./common.nix
       ../services/desktop.nix
       ../modules/fonts.nix
-      # ../modules/firefox-overlay.nix
     ];
+
+  nixpkgs.overlays = [
+    (import ../nixpkgs-mozilla/vidyo-overlay.nix)
+  ];
+
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # TODO: caffeine
-    # TODO: crashplan pro
-    # caffeine
+    google-chrome
     firefox-devedition-bin
     iw
     jetbrains.pycharm-professional
@@ -27,23 +29,19 @@ in
     networkmanagerapplet
     polkit_gnome
     firefoxEnv
-    # simplescreenrecorder
     xorg.xbacklight
     xorg.xhost
-    # xmind
-    vidyo
+    VidyoDesktop
+    pavucontrol
     # crashplan-pro
-    # lightlocker
+    clementine
   ];
 
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "overlay2";
 
-  #nixpkgs.config.packageOverrides = pkgs:
-  #  { pycurl = pkgs.python36Packages.pycurl.override { checkPhase = ''; };
-  #  };
-
+  # make GDM find other WMs
   system.activationScripts.etcX11sessions = ''
     echo "setting up /etc/X11/sessions..."
     mkdir -p /etc/X11
