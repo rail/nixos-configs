@@ -12,7 +12,6 @@
       ../services/nix.nix
       ../services/ntp.nix
       ../services/ssh.nix
-      # TODO: python (flake8, etc)
     ];
 
   i18n = {
@@ -63,5 +62,6 @@
     EDITOR = "vim";
   };
   boot.cleanTmpDir = true;
+  boot.tmpOnTmpfs = true;
   programs.gnupg.agent.enable = true;
 }

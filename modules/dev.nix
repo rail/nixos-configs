@@ -7,6 +7,7 @@ in
     nix-repl
     yarn
     nodejs
+    python36Packages.ipython
     # myheroku
   ];
 }
