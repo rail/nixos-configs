@@ -8,6 +8,8 @@ in
     yarn
     nodejs
     python36Packages.ipython
+    python36Full
+    patchelf
     # myheroku
   ];
 }

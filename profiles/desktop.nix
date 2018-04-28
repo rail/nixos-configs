@@ -21,7 +21,9 @@ in
   environment.systemPackages = with pkgs; [
     # TODO: caffeine
     google-chrome
-    firefox-devedition-bin
+    # firefox-devedition-bin
+    # (firefox-unwrapped.override { drmSupport = true; })
+    firefox
     iw
     jetbrains.pycharm-professional
     libreoffice
