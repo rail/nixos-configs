@@ -4,7 +4,10 @@
   imports = [
     ../modules/i3.nix
   ];
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ gutenprint gutenprintBin ];
+  };
 
   services.xserver.enable = true;
   services.xserver.layout = "us";
