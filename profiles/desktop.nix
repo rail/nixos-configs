@@ -21,6 +21,7 @@ in
   environment.systemPackages = with pkgs; [
     # TODO: caffeine
     google-chrome
+    gparted
     # firefox-devedition-bin
     # (firefox-unwrapped.override { drmSupport = true; })
     firefox

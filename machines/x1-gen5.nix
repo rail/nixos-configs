@@ -17,6 +17,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/7cce4446-3ae3-4d1f-9ca4-a0616abab951";
+      fsType = "ext4";
+    };
+
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/dd7bc55a-84fe-49fe-bf0a-3a6b23b5f3f3";
       fsType = "ext4";
@@ -44,7 +49,7 @@
     version = 2;
     device = "nodev";
     efiSupport = true;
-    enableCryptodisk = true;
+    # enableCryptodisk = true;
   };
   boot.loader.efi = {
     canTouchEfiVariables = true;
