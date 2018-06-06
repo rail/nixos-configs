@@ -54,14 +54,16 @@
     zip
   ];
 
-  programs.bash.enableCompletion = true;
   # copy the system configuration into nix-store
   system.copySystemConfiguration = true;
   security.sudo.wheelNeedsPassword = false;
   environment.variables = {
     EDITOR = "vim";
   };
-  boot.cleanTmpDir = true;
-  boot.tmpOnTmpfs = true;
+  boot = {
+    cleanTmpDir = true;
+    tmpOnTmpfs = true;
+  };
+  programs.bash.enableCompletion = true;
   programs.gnupg.agent.enable = true;
 }

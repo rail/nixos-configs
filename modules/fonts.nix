@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   nerd-fonts-source-code-pro = pkgs.nerdfonts.override {

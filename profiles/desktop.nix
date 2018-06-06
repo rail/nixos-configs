@@ -16,7 +16,6 @@ in
     (import ../nixpkgs-mozilla/vidyo-overlay.nix)
   ];
 
-
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # TODO: caffeine

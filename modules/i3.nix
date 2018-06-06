@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   unstable_local = import /home/rail/work/mozilla/git/nixpkgs {};
