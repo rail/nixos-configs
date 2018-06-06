@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ../modules/i3.nix
-  ];
-
   services.printing = {
     enable = true;
     drivers = with pkgs; [ gutenprint gutenprintBin ];

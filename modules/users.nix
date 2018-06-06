@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  pubkey = import ../services/pubkey.nix;
+  pubkeys = import ./pubkeys.nix;
 in
 
 {
@@ -10,7 +10,7 @@ in
     uid = 1000;
     description = "Rail Aliiev";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
-    openssh.authorizedKeys.keys = [ pubkey.rail ];
+    openssh.authorizedKeys.keys = [ pubkeys.rail ];
     shell = pkgs.zsh;
   };
 
