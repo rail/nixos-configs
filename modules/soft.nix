@@ -26,6 +26,7 @@ in
     # TODO: caffeine
     # crashplan-pro
     # firefox-devedition-bin
+    # jetbrains.pycharm-professional
     VidyoDesktop
     binutils
     clementine
@@ -40,7 +41,6 @@ in
     gparted
     htop
     iw
-    jetbrains.pycharm-professional
     jq
     jwhois
     libreoffice
