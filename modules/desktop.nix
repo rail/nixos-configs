@@ -12,6 +12,7 @@
     deviceSection = ''
       Option      "Backlight"  "intel_backlight"
     '';
+    videoDrivers = [ "intel" ];
     displayManager.gdm.enable = true;
     desktopManager = {
       default = "none";
