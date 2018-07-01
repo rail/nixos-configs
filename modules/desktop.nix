@@ -23,6 +23,11 @@
       default = "i3";
       i3.enable = true;
     };
+    xautolock =  {
+      enable = true;
+      killer = null;
+      extraOptions = [ "-lockaftersleep" ];
+    };
   };
 
   # services.crashplan.enable = true;
