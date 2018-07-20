@@ -8,7 +8,7 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (import ../nixpkgs-mozilla/vidyo-overlay.nix)
-    (import ../nixpkgs-mozilla/firefox-overlay.nix)
+    # (import ../nixpkgs-mozilla/firefox-overlay.nix)
   ];
 
   programs.bash.enableCompletion = true;
@@ -35,13 +35,14 @@ in
     file
     firefox
     firefoxEnv
-    firefox-nightly-bin
+    # firefox-nightly-bin
     fzf
     gitAndTools.gitFull
     gnupg
     google-chrome
     gparted
     htop
+    insomnia
     iw
     jq
     jwhois
@@ -53,6 +54,7 @@ in
     mtr
     netcat-gnu
     networkmanagerapplet
+    nix-prefetch-scripts
     pavucontrol
     pinentry
     polkit_gnome
