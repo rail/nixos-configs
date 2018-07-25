@@ -3,12 +3,13 @@ let
   caffeine = pkgs.callPackage ../packages/caffeine.nix { };
   firefoxEnv = pkgs.callPackage ../packages/nightly.nix { };
   # crashplan-pro = pkgs.callPackage ../packages/crashplan-proe.nix { };
+  unstable = import <nixos-unstable> {};
 in
 {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (import ../nixpkgs-mozilla/vidyo-overlay.nix)
-    # (import ../nixpkgs-mozilla/firefox-overlay.nix)
+    (import ../nixpkgs-mozilla/firefox-overlay.nix)
   ];
 
   programs.bash.enableCompletion = true;
@@ -26,7 +27,7 @@ in
     # (firefox-unwrapped.override { drmSupport = true; })
     # TODO: caffeine
     # crashplan-pro
-    # firefox-devedition-bin
+    # firefoxEnv
     # jetbrains.pycharm-professional
     VidyoDesktop
     binutils
@@ -34,14 +35,14 @@ in
     curl
     file
     firefox
-    firefoxEnv
-    # firefox-nightly-bin
+    firefox-nightly-bin
     fzf
     gitAndTools.gitFull
     gnupg
     google-chrome
     gparted
     htop
+    imapfilter
     insomnia
     iw
     jq
@@ -66,7 +67,10 @@ in
     tcpdump
     telnet
     tig
+    transmission-gtk
     tree
+    unstable.pkgs.gnucash
+    unstable.pkgs.magic-wormhole
     unzip
     wget
     whois

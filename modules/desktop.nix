@@ -7,6 +7,7 @@
   };
 
   services.xserver = {
+    exportConfiguration = true;
     enable = true;
     layout = "us";
     deviceSection = ''
@@ -36,4 +37,13 @@
     provider = "geoclue2";
   };
   programs.light.enable = true;
+
+  # nixpkgs.config.packageOverrides = super: let self = super.pkgs; in
+  # {
+  #   xorg = super.xorg // {
+  #     xorgserver = super.xorg.xorgserver.overrideAttrs (old: {
+  #       postInstall = old.postInstall + "rm -rf $out/lib/xorg/modules/drivers";
+  #     });
+  #   };
+  # };
 }
