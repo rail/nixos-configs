@@ -18,7 +18,7 @@
     aspell
     aspellDicts.en
     lynx
-    mutt
+    neomutt
     offlineimap
     urlview
   ];
