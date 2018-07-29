@@ -63,6 +63,7 @@ in
     tree
     unstable.pkgs.gnucash
     unstable.pkgs.magic-wormhole
+    unstable.pkgs.yarn2nix
     unzip
     wget
     whois
