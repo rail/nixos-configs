@@ -7,7 +7,6 @@
     xdotool
   ];
   # TODO:
-  # pulseaudio
-  # backlight
+  # pulseaudio in polybar
   # dynamic desktops
 }

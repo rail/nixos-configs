@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 let
-  caffeine = pkgs.callPackage ../packages/caffeine.nix { };
   firefoxEnv = pkgs.callPackage ../packages/nightly.nix { };
   unstable = import <nixos-unstable> {};
 in
@@ -13,10 +12,12 @@ in
 
   nixpkgs.config.allowUnfree = true;
   programs.bash.enableCompletion = true;
-  programs.gnupg.agent.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   environment.systemPackages = with pkgs; [
-    # TODO: caffeine
     # crashplan-pro
     # firefoxEnv
     # jetbrains.pycharm-professional
