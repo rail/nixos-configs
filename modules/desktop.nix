@@ -5,6 +5,12 @@
     enable = true;
     drivers = with pkgs; [ gutenprint gutenprintBin ];
   };
+  # The following part fixes the printing issues \o/
+  # "Unable to locate printer"
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 
   services.xserver = {
     exportConfiguration = true;
