@@ -38,6 +38,7 @@
       enable = true;
       killer = null;
       extraOptions = [ "-lockaftersleep" ];
+      locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy -f Hack -p -g";
     };
   };
 
