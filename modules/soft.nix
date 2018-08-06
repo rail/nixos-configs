@@ -29,9 +29,10 @@ in
     VidyoDesktop
     binutils
     clementine
+    ctags
     curl
+    docker_compose
     file
-    latest.firefox-nightly-bin
     fzf
     gitAndTools.gitFull
     gnupg
@@ -43,6 +44,7 @@ in
     iw
     jq
     jwhois
+    latest.firefox-nightly-bin
     libreoffice
     lightlocker
     lshw
@@ -54,14 +56,13 @@ in
     networkmanagerapplet
     nix-prefetch-scripts
     p7zip
+    pass
     pavucontrol
     pinentry
-    pass
     polkit_gnome
-    pypi2nix_upstream
     pwgen
+    pypi2nix_upstream
     rsync
-    unstable.pkgs.skopeo
     silver-searcher
     sshfs
     strace
@@ -72,11 +73,12 @@ in
     tree
     unstable.pkgs.gnucash
     unstable.pkgs.magic-wormhole
+    unstable.pkgs.skopeo
     unstable.pkgs.yarn2nix
     unzip
     wget
     whois
-    xscreensaver
+    xclip
     xorg.xbacklight
     xorg.xhost
     zip

@@ -46,7 +46,7 @@
     enable = true;
     provider = "geoclue2";
   };
-  programs.light.enable = true;
+  # programs.light.enable = true;
 
   # make GDM find other WMs
   system.activationScripts.etcX11sessions = ''
@@ -77,5 +77,6 @@
   #   };
   # };
 
+  services.autorandr.enable = true;
 
 }
