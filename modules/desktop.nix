@@ -77,6 +77,9 @@
   #   };
   # };
 
-  services.autorandr.enable = true;
+  services.autorandr = {
+    enable = true;
+    # unstable only, defaultTarget = "laptop";
+  };
 
 }
