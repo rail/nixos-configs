@@ -21,5 +21,6 @@
     neomutt
     offlineimap
     urlview
+    notmuch
   ];
 }
