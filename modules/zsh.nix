@@ -1,11 +1,6 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-
-  environment.systemPackages = with pkgs; [
-    zsh-powerlevel9k
-  ];
-
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -33,5 +28,4 @@
       setopt no_nomatch # when pattern matching fails, simply use the command as is
     '';
   };
-
 }
