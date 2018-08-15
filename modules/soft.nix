@@ -21,6 +21,7 @@ in
   nixpkgs.config.allowUnfree = true;
   programs.bash.enableCompletion = true;
   programs.gnupg.agent.enable = true;
+  programs.gnupg.agent.enableSSHSupport = true;
 
   environment.systemPackages = with pkgs; [
     # crashplan-pro
@@ -35,6 +36,7 @@ in
     file
     fzf
     gitAndTools.gitFull
+    gitAndTools.diff-so-fancy
     gnupg
     google-chrome
     gparted

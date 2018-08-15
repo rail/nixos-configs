@@ -2,10 +2,10 @@
 {
   environment.systemPackages = with pkgs; [
     nix-repl
-    yarn
+    (yarn.override { nodejs = nodejs-9_x; })
     nodejs-9_x
-    python36Packages.ipython
-    python36Full
+    python3.pkgs.ipython
+    python3Full
     patchelf
   ];
 }

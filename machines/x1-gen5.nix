@@ -8,6 +8,7 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/10aaef35-8d86-4d95-bb52-844f0ef230f8";
@@ -57,4 +58,5 @@
     }
   ];
   # boot.kernelParams = [ "thinkpad-acpi.brightness_enable=1" "acpi_backlight=vendor" ];
+  # boot.kernelParams = [ "video.only_lcd=0" ];
 }
