@@ -1,21 +1,17 @@
 { config, pkgs, ... }:
 let
-  firefoxEnv = pkgs.callPackage ../packages/nightly.nix { };
+  firefoxEnv = pkgs.callPackage ../packages/nightly.nix {
+    gconf = pkgs.gnome2.GConf;
+    inherit (pkgs.gnome2) libgnome libgnomeui;
+    inherit (pkgs.gnome3) defaultIconTheme;
+  };
   unstable = import <nixos-unstable> {};
-  pypi2nix_upstream = pkgs.pypi2nix.overrideAttrs (old: {
-    src = pkgs.fetchFromGitHub {
-      owner = "garbas";
-      repo = "pypi2nix";
-      rev = "ec42eaab4b8f4e0cdc0c8045f924cef31ea01da1";
-      sha256 = "0zxwjvrn3sn25z0h1nqfzyz4kf1hnyz92699snzcfa2pi58bb969";
-    };
-  });
+  nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
 in
 
 {
   nixpkgs.overlays = [
-    (import ../nixpkgs-mozilla/vidyo-overlay.nix)
-    (import ../nixpkgs-mozilla/firefox-overlay.nix)
+    (import nixpkgs-mozilla)
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -63,7 +59,7 @@ in
     pinentry
     polkit_gnome
     pwgen
-    pypi2nix_upstream
+    pypi2nix
     rsync
     silver-searcher
     sshfs

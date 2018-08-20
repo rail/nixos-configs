@@ -10,10 +10,11 @@ stdenv.mkDerivation rec {
   pname = "CrashPlanPROe";
   name = "${pname}_${version}";
 
-  src = fetchurl {
-    url = "https://web-eam-msp.crashplanpro.com/client/installers/${name}_Linux.tgz";
-    sha256 = "a24be9bc5adde7d012c562064fb885ef23e23dfb078329cd061a55dff091d975";
-  };
+  # src = fetchurl {
+  #   url = "https://web-eam-msp.crashplanpro.com/client/installers/${name}_Linux.tgz";
+  #   sha256 = "a24be9bc5adde7d012c562064fb885ef23e23dfb078329cd061a55dff091d975";
+  # };
+  src = /home/rail/Downloads/CrashPlanPROe_4.5.2_Linux.tgz;
 
   nativeBuildInputs = [ makeWrapper cpio ];
   # nativeBuildInputs = [ makeWrapper cpio nodePackages.asar ];
