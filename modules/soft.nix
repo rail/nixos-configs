@@ -43,7 +43,7 @@ in
     jq
     jwhois
     latest.firefox-nightly-bin
-    libreoffice
+    libreoffice-fresh
     lightlocker
     lshw
     lsof

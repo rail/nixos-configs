@@ -20,11 +20,12 @@
       Option      "Backlight"  "intel_backlight"
     '';
     videoDrivers = [ "intel" ];
-    displayManager.gdm.enable = true;
-    # displayManager.lightdm = {
-    #   enable = true;
-    #   greeters.gtk.indicators = [ "~host" "~spacer" "~clock" "~spacer" "~a11y" "~session" "~power"];
-    # };
+    # GDM breaks xbacklight!!! booooooo
+    # displayManager.gdm.enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      greeters.gtk.indicators = [ "~host" "~spacer" "~clock" "~spacer" "~a11y" "~session" "~power"];
+    };
     desktopManager = {
       default = "none";
       gnome3.enable = true;
