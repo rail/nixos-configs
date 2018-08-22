@@ -1,12 +1,8 @@
-{ pkgs, ... }:
-
-let
-  unstable_local = import /home/rail/work/mozilla/git/nixpkgs {};
-in
+{ pkgs, unstable, ... }:
 
 {
   nixpkgs.config.packageOverrides = pkgs: {
-    neovim = unstable_local.neovim.override {
+    neovim = unstable.neovim.override {
       vimAlias = true;
       viAlias = true;
     };

@@ -1,4 +1,9 @@
-{ ... }:
+{ pkgs, config, ... }:
+
+let
+  unstable = import <nixos-unstable> {};
+  pubkey = (import ./pubkeys.nix).rail;
+in
 
 {
   imports =
@@ -6,15 +11,15 @@
       ./desktop.nix
       ./dev.nix
       ./fonts.nix
-      ./i3.nix
+      (import ./i3.nix { inherit unstable pkgs; })
       ./mail.nix
-      ./neovim.nix
+      (import ./neovim.nix { inherit unstable pkgs; })
       ./nix.nix
       ./ntp.nix
-      ./soft.nix
-      ./ssh.nix
+      (import ./soft.nix { inherit unstable pkgs config; })
+      (import ./ssh.nix { inherit pubkey; })
       ./tmux.nix
-      ./users.nix
+      (import ./users.nix { inherit pkgs pubkey; })
       ./zsh.nix
     ];
 }

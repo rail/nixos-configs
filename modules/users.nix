@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-
-let
-  pubkeys = import ./pubkeys.nix;
-in
+{ pkgs, pubkey, ... }:
 
 {
   users.users.rail = {
@@ -10,7 +6,7 @@ in
     uid = 1000;
     description = "Rail Aliiev";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
-    openssh.authorizedKeys.keys = [ pubkeys.rail ];
+    openssh.authorizedKeys.keys = [ pubkey ];
     shell = pkgs.zsh;
   };
 

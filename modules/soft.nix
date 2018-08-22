@@ -1,11 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 let
   firefoxEnv = pkgs.callPackage ../packages/nightly.nix {
     gconf = pkgs.gnome2.GConf;
     inherit (pkgs.gnome2) libgnome libgnomeui;
     inherit (pkgs.gnome3) defaultIconTheme;
   };
-  unstable = import <nixos-unstable> {};
   nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
 in
 

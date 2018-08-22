@@ -1,12 +1,6 @@
-{ pkgs, ... }:
-
-let
-  unstable_local = import /home/rail/work/mozilla/git/nixpkgs {};
-  unstable = import <nixos-unstable> {};
-in
+{ pkgs, unstable, ... }:
 
 {
-
   # services.xserver.windowManager.i3.package = pkgs.i3-gaps;
   services.xserver.windowManager.i3.extraPackages = with pkgs; [
     compton
@@ -17,9 +11,6 @@ in
     i3status
     libnotify
     rofi
+    unstable.python3.pkgs.py3status
   ];
-  environment.systemPackages = [
-    unstable_local.python3Packages.py3status
-  ];
-
 }
