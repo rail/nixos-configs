@@ -36,6 +36,7 @@ in
     google-chrome
     gparted
     htop
+    imagemagick
     imapfilter
     insomnia
     iw
