@@ -17,6 +17,8 @@
     cleanTmpDir = true;
     tmpOnTmpfs = true;
   };
+  nix.useSandbox = true;
+  services.timesyncd.enable = true;
 
   hardware.pulseaudio = {
     enable = true;

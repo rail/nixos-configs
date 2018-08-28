@@ -1,5 +1,0 @@
-{ ... }:
-
-{
-  nix.useSandbox = true;
-}

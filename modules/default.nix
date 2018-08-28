@@ -14,8 +14,6 @@ in
       (import ./i3.nix { inherit unstable pkgs; })
       ./mail.nix
       (import ./neovim.nix { inherit unstable pkgs; })
-      ./nix.nix
-      ./ntp.nix
       (import ./soft.nix { inherit unstable pkgs config; })
       (import ./ssh.nix { inherit pubkey; })
       ./tmux.nix
