@@ -8,4 +8,7 @@
     };
   };
   environment.systemPackages = [ pkgs.neovim ];
+  environment.variables = {
+    EDITOR = "vim";
+  };
 }

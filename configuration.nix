@@ -8,7 +8,7 @@
   imports =
     [
       ./machines/x1-gen5.nix
-      ./desktop
+      ./modules
     ];
 
   # This value determines the NixOS release with which your system is to be
