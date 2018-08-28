@@ -25,7 +25,7 @@
     displayManager.lightdm = {
       enable = true;
       greeters.gtk.indicators = [ "~host" "~spacer" "~clock" "~spacer" "~a11y" "~session" "~power"];
-      background = "/home/rail/Pictures/wallpapers/dark_texture_by_vanerich.jpg";
+      background = "/home/rail/Pictures/wallpapers/current";
     };
     desktopManager = {
       default = "none";
