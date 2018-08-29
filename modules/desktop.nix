@@ -105,14 +105,7 @@
     # unstable only, defaultTarget = "laptop";
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    libu2f-host = pkgs.libu2f-host.overrideAttrs (old: {
-      postInstall = old.postInstall + ''
-         substituteInPlace $out/lib/udev/rules.d/70-u2f.rules \
-         --replace 'TAG+="uaccess"' 'TAG+="uaccess", GROUP="yubikey"'
-      '';
-    });
-  };
+  # make /dev/hidraw* devices 660
   hardware.u2f.enable = true;
 
 }
