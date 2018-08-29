@@ -79,6 +79,7 @@ in
     xclip
     xorg.xbacklight
     xorg.xhost
+    yubikey-personalization-gui
     zip
   ];
 }
