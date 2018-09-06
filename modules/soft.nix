@@ -28,6 +28,7 @@ in
     binutils
     ctags
     curl
+    dnsutils
     docker_compose
     file
     fzf
