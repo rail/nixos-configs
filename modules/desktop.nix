@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   i18n = {
@@ -72,6 +72,10 @@
       i3.enable = true;
     };
   };
+  # services.gnome3.evolution-data-server.enable = lib.mkDefault false;
+  environment.gnome3.excludePackages = with pkgs.gnome3; [
+    evolution gnome-maps gnome-logs epiphany
+  ];
 
   services.redshift = {
     enable = true;

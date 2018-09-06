@@ -15,8 +15,10 @@ in
 
   nixpkgs.config.allowUnfree = true;
   programs.bash.enableCompletion = true;
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.enableSSHSupport = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   environment.systemPackages = with pkgs; [
     # crashplan-pro
@@ -24,7 +26,6 @@ in
     # jetbrains.pycharm-professional
     VidyoDesktop
     binutils
-    clementine
     ctags
     curl
     docker_compose
@@ -34,11 +35,9 @@ in
     gitAndTools.diff-so-fancy
     gnupg
     google-chrome
-    gparted
     htop
     imagemagick
     imapfilter
-    insomnia
     iw
     jq
     jwhois
@@ -62,14 +61,12 @@ in
     pypi2nix
     rsync
     silver-searcher
-    sshfs
     strace
     tcpdump
     telnet
     tig
     transmission-gtk
     tree
-    unstable.pkgs.gnucash
     unstable.pkgs.magic-wormhole
     unstable.pkgs.skopeo
     unstable.pkgs.yarn2nix

@@ -57,6 +57,4 @@
       preLVM = true;
     }
   ];
-  # boot.kernelParams = [ "thinkpad-acpi.brightness_enable=1" "acpi_backlight=vendor" ];
-  # boot.kernelParams = [ "video.only_lcd=0" ];
 }
