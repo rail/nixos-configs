@@ -1,3 +1,18 @@
+## How to reinstall:
+# cryptsetup luksOpen /dev/nvme0n1p8 railz
+# lvchange -ay railz
+# mount /dev/mapper/railz-nixos /mnt
+# mount /dev/mapper/railz-home /mnt/home
+## mounting /boot and /boot/efi separately makes nixos-rebuild to not install
+## kernels on a small EFI partition
+# mount /dev/nvme0n1p6 /mnt/boot (ext4)
+# mount /dev/nvme0n1p3 /mnt/boot/efi/ (shared efi partition)
+# swapon /dev/mapper/railz-swap
+# nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+# nix-channel --update
+## disable builtins.fetchTarball based expressions, because the installer is
+## unable to fetch them and unpack into a read-only store
+
 { config, lib, pkgs, ... }:
 
 {
