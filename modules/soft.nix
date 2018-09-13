@@ -36,6 +36,7 @@ in
     gitAndTools.diff-so-fancy
     gnupg
     google-chrome
+    unstable.gotop
     htop
     imagemagick
     imapfilter
