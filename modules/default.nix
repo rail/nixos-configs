@@ -11,6 +11,7 @@ in
       ./desktop.nix
       ./dev.nix
       ./fonts.nix
+      (import ./emacs.nix { inherit unstable pkgs; })
       (import ./i3.nix { inherit unstable pkgs; })
       ./mail.nix
       (import ./neovim.nix { inherit unstable pkgs; })
