@@ -10,7 +10,6 @@ in
       ./desktop.nix
       ./dev.nix
       ./fonts.nix
-      ./emacs.nix
       ./i3.nix
       ./mail.nix
       ./neovim.nix
