@@ -59,6 +59,8 @@
     version = 2;
     device = "nodev";
     efiSupport = true;
+    # efiBootloaderId = "NixOs-the-best";
+    # efiInstallAsRemovable = true;
   };
   boot.loader.efi = {
     canTouchEfiVariables = true;

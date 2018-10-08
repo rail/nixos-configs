@@ -1,10 +1,5 @@
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, ... }:
 let
-  firefoxEnv = pkgs.callPackage ../packages/nightly.nix {
-    gconf = pkgs.gnome2.GConf;
-    inherit (pkgs.gnome2) libgnome libgnomeui;
-    inherit (pkgs.gnome3) defaultIconTheme;
-  };
   nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
 in
 
@@ -21,22 +16,21 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    # crashplan-pro
-    # firefoxEnv
-    # jetbrains.pycharm-professional
     VidyoDesktop
     binutils
     ctags
     curl
     dnsutils
     docker_compose
+    efibootmgr
+    emacs
     file
     fzf
-    gitAndTools.gitFull
     gitAndTools.diff-so-fancy
+    gitAndTools.gitFull
     gnupg
     google-chrome
-    unstable.gotop
+    gotop
     htop
     imagemagick
     imapfilter
@@ -48,6 +42,7 @@ in
     lightlocker
     lshw
     lsof
+    magic-wormhole
     mc
     mercurial
     mtr
@@ -63,21 +58,20 @@ in
     pypi2nix
     rsync
     silver-searcher
+    skopeo
     strace
     tcpdump
     telnet
     tig
     transmission-gtk
     tree
-    unstable.pkgs.magic-wormhole
-    unstable.pkgs.skopeo
-    unstable.pkgs.yarn2nix
     unzip
     wget
     whois
     xclip
     xorg.xbacklight
     xorg.xhost
+    yarn2nix
     yubikey-personalization-gui
     zip
   ];

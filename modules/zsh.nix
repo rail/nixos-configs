@@ -3,7 +3,8 @@
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    # enableAutosuggestions = true;
+    autosuggestions.enable = true;
     ohMyZsh.enable = true;
     ohMyZsh.plugins = [ "git" "systemd" "colorize" "colored-man-pages" "virtualenvwrapper" "fzf" ];
     ohMyZsh.theme = "frisk";

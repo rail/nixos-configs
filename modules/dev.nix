@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    nix-repl
-    (yarn.override { nodejs = nodejs-9_x; })
-    nodejs-9_x
+    (yarn.override { nodejs = nodejs-10_x; })
+    nodejs-10_x
     python3.pkgs.ipython
     python3.pkgs.virtualenvwrapper
     python3.pkgs.virtualenv

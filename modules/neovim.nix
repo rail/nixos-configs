@@ -1,8 +1,8 @@
-{ pkgs, unstable, ... }:
+{ pkgs, ... }:
 
 {
   nixpkgs.config.packageOverrides = pkgs: {
-    neovim = unstable.neovim.override {
+    neovim = pkgs.neovim.override {
       vimAlias = true;
       viAlias = true;
     };

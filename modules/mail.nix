@@ -2,7 +2,7 @@
 
 {
   services.postfix = {
-    enable = true;
+    enable = false;
     relayHost = "[smtp.gmail.com]:587";
     extraConfig = ''
       smtp_sasl_auth_enable = yes

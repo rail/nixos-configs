@@ -56,7 +56,7 @@
     '';
     videoDrivers = [ "intel" ];
     # GDM breaks xbacklight!!! booooooo
-    # displayManager.gdm.enable = true;
+    displayManager.gdm.enable = false;
     displayManager.lightdm = {
       enable = true;
       greeters.gtk.indicators = [ "~host" "~spacer" "~clock" "~spacer" "~a11y" "~session" "~power"];
@@ -72,14 +72,15 @@
       i3.enable = true;
     };
   };
-  # services.gnome3.evolution-data-server.enable = lib.mkDefault false;
   environment.gnome3.excludePackages = with pkgs.gnome3; [
     evolution gnome-maps gnome-logs epiphany
   ];
 
   services.redshift = {
     enable = true;
-    provider = "geoclue2";
+    # provider = "geoclue2";
+    latitude = "43.7";
+    longitude = "-79.4";
   };
 
   # make GDM find other WMs
@@ -106,7 +107,7 @@
 
   services.autorandr = {
     enable = true;
-    # unstable only, defaultTarget = "laptop";
+    defaultTarget = "laptop";
   };
 
   # make /dev/hidraw* devices 660
