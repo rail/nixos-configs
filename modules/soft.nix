@@ -54,6 +54,7 @@ in
     pavucontrol
     pinentry
     polkit_gnome
+    psmisc
     pwgen
     pypi2nix
     rsync

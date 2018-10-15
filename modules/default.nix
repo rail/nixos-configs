@@ -7,6 +7,7 @@ in
 {
   imports =
     [
+      ./bspwm.nix
       ./desktop.nix
       ./dev.nix
       ./fonts.nix

@@ -8,5 +8,7 @@
   ];
   # TODO:
   # pulseaudio in polybar
+  # Features wanted:
+  # scratchpad
   # dynamic desktops
 }
