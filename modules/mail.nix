@@ -1,18 +1,13 @@
 { pkgs, ... }:
 
 {
-  services.postfix = {
-    enable = false;
-    relayHost = "[smtp.gmail.com]:587";
-    extraConfig = ''
-      smtp_sasl_auth_enable = yes
-      smtp_use_tls = yes
-      smtp_sasl_security_options =
-      # smtp_sasl_password_maps = hash:/etc/postfix/relay_passwd
-      # smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
-      message_size_limit = 20480000
-    '';
+  services.nullmailer = {
+    enable = true;
+    # the format is 
+    # smtp.gmail.com smtp --port=465 --auth-login --ssl --insecure --user=user@domain.com --pass=pass
+    remotesFile = "/home/rail/.config/nullmailer.remotes";
   };
+
   environment.systemPackages = with pkgs; [
     abook
     aspell
