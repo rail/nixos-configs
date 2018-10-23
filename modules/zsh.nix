@@ -6,7 +6,7 @@
     # enableAutosuggestions = true;
     autosuggestions.enable = true;
     ohMyZsh.enable = true;
-    ohMyZsh.plugins = [ "git" "systemd" "colorize" "colored-man-pages" "virtualenvwrapper" "fzf" ];
+    ohMyZsh.plugins = [ "git" "systemd" "colorize" "colored-man-pages" "virtualenvwrapper" ];
     ohMyZsh.theme = "frisk";
     syntaxHighlighting.enable = true;
     shellAliases = {
