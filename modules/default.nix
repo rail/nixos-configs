@@ -14,6 +14,7 @@ in
       ./i3.nix
       ./mail.nix
       ./neovim.nix
+      ./scan.nix
       ./soft.nix
       ./tmux.nix
       (import ./ssh.nix { inherit pubkey; })
