@@ -7,6 +7,7 @@ in
 {
   imports =
     [
+      ./borgbackup.nix
       ./bspwm.nix
       ./desktop.nix
       ./dev.nix
