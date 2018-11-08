@@ -18,6 +18,7 @@ let
         ".gnupg"
         ".gnupg.master"
         "org"
+        ".password-store"
       ];
     startAt = "daily";
     inherit user group;
