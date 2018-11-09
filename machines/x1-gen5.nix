@@ -20,10 +20,19 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
+  networking = {
+    hostName = "rhyme";
+    hostId = "e2ee7197";
+  };
+
+  boot = {
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = [ "zfs" ];
+  };
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.plymouth.enable = true;
 
   fileSystems."/" =
@@ -53,16 +62,14 @@
   nix.maxJobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  networking.hostName = "rhyme";
-
   boot.loader.grub = {
     enable = true;
     version = 2;
     device = "nodev";
     efiSupport = true;
-    # efiBootloaderId = "NixOs-the-best";
-    # efiInstallAsRemovable = true;
+    zfsSupport = true;
   };
+
   boot.loader.efi = {
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot/efi";

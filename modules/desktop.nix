@@ -17,7 +17,6 @@
     cleanTmpDir = true;
     tmpOnTmpfs = true;
   };
-  nix.useSandbox = true;
   services.timesyncd.enable = true;
 
   hardware.pulseaudio = {
@@ -112,5 +111,10 @@
 
   # make /dev/hidraw* devices 660
   hardware.u2f.enable = true;
+
+  nix = {
+    useSandbox = true;
+    allowedUsers = [ "rail" ];
+  };
 
 }

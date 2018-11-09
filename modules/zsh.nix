@@ -3,12 +3,13 @@
 {
   programs.zsh = {
     enable = true;
-    # enableAutosuggestions = true;
     autosuggestions.enable = true;
-    ohMyZsh.enable = true;
-    ohMyZsh.plugins = [ "git" "systemd" "colorize" "colored-man-pages" "virtualenvwrapper" ];
-    ohMyZsh.theme = "frisk";
     syntaxHighlighting.enable = true;
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" "systemd" "colorize" "colored-man-pages" "virtualenvwrapper" ];
+      theme = "frisk";
+    };
     shellAliases = {
       l = "ls -alh";
       ll = "ls -l";
