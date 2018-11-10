@@ -29,7 +29,6 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     kernelPackages = pkgs.linuxPackages_latest;
-    supportedFilesystems = [ "zfs" ];
   };
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -67,7 +66,6 @@
     version = 2;
     device = "nodev";
     efiSupport = true;
-    zfsSupport = true;
   };
 
   boot.loader.efi = {
