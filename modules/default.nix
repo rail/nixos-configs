@@ -2,6 +2,7 @@
 
 let
   pubkey = (import ./pubkeys.nix).rail;
+  unstable = (import <nixos-unstable> {});
 in
 
 {
@@ -12,7 +13,7 @@ in
       ./desktop.nix
       ./dev.nix
       ./fonts.nix
-      ./i3.nix
+      (import ./i3.nix { inherit pkgs unstable; })
       ./mail.nix
       ./neovim.nix
       ./scan.nix
