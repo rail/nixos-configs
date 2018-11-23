@@ -80,4 +80,10 @@
       preLVM = true;
     }
   ];
+
+  # # ZFS
+  # boot.supportedFilesystems = [ "zfs" ];
+  # boot.zfs.enableUnstable = true;
+  # boot.loader.grub.zfsSupport = true;
+
 }

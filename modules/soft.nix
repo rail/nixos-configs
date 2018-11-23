@@ -37,6 +37,7 @@ in
     iw
     jq
     jwhois
+    konsole
     latest.firefox-nightly-bin
     libreoffice-fresh
     lightlocker

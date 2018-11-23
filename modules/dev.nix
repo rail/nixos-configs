@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     (yarn.override { nodejs = nodejs-10_x; })
+    arcanist
     nix-index
     nodejs-10_x
     patchelf
