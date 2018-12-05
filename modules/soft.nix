@@ -30,7 +30,6 @@ in
     gitAndTools.gitFull
     gnupg
     google-chrome
-    gotop
     htop
     imagemagick
     imapfilter
@@ -43,7 +42,6 @@ in
     lightlocker
     lshw
     lsof
-    magic-wormhole
     mc
     mercurial
     mtr

@@ -9,6 +9,7 @@ let
 
   private = {
     paths =
+      [ "/boot/efi" ] ++
       map ( p: home + "/" + p ) [
         "Private"
         ".config"
