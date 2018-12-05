@@ -13,5 +13,6 @@
     python3.pkgs.virtualenv
     python3.pkgs.virtualenvwrapper
     python3Full
+    vscode
   ];
 }
