@@ -21,7 +21,7 @@ let
         "org"
         ".password-store"
       ];
-    startAt = "daily";
+    startAt = "*-*-* 20:00:00";
     inherit user group;
     prune.keep = {
       within = "1d"; # Keep all archives from the last day
@@ -44,6 +44,7 @@ in
     privateRemote = {
       repo = remoteRepo;
       environment = { BORG_RSH = "ssh -p 2222 -i ${sshKey}"; };
+      startAt = "*-*-* 21:00:00";
     } // private;
   };
 }

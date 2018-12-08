@@ -48,6 +48,7 @@ in
     netcat-gnu
     networkmanagerapplet
     nix-prefetch-scripts
+    obs-studio
     p7zip
     pass
     pavucontrol
