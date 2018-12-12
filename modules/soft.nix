@@ -28,6 +28,7 @@ in
     fzf
     gitAndTools.diff-so-fancy
     gitAndTools.gitFull
+    gist
     gnupg
     google-chrome
     htop
@@ -63,7 +64,6 @@ in
     strace
     tcpdump
     telnet
-    tig
     transmission-gtk
     tree
     unzip
