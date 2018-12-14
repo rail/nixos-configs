@@ -37,11 +37,17 @@
           sha256 = "0sjplq9h3mc42f41gcyr30ixix8sclgsdi5mcgqazh2bh7g2hz5x";
         }
         {
-          name = "puppet-vscode";
-          publisher = "jpogran";
-          version = "0.14.0";
-          sha256 = "0jyfkmlb4slr8pd6zngd4nihj2z7rlyv6f7qi98hvf0bv5mqd34x";
+          name = "vscode-eslint";
+          publisher = "dbaeumer";
+          version = "1.7.2";
+          sha256 = "1czq88rb7db8j7xzv1dsx8cp42cbsg7xwbwc68waq5md14wx0ggr";
         }
+        # {
+        #   name = "puppet-vscode";
+        #   publisher = "jpogran";
+        #   version = "0.14.0";
+        #   sha256 = "0jyfkmlb4slr8pd6zngd4nihj2z7rlyv6f7qi98hvf0bv5mqd34x";
+        # }
 
       ];
     })

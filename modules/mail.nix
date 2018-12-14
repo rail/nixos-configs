@@ -3,7 +3,7 @@
 {
   services.nullmailer = {
     enable = true;
-    # the format is 
+    # the format is
     # smtp.gmail.com smtp --port=465 --auth-login --ssl --insecure --user=user@domain.com --pass=pass
     remotesFile = "/home/rail/.config/nullmailer.remotes";
   };
