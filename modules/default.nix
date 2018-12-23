@@ -16,7 +16,7 @@ in
       (import ./i3.nix { inherit pkgs unstable; })
       ./mail.nix
       ./neovim.nix
-      ./scan.nix
+      # ./scan.nix
       ./soft.nix
       ./tmux.nix
       (import ./ssh.nix { inherit pubkey; })

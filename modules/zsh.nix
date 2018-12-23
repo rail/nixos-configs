@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -15,6 +15,9 @@
       ll = "ls -l";
       ls = "ls --color=tty";
       vi = "vim";
+      scp =" scp -rC";
+      tmux = "tmux -2";
+      mutt = "TERM=screen-256color mutt";
     };
     interactiveShellInit = ''
       setopt print_exit_value
@@ -26,8 +29,21 @@
       REPORTTIME=60
 
       zstyle :omz:plugins:ssh-agent agent-forwarding on
+      zstyle :omz:plugins:ssh-agent lifetime 4h
+      zstyle ':vcs_info:*' enable git
       setopt NOCLOBBER
       setopt no_nomatch # when pattern matching fails, simply use the command as is
+
+      export BROWSER=firefox
+      export WORKON_HOME=~/.virtualenvs
+
+      function wp() {
+          cd ~/work/git/$1;
+      }
+      _wp() {
+          _files -W ~/work/git/
+      }
+      compdef _wp wp
     '';
   };
 }
