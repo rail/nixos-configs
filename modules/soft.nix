@@ -45,12 +45,14 @@ in
     lsof
     mc
     mercurial
+    mpv
     mtr
     netcat-gnu
     networkmanagerapplet
     nix-prefetch-scripts
     obs-studio
     p7zip
+    pamixer
     pass
     pavucontrol
     pinentry
@@ -74,6 +76,7 @@ in
     xorg.xhost
     yarn2nix
     yubikey-personalization-gui
+    youtube-dl
     zip
   ];
 }
