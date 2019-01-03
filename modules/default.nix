@@ -9,7 +9,7 @@ in
   imports =
     [
       ./borgbackup.nix
-      ./bspwm.nix
+      # ./bspwm.nix
       ./desktop.nix
       ./dev.nix
       ./fonts.nix
