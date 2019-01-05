@@ -12,7 +12,7 @@ in
       # ./bspwm.nix
       ./desktop.nix
       ./dev.nix
-      ./fonts.nix
+      (import ./fonts.nix { inherit pkgs unstable; })
       (import ./i3.nix { inherit pkgs unstable; })
       ./mail.nix
       ./neovim.nix

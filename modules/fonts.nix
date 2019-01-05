@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
 let
   nerd-fonts-source-code-pro = pkgs.nerdfonts.override {
@@ -19,6 +19,7 @@ in
     hack-font
     noto-fonts
     nerd-fonts-source-code-pro
+    unstable.weather-icons
   ];
 
 }
