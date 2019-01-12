@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  programs.adb.enable = true;
   environment.systemPackages = with pkgs; [
     (yarn.override { nodejs = nodejs-10_x; })
     arcanist
@@ -11,6 +12,7 @@
     python3.pkgs.ipython
     python3.pkgs.isort
     python3.pkgs.mypy
+    python3.pkgs.notebook
     python3.pkgs.black
     python3.pkgs.virtualenv
     python3.pkgs.virtualenvwrapper
