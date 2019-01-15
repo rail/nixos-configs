@@ -49,7 +49,8 @@
   services.xserver = {
     exportConfiguration = true;
     enable = true;
-    layout = "us";
+    layout = "us,ru";
+    xkbOptions = "compose:ralt,grp:shifts_toggle,grp_led:caps,caps:escape";
     deviceSection = ''
       Option      "Backlight"  "intel_backlight"
     '';
@@ -59,7 +60,7 @@
     displayManager.lightdm = {
       enable = true;
       greeters.gtk.indicators = [ "~host" "~spacer" "~clock" "~spacer" "~a11y" "~session" "~power"];
-      background = "/home/rail/Pictures/wallpapers/current";
+      background = "/home/rail/.background-image";
     };
     desktopManager = {
       default = "none";
