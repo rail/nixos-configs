@@ -54,9 +54,8 @@ let
         # Paths to default icons.
         icon_path = ${iconPath}
 
-    [frame]
-        width = 2
-        color = "#aaaaaa"
+        frame_width = 2
+        frame_color = "#aaaaaa"
 
     [shortcuts]
         close = mod4+slash
