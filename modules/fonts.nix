@@ -1,12 +1,5 @@
 { pkgs, unstable, ... }:
 
-let
-  nerd-fonts-source-code-pro = pkgs.nerdfonts.override {
-    withFont = "SourceCodePro";
-  };
-
-in
-
 {
 
   fonts.fonts = with pkgs; [
@@ -18,7 +11,6 @@ in
     font-awesome-ttf
     hack-font
     noto-fonts
-    nerd-fonts-source-code-pro
     unstable.weather-icons
   ];
 
