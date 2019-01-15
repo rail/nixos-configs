@@ -83,14 +83,6 @@
     longitude = "-79.4";
   };
 
-  # make GDM find other WMs
-  # system.activationScripts.etcX11sessions = ''
-  #   echo "setting up /etc/X11/sessions..."
-  #   mkdir -p /etc/X11
-  #   [[ ! -L /etc/X11/sessions ]] || rm /etc/X11/sessions
-  #   ln -sf ${config.services.xserver.displayManager.session.desktops} /etc/X11/sessions
-  # '';
-
   # TODO: make this work and remove from i3 config
   # systemd.user.services.lightlocker = {
   #   description = "Light locker";
