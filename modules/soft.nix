@@ -48,7 +48,6 @@ in
     mpv
     mtr
     netcat-gnu
-    networkmanagerapplet
     nix-prefetch-scripts
     obs-studio
     p7zip
