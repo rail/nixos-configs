@@ -7,14 +7,20 @@
     syntaxHighlighting.enable = true;
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" "systemd" "colorize" "colored-man-pages" "virtualenvwrapper" ];
+      plugins =
+        [ "git"
+          "systemd"
+          "pass"
+          "colorize"
+          "colored-man-pages"
+          "virtualenvwrapper" 
+        ];
       theme = "frisk";
     };
     shellAliases = {
       l = "ls -alh";
       ll = "ls -l";
       ls = "ls --color=tty";
-      vi = "vim";
       scp =" scp -rC";
       tmux = "tmux -2";
       mutt = "TERM=screen-256color mutt";

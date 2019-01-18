@@ -15,7 +15,7 @@ in
       (import ./fonts.nix { inherit pkgs unstable; })
       (import ./i3.nix { inherit pkgs unstable; })
       ./mail.nix
-      ./neovim.nix
+      (import ./neovim.nix { pkgs = unstable; } )
       ./python.nix
       ./soft.nix
       ./tmux.nix
@@ -24,4 +24,3 @@ in
       ./zsh.nix
     ];
 }
-
