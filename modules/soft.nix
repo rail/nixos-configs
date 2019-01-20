@@ -39,6 +39,7 @@ in
     jwhois
     konsole
     latest.firefox-nightly-bin
+    lightlocker
     libreoffice-fresh
     lshw
     lsof
@@ -71,6 +72,7 @@ in
     whois
     xclip
     xorg.xbacklight
+    xorg.xinput
     xorg.xhost
     yarn2nix
     yubikey-personalization-gui
