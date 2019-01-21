@@ -10,6 +10,5 @@ in
   environment.systemPackages = [ neovim ];
   environment.variables = {
     EDITOR = pkgs.lib.mkForce "nvim";
-    GIT_EDITOR = pkgs.lib.mkForce "nvim +startinsert +0";
   };
 }
