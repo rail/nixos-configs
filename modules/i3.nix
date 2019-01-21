@@ -10,6 +10,9 @@
       rofi
       unstable.python3.pkgs.py3status
     ];
+    extraSessionCommands = ''
+      ${pkgs.lightlocker}/bin/light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend &
+    '';
   };
 
   services.compton = {
