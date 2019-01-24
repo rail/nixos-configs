@@ -24,6 +24,7 @@ in
     docker_compose
     efibootmgr
     emacs
+    feedreader
     file
     fzf
     gitAndTools.diff-so-fancy

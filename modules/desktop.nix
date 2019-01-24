@@ -37,7 +37,7 @@
 
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ gutenprint gutenprintBin ];
+    drivers = with pkgs; [ gutenprint gutenprintBin hplip ];
   };
   # The following part fixes the printing issues \o/
   # "Unable to locate printer"

@@ -33,6 +33,42 @@ let
     " Use the OS clipboard by default
     set clipboard+=unnamedplus
 
+    " Enhance command-line completion
+    set wildmenu
+    set wildmode=longest,full
+    set wildignore+=*/.hg/*,*/.git/*,*/.svn/*
+    set wildignore+=*.gif,*.png,*.jp*
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+    set wildignore+=*/.sass-cache/*,*.map
+
+    " Saner backspacing
+    set backspace=indent,eol,start
+
+    " set esckeys
+    set showcmd
+    set autoread
+    set hidden
+    set noerrorbells
+
+    " Don’t reset cursor to start of line when moving around.
+    set nostartofline
+
+    " scroll the screen before I rech the bottom
+    set laststatus=2
+
+    " Better auto complete
+    set complete=.,w,b,u,t,i
+    set completeopt=longest,menu,preview
+
+    set nrformats-=octal
+    set notimeout
+    set nottimeout
+
+    " More natural split opening
+    set splitbelow
+    set splitright
+
+
     " Mapping
 
     " Unmap space in normal and visual modes
@@ -146,8 +182,8 @@ let
     " Change window title to filename
     set title
 
-    " Turn off linenumbers
-    set nonumber
+    " use relative numbers
+    set number relativenumber
 
     " Hide ruler
     set noruler
@@ -170,10 +206,6 @@ let
 
     " scroll when reach 3rd line from the bottom
     set scrolloff=3
-
-    " Limelight on/off
-    nmap <silent> <Leader>l :Limelight!!<Return>
-    xmap <silent> <Leader>l :Limelight!!<Return>
 
     " }}}
 
@@ -289,9 +321,8 @@ let
         # The fancy start screen for Vim.
         # https://github.com/mhinz/vim-startify
         "vim-startify"
-        # Keymap-display loosely inspired by emacs's guide-key.
-        # https://github.com/hecal3/vim-leader-guide
-        "vim-leader-guide"
+        # force to use better navigation habbits
+        "vim-hardtime"
       ];
       config = ''
         let g:startify_enable_special         = 0
@@ -316,7 +347,7 @@ let
 
         let g:startify_bookmarks = [
           \ { 'c': '/etc/nixos/modules/vim_config.nix' },
-          \ '~/work/git/services',
+          \ { 's': '~/work/git/services' },
           \ ]
 
         let g:startify_custom_footer =
@@ -331,21 +362,7 @@ let
         hi StartifySlash   ctermfg=240
         hi StartifySpecial ctermfg=240
 
-        " TODO: implement the following leader key mapping
-        " https://github.com/kshenoy/vim-signature#installation
-        let g:lmap =  {}
-
-        " Git
-        let g:lmap.g = {
-                \'name' : 'Git Menu',
-                \'s' : ['Gstatus', 'Git Status'],
-                \'p' : ['Gpull',   'Git Pull'],
-                \'u' : ['Gpush',   'Git Push'],
-                \'c' : ['Gcommit', 'Git Commit'],
-                \'w' : ['Gwrite',  'Git Write'],
-                \'i' : ['Gista post --public',  'Public Gist'],
-                \'I' : ['Gista post --private',  'Private Gist'],
-                \}
+        let g:hardtime_default_on = 1
       '';
     }
 
