@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 let
   nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
 in
@@ -79,5 +79,6 @@ in
     yubikey-personalization-gui
     youtube-dl
     zip
+    unstable.magic-wormhole
   ];
 }

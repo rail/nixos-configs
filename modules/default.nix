@@ -17,7 +17,7 @@ in
       ./mail.nix
       (import ./neovim.nix { pkgs = unstable; } )
       ./python.nix
-      ./soft.nix
+      (import ./soft.nix {inherit pkgs unstable config;})
       ./tmux.nix
       (import ./ssh.nix { inherit pubkey; })
       (import ./users.nix { inherit pkgs pubkey; })
