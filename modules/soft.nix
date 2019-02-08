@@ -23,7 +23,6 @@ in
     dnsutils
     docker_compose
     efibootmgr
-    emacs
     feedreader
     file
     fzf
