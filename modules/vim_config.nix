@@ -173,6 +173,9 @@ let
 
     " Look and Feel {{{
 
+	" force minimun window width
+	set winwidth=100
+
     " Enable true color for neovim
     let $NVIM_TUI_ENABLE_TRUE_COLOR = 0
 
