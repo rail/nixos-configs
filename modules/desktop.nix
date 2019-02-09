@@ -35,6 +35,10 @@
     storageDriver = "overlay2";
   };
 
+  virtualisation.virtualbox.host = {
+    enable = true;
+  };
+
   services.printing = {
     enable = true;
     drivers = with pkgs; [ gutenprint gutenprintBin hplip ];

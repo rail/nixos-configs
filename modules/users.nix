@@ -9,7 +9,7 @@
     isNormalUser = true;
     uid = 1000;
     description = "Rail Aliiev";
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" "root" "scanner" "lp" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" "root" "scanner" "lp" "vboxusers" ];
     openssh.authorizedKeys.keys = [ pubkey ];
     shell = pkgs.zsh;
   };
