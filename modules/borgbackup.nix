@@ -3,7 +3,7 @@ let
   user = "rail";
   group = "users";
   home = config.users.users.${user}.home;
-  localRepo = "${home}/borg";
+  localRepo = "${home}/backup/borg";
   remoteRepo = "borg@merail.ca:/home/borg/backup";
   sshKey = "${home}/.ssh/borg";
 
@@ -17,8 +17,6 @@ let
         "Documents"
         ".abook"
         ".gnupg"
-        ".gnupg.master"
-        "org"
         ".password-store"
       ];
     startAt = "*-*-* 20:00:00";

@@ -80,4 +80,7 @@ in
     zip
     unstable.magic-wormhole
   ];
+  environment.variables = {
+    BROWSER = pkgs.lib.mkForce "firefox";
+  };
 }

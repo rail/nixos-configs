@@ -1,5 +1,9 @@
 { pkgs, ... }:
-
+let 
+  xdg_abook = pkgs.abook.overrideDerivation (oldAttrs: {
+    patches = oldAttrs.patches ++ [ ./abook-xdg.diff ];
+  });
+in
 {
   services.nullmailer = {
     enable = true;
@@ -9,7 +13,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    abook
+    xdg_abook
     aspell
     aspellDicts.en
     lynx

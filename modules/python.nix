@@ -13,4 +13,7 @@
     virtualenv
     virtualenvwrapper
   ];
+  environment.variables = {
+    WORKON_HOME = pkgs.lib.mkForce "~/.local/virtualenvs";
+  };
 }
