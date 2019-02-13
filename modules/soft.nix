@@ -82,5 +82,7 @@ in
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
+    # Trick firefox so it doesn't create new profiles, see https://github.com/mozilla/nixpkgs-mozilla/issues/163
+    SNAP_NAME = "firefox";
   };
 }
