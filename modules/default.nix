@@ -21,6 +21,7 @@ in
       ./tmux.nix
       (import ./ssh.nix { inherit pubkey; })
       (import ./users.nix { inherit pkgs pubkey; })
+      ./xmonad.nix
       ./zsh.nix
     ];
 }

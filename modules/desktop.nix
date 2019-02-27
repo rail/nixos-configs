@@ -35,9 +35,9 @@
     storageDriver = "overlay2";
   };
 
-  virtualisation.virtualbox.host = {
-    enable = true;
-  };
+  # virtualisation.virtualbox.host = {
+  #   enable = true;
+  # };
 
   services.printing = {
     enable = true;

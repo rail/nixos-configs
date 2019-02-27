@@ -324,8 +324,6 @@ let
         # The fancy start screen for Vim.
         # https://github.com/mhinz/vim-startify
         "vim-startify"
-        # force to use better navigation habbits
-        "vim-hardtime"
       ];
       config = ''
         let g:startify_enable_special         = 0
@@ -364,8 +362,6 @@ let
         hi StartifyPath    ctermfg=245
         hi StartifySlash   ctermfg=240
         hi StartifySpecial ctermfg=240
-
-        let g:hardtime_default_on = 1
       '';
     }
 
@@ -377,6 +373,7 @@ let
         "vim-auto-save"
         "vim-expand-region"
         "vim-commentary"
+        "vim-orgmode"
       ];
       config = ''
         " Use region expanding
