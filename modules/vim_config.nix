@@ -83,12 +83,9 @@ let
     cabbrev W w
     cabbrev Q q
 
-    " unmap capital K
-    nnoremap K <nop>
-
     " Copies what was just pasted
     " Allows you to paste the same thing over and over and over and over and over and over
-    xnoremap p pgvy
+    " xnoremap p pgvy
 
     " Cylces through splits using a double press of enter in normal mode
     nnoremap <CR><CR> <C-w><C-w>
@@ -132,8 +129,8 @@ let
     nmap az za
 
     " highlight all tabs and trailing whitespace characters
-    highlight ExtraWhitespace ctermbg=red ctermfg=white guibg=#592929
-    match ExtraWhitespace /\s\+$\|\t/
+    " highlight ExtraWhitespace ctermbg=red ctermfg=white guibg=#592929
+    " match ExtraWhitespace /\s\+$\|\t/
     " Spaces and Tabs {{{
 
     " Set indent to 4 spaces wide
@@ -374,6 +371,7 @@ let
         "vim-expand-region"
         "vim-commentary"
         "vim-orgmode"
+        "vim-better-whitespace"
       ];
       config = ''
         " Use region expanding
@@ -383,6 +381,9 @@ let
         " toggle spelling
         set invspell
         nnoremap <leader>s :set invspell<CR>
+
+        let g:better_whitespace_enabled=1
+        let g:strip_whitespace_on_save=1
       '';
     }
 
@@ -426,14 +427,7 @@ let
         inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
       '';
     }
-
     # "neoformat"
-    # "UltiSnips"
-    # "vim-snippets"
-    # "fzf-vim"
-    # "fzfWrapper"
-    # "neomake"
-    # lessspace
   ];
 in {
   customRC = preConfig +
