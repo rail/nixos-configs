@@ -15,7 +15,6 @@ let
         ".config"
         ".ssh"
         "Documents"
-        ".abook"
         ".gnupg"
         ".password-store"
       ];
