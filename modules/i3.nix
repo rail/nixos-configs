@@ -1,8 +1,8 @@
 { pkgs, unstable, ... }:
 
 {
-  # services.xserver.windowManager.i3.package = unstable.i3;
   services.xserver.windowManager.i3 = {
+    package = unstable.i3;
     extraPackages = with pkgs; [
       feh
       unstable.i3status
