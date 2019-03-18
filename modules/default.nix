@@ -22,5 +22,6 @@ in
       (import ./ssh.nix { inherit pubkey; })
       (import ./users.nix { inherit pkgs pubkey; })
       ./zsh.nix
+      ./sway.nix
     ];
 }
