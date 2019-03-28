@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let 
+let
   xdg_abook = pkgs.abook.overrideDerivation (oldAttrs: {
     patches = oldAttrs.patches ++ [ ./abook-xdg.diff ];
   });

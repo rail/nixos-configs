@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.zsh = {
@@ -10,7 +10,7 @@
       plugins =
         [ "git"
           "pass"
-          "virtualenvwrapper" 
+          "virtualenvwrapper"
         ];
       theme = "frisk";
     };

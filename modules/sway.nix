@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
-let
-  url = "https://github.com/colemickens/nixpkgs-wayland/archive/master.tar.gz";
-  waylandOverlay = (import (builtins.fetchTarball url));
-in
+# let
+#   url = "https://github.com/colemickens/nixpkgs-wayland/archive/master.tar.gz";
+#   waylandOverlay = (import (builtins.fetchTarball url));
+# in
 
 {
   # nixpkgs.overlays = [ waylandOverlay ];
@@ -27,7 +27,7 @@ in
       # xdg-desktop-portal-wlr # xdg-desktop-portal backend for wlrootswaybar
       # waybar        # polybar-alike
       # i3status-rust # simpler bar written in Rust     python3.pkgs.py3status
-      light
     ];
   };
+  services.xserver.displayManager.extraSessionFilePackages = [ pkgs.sway ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, pubkey, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -10,7 +10,7 @@
     uid = 1000;
     description = "Rail Aliiev";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" "root" "scanner" "lp" "vboxusers" ];
-    openssh.authorizedKeys.keys = [ pubkey ];
+    openssh.authorizedKeys.keyFiles = [ ./pubkey ];
     shell = pkgs.zsh;
   };
 

@@ -13,7 +13,7 @@
 ## disable builtins.fetchTarball based expressions, because the installer is
 ## unable to fetch them and unpack into a read-only store
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -58,8 +58,8 @@
     [ { device = "/dev/disk/by-uuid/3e7204e3-9a21-4124-b82c-62c125c94ff2"; }
     ];
 
-  nix.maxJobs = lib.mkDefault 4;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  nix.maxJobs = pkgs.lib.mkDefault 4;
+  powerManagement.cpuFreqGovernor = pkgs.lib.mkDefault "powersave";
 
   boot.loader.grub = {
     enable = true;

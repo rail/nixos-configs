@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   themePackage = pkgs.gnome3.adwaita-icon-theme;
@@ -18,7 +18,7 @@ let
     "status"
     "stock"
   ];
-  iconPath = lib.concatStringsSep ":" (
+  iconPath = pkgs.lib.concatStringsSep ":" (
     map (category: "${themePackage}/share/icons/${themeDir}/32x32/${category}") categories);
   dunstConfig = pkgs.writeText "dunstrc" ''
 

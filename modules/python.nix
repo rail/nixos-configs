@@ -16,5 +16,6 @@
   ];
   environment.variables = {
     WORKON_HOME = pkgs.lib.mkForce "~/.local/virtualenvs";
+    PYTHONDONTWRITEBYTECODE = "1";
   };
 }

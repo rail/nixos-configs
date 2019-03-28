@@ -286,11 +286,13 @@ let
         "vim-airline-themes"
         "vim-highlightedyank"
         "vim-signify"
+        "base16-vim"
       ];
       config = ''
         set termguicolors
         set background=dark
-        colorscheme one
+        " colorscheme one
+        colorscheme base16-oceanicnext
         let g:one_allow_italics = 1
         let g:airline_theme='one'
         let g:airline#extensions#tabline#enabled = 1
@@ -372,6 +374,7 @@ let
         "vim-commentary"
         "vim-orgmode"
         "vim-better-whitespace"
+        "vim-surround"
       ];
       config = ''
         " Use region expanding
@@ -422,8 +425,8 @@ let
         "jedi-vim"
       ];
       config =''
-        let g:deoplete#enable_at_startup = 1
-        let g:deoplete#auto_complete_delay = 0
+        " let g:deoplete#enable_at_startup = 1
+        " let g:deoplete#auto_complete_delay = 0
         inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
       '';
     }

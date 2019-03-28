@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }:
+{ pkgs, ... }:
 let
   nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
 in
@@ -38,13 +38,14 @@ in
     jq
     jwhois
     konsole
-    latest.firefox-nightly-bin
+    latest.firefox-beta-bin
     lightlocker
     libreoffice-fresh
     lshw
     lsof
     mc
     mercurial
+    mosh
     mpv
     mtr
     netcat-gnu
@@ -68,6 +69,7 @@ in
     transmission-gtk
     tree
     unzip
+    vifm
     wget
     whois
     xclip
@@ -78,7 +80,7 @@ in
     yubikey-personalization-gui
     youtube-dl
     zip
-    unstable.magic-wormhole
+    magic-wormhole
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";

@@ -1,14 +1,14 @@
-{ pkgs, unstable, ... }:
+{ pkgs, ... }:
 
 {
   services.xserver.windowManager.i3 = {
-    package = unstable.i3;
+    # package = unstable.i3;
     extraPackages = with pkgs; [
       feh
-      unstable.i3status
+      i3status
       libnotify
       rofi
-      unstable.python3.pkgs.py3status
+      python3.pkgs.py3status
     ];
     extraSessionCommands = ''
       ${pkgs.lightlocker}/bin/light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend &

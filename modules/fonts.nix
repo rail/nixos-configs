@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -20,7 +20,7 @@
     noto-fonts-emoji
     powerline-fonts
     source-code-pro
-    unstable.weather-icons
+    weather-icons
   ];
 
 }
