@@ -38,7 +38,7 @@ in
     jq
     jwhois
     konsole
-    latest.firefox-beta-bin
+    latest.firefox-nightly-bin
     lightlocker
     libreoffice-fresh
     lshw
@@ -81,6 +81,7 @@ in
     youtube-dl
     zip
     magic-wormhole
+    zoom-us
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
