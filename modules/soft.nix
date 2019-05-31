@@ -16,7 +16,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    VidyoDesktop
     binutils
     ctags
     curl
