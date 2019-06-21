@@ -274,7 +274,6 @@ let
         # Support for writing Nix expressions in vim.
         # https://github.com/LnL7/vim-nix
         "vim-nix"
-        "vim-css-color"
       ];
       config = "";
     }

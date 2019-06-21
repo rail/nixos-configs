@@ -1,6 +1,14 @@
 { pkgs, ... }:
 let
   nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
+  skopeo-man = pkgs.skopeo.overrideDerivation (oldAttrs: {
+    postBuild = ''
+      # depends on buildGoPackage not changing …
+      pushd ./go/src/github.com/containers/skopeo
+      make install-docs MANINSTALLDIR="$man/share/man"
+      popd
+    '';
+  });
 in
 
 {
@@ -61,7 +69,7 @@ in
     pypi2nix
     rsync
     silver-searcher
-    skopeo
+    skopeo-man
     strace
     tcpdump
     telnet
