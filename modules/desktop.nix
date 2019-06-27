@@ -7,7 +7,7 @@
     defaultLocale = "en_CA.UTF-8";
   };
 
-  time.timeZone = "America/Vancouver";
+  time.timeZone = "America/Toronto";
   networking.networkmanager.enable = true;
 
   # copy the system configuration into nix-store

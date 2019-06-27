@@ -3,6 +3,7 @@
   programs.adb.enable = true;
   environment.systemPackages = with pkgs; [
     arcanist
+    gnumake
     nix-index
     nodejs-10_x
     patchelf
