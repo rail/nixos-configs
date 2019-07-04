@@ -80,6 +80,7 @@ in
     wget
     whois
     xclip
+    xmind
     xorg.xbacklight
     xorg.xinput
     xorg.xhost

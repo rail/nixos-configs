@@ -3,7 +3,7 @@ let
   neovim = pkgs.neovim.override {
     vimAlias = true;
     viAlias = true;
-    # configure = import ./vim_config.nix { inherit pkgs; };
+    configure = import ./vim_config.nix { inherit pkgs; };
   };
 in
 {
