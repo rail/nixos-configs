@@ -57,8 +57,8 @@ let
     set laststatus=2
 
     " Better auto complete
-    set complete=.,w,b,u,t,i
-    set completeopt=longest,menu,preview
+    " set complete=.,w,b,u,t,i
+    " set completeopt=longest,menu,preview
 
     set nrformats-=octal
     set notimeout
@@ -274,8 +274,23 @@ let
         # Support for writing Nix expressions in vim.
         # https://github.com/LnL7/vim-nix
         "vim-nix"
+        "rust-vim"
+        "LanguageClient-neovim"
       ];
-      config = "";
+      config = ''
+          let g:LanguageClient_serverCommands = {
+            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ 'python': ['pyls'],
+          \ }
+          let g:LanguageClient_useVirtualText = 0
+          set completefunc=LanguageClient#complete
+          " set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+          nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+          " Or map each action separately
+          nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+          nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+          nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+      '';
     }
 
     # THEME
@@ -298,6 +313,11 @@ let
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#formatter = 'unique_tail'
         let g:highlightedyank_highlight_duration = 200
+        let g:autofmt_autosave = 1
+        let g:rustfmt_autosave = 1
+        let g:rustfmt_emit_files = 1
+        let g:rustfmt_fail_silently = 0
+        " let g:rust_clip_command = 'xclip -selection clipboard'
       '';
     }
 
@@ -393,6 +413,7 @@ let
     { plugins = [
         "ctrlp-vim"
         "vim-signify"
+        "fzf-vim"
       ];
       config =''
       '';
@@ -409,6 +430,10 @@ let
         let g:ale_sign_error = '●'
         let g:ale_sign_warning = '.'
         let g:ale_python_flake8_options = "--max-line-length=110"
+        let g:ale_fixers = {
+            \ 'rust': ['rustfmt'],
+            \}
+        let g:ale_fix_on_save = 1
         " airline thingy
         let g:airline#extensions#ale#enabled = 1
         nmap <silent> <C-n> <Plug>(ale_next_wrap)
@@ -422,11 +447,18 @@ let
         "deoplete-jedi"
         "deoplete-ternjs"
         "jedi-vim"
+        "ncm2"
+        "ncm2-path"
+        "ncm2-jedi"
+        "ncm2-bufword"
+        "ncm2-tmux"
       ];
       config =''
-        " let g:deoplete#enable_at_startup = 1
-        " let g:deoplete#auto_complete_delay = 0
+        let g:deoplete#enable_at_startup = 1
+        let g:deoplete#auto_complete_delay = 0
         inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+        autocmd BufEnter * call ncm2#enable_for_buffer()
+        set completeopt=noinsert,menuone,noselect
       '';
     }
     # "neoformat"

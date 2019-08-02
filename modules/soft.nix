@@ -33,6 +33,7 @@ in
     feedreader
     file
     fzf
+    exa
     gitAndTools.diff-so-fancy
     gitAndTools.gitFull
     gist
@@ -73,6 +74,7 @@ in
     strace
     tcpdump
     telnet
+    timewarrior
     transmission-gtk
     tree
     unzip

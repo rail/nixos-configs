@@ -13,6 +13,9 @@
     python3Full
     virtualenv
     virtualenvwrapper
+    python-language-server
+    pyls-black
+    pyls-isort
   ];
   environment.variables = {
     WORKON_HOME = pkgs.lib.mkForce "~/.local/virtualenvs";
