@@ -7,6 +7,7 @@
       ./desktop.nix
       ./dev.nix
       ./dunst.nix
+      ./fish.nix
       ./fonts.nix
       ./i3.nix
       ./mail.nix
