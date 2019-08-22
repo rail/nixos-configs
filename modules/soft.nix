@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
-  nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
+  # nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
+  nixpkgs-mozilla = /home/rail/work/git/nixpkgs-mozilla;
   skopeo-man = pkgs.skopeo.overrideDerivation (oldAttrs: {
     postBuild = ''
       # depends on buildGoPackage not changing …
@@ -91,6 +92,7 @@ in
     youtube-dl
     zip
     magic-wormhole
+    weechat
     zoom-us
   ];
   environment.variables = {

@@ -124,5 +124,6 @@
       PassEnvironment = "DISPLAY";
     };
   };
+  programs.autojump.enable = true;
 
 }

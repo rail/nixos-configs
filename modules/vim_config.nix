@@ -392,6 +392,7 @@ let
         "vim-expand-region"
         "vim-commentary"
         "vim-orgmode"
+        "vim-speeddating"
         "vim-better-whitespace"
         "vim-surround"
       ];
