@@ -2,6 +2,7 @@
 let
   # nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
   nixpkgs-mozilla = /home/rail/work/git/nixpkgs-mozilla;
+  unstable = (import <nixos-unstable> {});
   skopeo-man = pkgs.skopeo.overrideDerivation (oldAttrs: {
     postBuild = ''
       # depends on buildGoPackage not changing …
@@ -25,19 +26,21 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    unstable.starship
     binutils
     ctags
     curl
     dnsutils
     docker_compose
     efibootmgr
+    exa
+    fd
     feedreader
     file
     fzf
-    exa
+    gist
     gitAndTools.diff-so-fancy
     gitAndTools.gitFull
-    gist
     gnupg
     google-chrome
     htop
@@ -48,11 +51,13 @@ in
     jwhois
     konsole
     latest.firefox-nightly-bin
-    lightlocker
     libreoffice-fresh
+    lightlocker
     lshw
     lsof
+    magic-wormhole
     mc
+    mdbook
     mercurial
     mosh
     mpv
@@ -80,20 +85,24 @@ in
     tree
     unzip
     vifm
+    weechat
     wget
     whois
     xclip
     xmind
     xorg.xbacklight
-    xorg.xinput
     xorg.xhost
+    xorg.xinput
     yarn2nix
-    yubikey-personalization-gui
     youtube-dl
+    yubikey-personalization-gui
     zip
-    magic-wormhole
-    weechat
-    zoom-us
+    (unstable.zoom-us.overrideAttrs (oldAttrs: {
+      meta = oldAttrs.meta // {
+        # bad hack!
+        license = pkgs.stdenv.lib.licenses.mit;
+      };
+    }))
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
