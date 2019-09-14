@@ -17,9 +17,9 @@
       set -g status-interval 5
       set -g status-bg black
       set -g status-fg white
-      set -g window-status-activity-bg default
-      set -g window-status-activity-fg default
-      set -g window-status-activity-attr underscore
+      # set -g window-status-activity-bg default
+      # set -g window-status-activity-fg default
+      # set -g window-status-activity-attr underscore
       set -g status-left-length 30
       set -g status-right-length 60
       set -g status-left ' #[default]'

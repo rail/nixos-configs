@@ -2,7 +2,6 @@
 let
   # nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
   nixpkgs-mozilla = /home/rail/work/git/nixpkgs-mozilla;
-  unstable = (import <nixos-unstable> {});
   skopeo-man = pkgs.skopeo.overrideDerivation (oldAttrs: {
     postBuild = ''
       # depends on buildGoPackage not changing …
@@ -26,7 +25,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    unstable.starship
+    starship
     binutils
     ctags
     curl
@@ -89,20 +88,13 @@ in
     wget
     whois
     xclip
-    xmind
     xorg.xbacklight
     xorg.xhost
     xorg.xinput
-    yarn2nix
     youtube-dl
     yubikey-personalization-gui
     zip
-    (unstable.zoom-us.overrideAttrs (oldAttrs: {
-      meta = oldAttrs.meta // {
-        # bad hack!
-        license = pkgs.stdenv.lib.licenses.mit;
-      };
-    }))
+    zoom-us
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";

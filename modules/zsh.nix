@@ -21,6 +21,7 @@
       scp =" scp -rC";
       tmux = "tmux -2";
       mutt = "TERM=screen-256color mutt";
+      wp = "j";
     };
   };
 }

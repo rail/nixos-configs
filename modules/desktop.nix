@@ -80,12 +80,10 @@
     evolution gnome-maps gnome-logs epiphany
   ];
 
-  services.redshift = {
-    enable = true;
-    # provider = "geoclue2";
-    latitude = "43.7";
-    longitude = "-79.4";
-  };
+  # redshift using geolocation
+  location.provider = "geoclue2";
+  services.geoclue2.enable = true;
+  services.redshift.enable = true;
 
   # TODO: make this work and remove from i3 config
   # systemd.user.services.lightlocker = {
