@@ -76,7 +76,7 @@ in
     pypi2nix
     rsync
     silver-searcher
-    skopeo-man
+    skopeo
     strace
     tcpdump
     telnet
