@@ -2,14 +2,6 @@
 let
   # nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
   nixpkgs-mozilla = /home/rail/work/git/nixpkgs-mozilla;
-  skopeo-man = pkgs.skopeo.overrideDerivation (oldAttrs: {
-    postBuild = ''
-      # depends on buildGoPackage not changing …
-      pushd ./go/src/github.com/containers/skopeo
-      make install-docs MANINSTALLDIR="$man/share/man"
-      popd
-    '';
-  });
 in
 
 {
@@ -58,12 +50,10 @@ in
     mc
     mdbook
     mercurial
-    mosh
     mpv
     mtr
     netcat-gnu
     nix-prefetch-scripts
-    obs-studio
     p7zip
     pamixer
     pass
@@ -72,14 +62,11 @@ in
     polkit_gnome
     psmisc
     pwgen
-    pypi2nix
     rsync
     silver-searcher
-    skopeo
     strace
     tcpdump
     telnet
-    timewarrior
     transmission-gtk
     tree
     unzip
