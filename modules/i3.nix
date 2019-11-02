@@ -9,11 +9,8 @@
       libnotify
       rofi
       python3.pkgs.py3status
-      # (polybar.override { i3Support = true; pulseSupport = true; githubSupport = true; })
+      i3lock-color
     ];
-    extraSessionCommands = ''
-      ${pkgs.lightlocker}/bin/light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend &
-    '';
   };
 
   services.compton = {

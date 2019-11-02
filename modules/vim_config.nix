@@ -304,9 +304,10 @@ let
       ];
       config = ''
         set termguicolors
-        set background=dark
+        set background=light
         " colorscheme one
-        colorscheme base16-oceanicnext
+        " colorscheme base16-oceanicnext
+        colorscheme base16-atelier-plateau-light
         let g:one_allow_italics = 1
         let g:airline_theme='one'
         let g:airline#extensions#tabline#enabled = 1
@@ -448,17 +449,17 @@ let
         "deoplete-jedi"
         "deoplete-ternjs"
         "jedi-vim"
-        "ncm2"
-        "ncm2-path"
-        "ncm2-jedi"
-        "ncm2-bufword"
-        "ncm2-tmux"
+        # "ncm2"
+        # "ncm2-path"
+        # "ncm2-jedi"
+        # "ncm2-bufword"
+        # "ncm2-tmux"
       ];
       config =''
         let g:deoplete#enable_at_startup = 1
         let g:deoplete#auto_complete_delay = 0
         inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-        autocmd BufEnter * call ncm2#enable_for_buffer()
+        " autocmd BufEnter * call ncm2#enable_for_buffer()
         set completeopt=noinsert,menuone,noselect
       '';
     }

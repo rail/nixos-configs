@@ -43,7 +43,6 @@ in
     konsole
     latest.firefox-nightly-bin
     libreoffice-fresh
-    lightlocker
     lshw
     lsof
     magic-wormhole

@@ -76,6 +76,13 @@
       default = "i3";
       i3.enable = true;
     };
+    xautolock =  {
+      enable = true;
+      killer = null;
+      extraOptions = [ "-lockaftersleep" "-detectsleep" ];
+      locker = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
+      nowlocker = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
+    };
   };
   environment.gnome3.excludePackages = with pkgs.gnome3; [
     evolution gnome-maps gnome-logs epiphany
