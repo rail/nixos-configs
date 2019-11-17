@@ -2,6 +2,7 @@
 let
   # nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
   nixpkgs-mozilla = /home/rail/work/git/nixpkgs-mozilla;
+  unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
 in
 
 {

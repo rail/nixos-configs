@@ -1,4 +1,12 @@
-{ ... }:
+{ pkgs, ... }:
+let
+  tmuxPluginNames = [
+    "fzf-tmux-url"
+  ];
+  pluginConfig = builtins.concatStringsSep "\n" (
+    builtins.map (name: "run-shell ${pkgs.tmuxPlugins.${name}}/share/tmux-plugins/${name}/*.tmux")
+    tmuxPluginNames);
+in
 
 {
   programs.tmux = {
@@ -17,9 +25,6 @@
       set -g status-interval 5
       set -g status-bg black
       set -g status-fg white
-      # set -g window-status-activity-bg default
-      # set -g window-status-activity-fg default
-      # set -g window-status-activity-attr underscore
       set -g status-left-length 30
       set -g status-right-length 60
       set -g status-left ' #[default]'
@@ -31,6 +36,9 @@
       bind-key -n C-right next
       bind-key -n C-left prev
 
+      set -g @continuum-restore 'on'
+      set -g @continuum-save-interval '1' # minutes
+      ${pluginConfig}
     '';
   };
 }

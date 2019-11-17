@@ -24,7 +24,6 @@ let
       within = "1d"; # Keep all archives from the last day
       daily = 7;
       weekly = 4;
-      monthly = -1; # Keep at least one archive for each month }
     };
     encryption = {
       mode = "repokey";
