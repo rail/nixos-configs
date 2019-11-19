@@ -13,7 +13,7 @@
 ## disable builtins.fetchTarball based expressions, because the installer is
 ## unable to fetch them and unpack into a read-only store
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports =
@@ -26,9 +26,9 @@
   };
 
   boot = {
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    kernelModules = [ "kvm-intel" "acpi_call" ];
     kernelPackages = pkgs.linuxPackages_latest;
+    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   };
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -86,4 +86,7 @@
   # boot.zfs.enableUnstable = true;
   # boot.loader.grub.zfsSupport = true;
 
+  services.throttled.enable = true;
+  hardware.trackpoint.device = "TPPS/2 Elan TrackPoint";
+  services.fwupd.enable = true;
 }
