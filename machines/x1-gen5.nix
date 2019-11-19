@@ -12,6 +12,7 @@
 # nix-channel --update
 ## disable builtins.fetchTarball based expressions, because the installer is
 ## unable to fetch them and unpack into a read-only store
+# nixos-install
 
 { pkgs, config, ... }:
 
