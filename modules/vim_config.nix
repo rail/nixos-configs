@@ -355,19 +355,19 @@ let
         let g:startify_session_delete_buffers = 1
 
         let g:startify_list_order = [
-          \ ['   Bookmarks:'],
-          \ 'bookmarks',
           \ ['   Sessions:'],
           \ 'sessions',
           \ ['   Recent in this dir:'],
           \ 'dir',
           \ ['   Recent:'],
           \ 'files',
+          \ ['   Bookmarks:'],
+          \ 'bookmarks',
           \ ]
 
         let g:startify_bookmarks = [
           \ { 'c': '/etc/nixos/modules/vim_config.nix' },
-          \ { 's': '~/work/git/services' },
+          \ { 's': '~/work/git/shipit' },
           \ ]
 
         let g:startify_custom_footer =

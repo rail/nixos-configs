@@ -81,7 +81,7 @@ in
     youtube-dl
     yubikey-personalization-gui
     zip
-    zoom-us
+    unstable.zoom-us
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
