@@ -6,7 +6,6 @@
     black
     flake8
     ipython
-    isort
     mypy
     notebook
     pytest

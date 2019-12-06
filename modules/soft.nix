@@ -41,7 +41,7 @@ in
     iw
     jq
     jwhois
-    konsole
+    kitty
     latest.firefox-nightly-bin
     libreoffice-fresh
     lshw
@@ -81,11 +81,13 @@ in
     youtube-dl
     yubikey-personalization-gui
     zip
-    unstable.zoom-us
+    zoom-us
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
     # Trick firefox so it doesn't create new profiles, see https://github.com/mozilla/nixpkgs-mozilla/issues/163
     SNAP_NAME = "firefox";
+    # let `less` behave like `cat` if there less than 1 page
+    LESS = "-F -X";
   };
 }

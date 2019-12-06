@@ -7,12 +7,7 @@ let
     let maplocalleader = ","
     scriptencoding utf-8
     set encoding=utf-8
-    " Temp Files
-
-    " Fuck swapfiles
     set noswapfile
-
-    " Set backup/undo dirs
     set backupdir=~/.config/nvim/tmp/backups//
     set undodir=~/.config/nvim/tmp/undo//
 
@@ -44,7 +39,6 @@ let
     " Saner backspacing
     set backspace=indent,eol,start
 
-    " set esckeys
     set showcmd
     set autoread
     set hidden
@@ -55,10 +49,6 @@ let
 
     " scroll the screen before I rech the bottom
     set laststatus=2
-
-    " Better auto complete
-    " set complete=.,w,b,u,t,i
-    " set completeopt=longest,menu,preview
 
     set nrformats-=octal
     set notimeout
@@ -83,10 +73,6 @@ let
     cabbrev W w
     cabbrev Q q
 
-    " Copies what was just pasted
-    " Allows you to paste the same thing over and over and over and over and over and over
-    " xnoremap p pgvy
-
     " Cylces through splits using a double press of enter in normal mode
     nnoremap <CR><CR> <C-w><C-w>
 
@@ -102,16 +88,6 @@ let
     " Maps Tab to indent blocks of text in visual mode
     vmap <TAB> >gv
     vmap <BS> <gv
-
-    " use hjkl-movement between rows when soft wrapping:
-    nnoremap j gj
-    nnoremap k gk
-    vnoremap j gj
-    vnoremap k gk
-
-    " include the default behaviour by doing reverse mappings so you can move linewise with gj and gk:
-    nnoremap gj j
-    nnoremap gk k
 
     " Jumps to the bottom of Fold
     nmap <Leader>b zo]z
@@ -170,17 +146,14 @@ let
 
     " Look and Feel {{{
 
-	" force minimun window width
-	set winwidth=100
+    " force minimun window width
+    set winwidth=100
 
     " Enable true color for neovim
     let $NVIM_TUI_ENABLE_TRUE_COLOR = 0
 
     " Enables cursor similar to gui programs
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-
-    " Change window title to filename
-    set title
 
     " use relative numbers
     set number relativenumber
@@ -193,10 +166,6 @@ let
 
     set nocursorcolumn
     set nocursorline
-
-    " syntax sync minlines=256
-    " set synmaxcol=300
-    " set re=1
 
     " Don’t show the intro message when starting Vim
     set shortmess=atIc
@@ -275,6 +244,7 @@ let
         # https://github.com/LnL7/vim-nix
         "vim-nix"
         "rust-vim"
+        "vim-isort"
         "LanguageClient-neovim"
       ];
       config = ''
@@ -304,10 +274,10 @@ let
       ];
       config = ''
         set termguicolors
-        set background=light
+        set background=dark
         " colorscheme one
-        " colorscheme base16-oceanicnext
-        colorscheme base16-atelier-plateau-light
+        colorscheme base16-oceanicnext
+        " colorscheme base16-atelier-plateau-light
         let g:one_allow_italics = 1
         let g:airline_theme='one'
         let g:airline#extensions#tabline#enabled = 1
@@ -429,8 +399,8 @@ let
         let g:ale_lint_on_save = 1
         let g:ale_lint_on_text_changed = 1
         let g:ale_lint_on_enter = 1
-        let g:ale_sign_error = '●'
-        let g:ale_sign_warning = '.'
+        " let g:ale_sign_error = '●'
+        " let g:ale_sign_warning = '.'
         let g:ale_python_flake8_options = "--max-line-length=110"
         let g:ale_fixers = {
             \ 'rust': ['rustfmt'],

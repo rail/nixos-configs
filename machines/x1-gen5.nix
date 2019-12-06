@@ -13,6 +13,8 @@
 ## disable builtins.fetchTarball based expressions, because the installer is
 ## unable to fetch them and unpack into a read-only store
 # nixos-install
+## to reinstall EFI grub:
+# NIXOS_INSTALL_BOOTLOADER=1 /run/current-system/bin/switch-to-configuration boot
 
 { pkgs, config, ... }:
 

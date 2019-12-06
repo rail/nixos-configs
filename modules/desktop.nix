@@ -117,7 +117,8 @@
 
   nix = {
     useSandbox = true;
-    allowedUsers = [ "rail" ];
+    # allowedUsers = [ "rail" ];
+    # trustedUsers = [ "rail" ];
   };
 
   systemd.user.services.network-manager-applet = {

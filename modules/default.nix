@@ -7,9 +7,10 @@
       ./desktop.nix
       ./dev.nix
       ./dunst.nix
-      ./fish.nix
       ./fonts.nix
+      ./fish.nix
       ./i3.nix
+      ./kitty.nix
       ./mail.nix
       ./neovim.nix
       ./python.nix
