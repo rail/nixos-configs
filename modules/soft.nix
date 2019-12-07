@@ -41,7 +41,6 @@ in
     iw
     jq
     jwhois
-    kitty
     latest.firefox-nightly-bin
     libreoffice-fresh
     lshw
@@ -60,6 +59,7 @@ in
     pavucontrol
     pinentry
     polkit_gnome
+    powertop
     psmisc
     pwgen
     rsync
