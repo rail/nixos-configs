@@ -79,7 +79,7 @@
     xautolock =  {
       enable = true;
       killer = null;
-      extraOptions = [ "-lockaftersleep" "-detectsleep" ];
+      extraOptions = [ "-lockaftersleep" ];
       locker = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
       nowlocker = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
     };

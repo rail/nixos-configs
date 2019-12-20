@@ -81,7 +81,12 @@ in
     youtube-dl
     yubikey-personalization-gui
     zip
-    zoom-us
+    (unstable.zoom-us.overrideAttrs (super: {
+      postInstall = ''
+        ${super.postInstall}
+        wrapProgram $out/bin/zoom-us --set LIBGL_ALWAYS_SOFTWARE 1
+      '';
+    }))
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
