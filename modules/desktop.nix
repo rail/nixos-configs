@@ -33,7 +33,10 @@
   virtualisation.docker = {
     enable = true;
     storageDriver = "overlay2";
+    autoPrune.enable = true;
   };
+
+  security.rtkit.enable = true;
 
   # virtualisation.virtualbox.host = {
   #   enable = true;

@@ -28,10 +28,9 @@ in
       enable = true;
       settings = {
         global = {
-          geometry = "300x5-30+50";
-          # geometry = "300x5-10+45";
+          geometry = "600x5-30+50";
           transparency = 10;
-          font = "Cantarell 16";
+          font = "Cantarell 12";
           follow = "keyboard";
           markup = "yes";
           idle_threshold = 120;

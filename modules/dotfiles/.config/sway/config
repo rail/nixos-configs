@@ -31,8 +31,8 @@ set $restart_py3status pkill --signal USR1 py3status
 output * bg ~/Pictures/wallpapers/current fill
 # output eDP-1 scale 1.5
 
-output eDP-1 position 0,0 scale 1.5
-output DP-1 position 2560,1440 scale 1.5
+output eDP-1 position 0,0
+output DP-1 position 2560,1440
 
 # Example configuration:
 #
