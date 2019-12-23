@@ -8,7 +8,7 @@ in
   home-manager.users.rail = {
 
     home.file = {
-      ".Xresources".source = ./dotfiles/.Xresources;
+      # ".Xresources".source = ./dotfiles/.Xresources;
       ".zshrc".source = ./dotfiles/.zshrc;
       ".tmux.conf".source = ./dotfiles/.tmux.conf;
 
@@ -18,11 +18,23 @@ in
       };
 
       ".config" = {
-        source = ./dotfiles/.config;
+        source = ./dotfiles/config;
         recursive = true;
       };
 
     };
+    xresources.properties = {
+      "Xft.dpi" = 144;
+      "Xcursor.size" = 48;
+    };
+    xresources.extraConfig =  builtins.readFile (
+      pkgs.fetchFromGitHub {
+        owner = "material-ocean";
+        repo = "Material-Ocean";
+        rev = "8a17b374031110e4e3f3e98750a88d4ed38341ad";
+        sha256 = "0as0826zzf9pcdrckbryn82jnw268chys1c75pxpxj1r5if9im6z";
+      } + "/.Xresources"
+    );
 
     services.dunst = {
       enable = true;
