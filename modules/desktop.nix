@@ -124,16 +124,6 @@
     # trustedUsers = [ "rail" ];
   };
 
-  systemd.user.services.network-manager-applet = {
-    description = "Network Manager applet";
-    after = [ "graphical-session-pre.target" ];
-    partOf = [ "graphical-session.target" ];
-    wantedBy = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
-      PassEnvironment = "DISPLAY";
-    };
-  };
   programs.autojump.enable = true;
 
 }

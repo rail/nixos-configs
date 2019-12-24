@@ -1,5 +1,9 @@
 { pkgs, ... }:
 
+let
+  unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
+in
+
 {
   environment.systemPackages = with pkgs; with pkgs.python3.pkgs; [
     autopep8
@@ -12,9 +16,7 @@
     python3Full
     virtualenv
     virtualenvwrapper
-    python-language-server
-    pyls-black
-    pyls-isort
+    unstable.pythonPackages.isort
   ];
   environment.variables = {
     WORKON_HOME = pkgs.lib.mkForce "~/.local/virtualenvs";

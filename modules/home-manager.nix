@@ -1,16 +1,30 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   home-manager = builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz;
+  base16-scheme = "oceanicnext";
+  base16 = pkgs.stdenv.mkDerivation {
+    name = "base16-builder";
+    src = builtins.fetchTarball {
+      url = "https://github.com/auduchinok/base16-builder/archive/51e3ad4d447fc3f1f539d0bfe33c851728fb6b5f.tar.gz";
+      sha256 = "1qir689h38c6jr7fbbqbc3029544zgv41lrrqdcq26kcwxcwjrz1";
+    };
+    nativeBuildInputs = [pkgs.ruby];
+    buildPhase = "${pkgs.ruby}/bin/ruby base16 -s schemes/${base16-scheme}.yml";
+    installPhase = ''
+      mkdir -p $out
+      cp -r output/* $out
+    '';
+  };
+  xresources = "${base16}/xresources/base16-${base16-scheme}.dark.256.xresources";
 in
 {
   imports = [ "${home-manager}/nixos" ];
   home-manager.users.rail = {
 
     home.file = {
-      # ".Xresources".source = ./dotfiles/.Xresources;
-      ".zshrc".source = ./dotfiles/.zshrc;
-      ".tmux.conf".source = ./dotfiles/.tmux.conf;
+      ".zshrc".source = ./dotfiles/zshrc;
+      ".tmux.conf".source = ./dotfiles/tmux.conf;
 
       "bin" = {
         source = ./dotfiles/bin;
@@ -23,18 +37,14 @@ in
       };
 
     };
+
     xresources.properties = {
       "Xft.dpi" = 144;
       "Xcursor.size" = 48;
     };
-    xresources.extraConfig =  builtins.readFile (
-      pkgs.fetchFromGitHub {
-        owner = "material-ocean";
-        repo = "Material-Ocean";
-        rev = "8a17b374031110e4e3f3e98750a88d4ed38341ad";
-        sha256 = "0as0826zzf9pcdrckbryn82jnw268chys1c75pxpxj1r5if9im6z";
-      } + "/.Xresources"
-    );
+    xresources.extraConfig = builtins.readFile xresources;
+
+    services.network-manager-applet.enable = true;
 
     services.dunst = {
       enable = true;
