@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  lockerCommand = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
+in
 {
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -37,10 +40,6 @@
   };
 
   security.rtkit.enable = true;
-
-  # virtualisation.virtualbox.host = {
-  #   enable = true;
-  # };
 
   services.printing = {
     enable = true;
@@ -83,14 +82,14 @@
       enable = true;
       killer = null;
       extraOptions = [ "-lockaftersleep" ];
-      locker = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
-      nowlocker = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
+      locker = lockerCommand;
+      nowlocker = lockerCommand;
     };
   };
 
   programs.xss-lock = {
     enable = true;
-    lockerCommand = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
+    inherit lockerCommand;
   };
 
   environment.gnome3.excludePackages = with pkgs.gnome3; [
@@ -102,20 +101,6 @@
   services.geoclue2.enable = true;
   services.redshift.enable = true;
 
-  # TODO: make this work and remove from i3 config
-  # systemd.user.services.lightlocker = {
-  #   description = "Light locker";
-  #   wantedBy = [ "graphical-session.target" ];
-  #   partOf = [ "graphical-session.target" ];
-  #   serviceConfig = {
-  #     ExecStart = "${pkgs.lightlocker}/bin/light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend";
-  #     RestartSec = 15;
-  #     Restart = "always";
-  #     Environment = "XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0";
-  #     PassEnvironment = "DISPLAY";
-  #   };
-  # };
-
   services.autorandr = {
     enable = true;
     defaultTarget = "laptop";
@@ -126,8 +111,6 @@
 
   nix = {
     useSandbox = true;
-    # allowedUsers = [ "rail" ];
-    # trustedUsers = [ "rail" ];
   };
 
   programs.autojump.enable = true;
