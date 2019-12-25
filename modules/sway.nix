@@ -18,8 +18,9 @@
       kanshi   # dynamic display configuration helper
       # redshift-wayland # patched to work with wayland gamma protocol
       # xdg-desktop-portal-wlr # xdg-desktop-portal backend for wlrootswaybar
-      waybar        # polybar-alike
+      (waybar.override (oldAttrs: { pulseSupport = true;} ))
       # i3status-rust # simpler bar written in Rust     python3.pkgs.py3status
+      libappindicator-gtk3 # for waybar
     ];
   };
   # services.xserver.displayManager.extraSessionFilePackages = [ pkgs.sway ];

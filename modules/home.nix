@@ -35,13 +35,6 @@ in
         source = ./dotfiles/config;
         recursive = true;
       };
-      ".config/autorandr/postswitch" = {
-        text = ''
-          #!/bin/sh
-          ${pkgs.feh} --no-fehbg --bg-fill ~/Pictures/wallpapers/current
-        '';
-        executable = true;
-      };
 
     };
 
