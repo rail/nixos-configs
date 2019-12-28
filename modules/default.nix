@@ -6,7 +6,6 @@
       ./borgbackup.nix
       ./desktop.nix
       ./dev.nix
-      ./fish.nix
       ./fonts.nix
       ./home.nix
       ./i3.nix

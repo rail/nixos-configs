@@ -25,8 +25,6 @@ in
     dnsutils
     docker_compose
     efibootmgr
-    exa
-    fd
     feedreader
     file
     fzf
@@ -70,8 +68,6 @@ in
     transmission-gtk
     tree
     unzip
-    vifm
-    weechat
     wget
     whois
     xclip
