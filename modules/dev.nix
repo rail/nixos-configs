@@ -1,11 +1,35 @@
 { pkgs, ... }:
+
+let
+  unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
+in
+
 {
   programs.adb.enable = true;
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; with pkgs.python3Packages; [
     arcanist
     google-cloud-sdk
     rustup
     llvmPackages_5.stdenv.cc # rustup needs it
     sops
+
+    # Python
+    autopep8
+    black
+    flake8
+    ipython
+    mypy
+    notebook
+    pytest
+    python3Full
+    virtualenv
+    virtualenvwrapper
+    unstable.pythonPackages.isort
+
   ];
+
+  environment.variables = {
+    WORKON_HOME = pkgs.lib.mkForce "~/.local/virtualenvs";
+    PYTHONDONTWRITEBYTECODE = "1";
+  };
 }

@@ -76,6 +76,7 @@ in
     xorg.xinput
     youtube-dl
     yubikey-personalization-gui
+    kitty
     zip
     (unstable.zoom-us.overrideAttrs (super: {
       postInstall = ''
