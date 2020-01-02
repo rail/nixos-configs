@@ -419,11 +419,6 @@ let
         "deoplete-jedi"
         "deoplete-ternjs"
         "jedi-vim"
-        # "ncm2"
-        # "ncm2-path"
-        # "ncm2-jedi"
-        # "ncm2-bufword"
-        # "ncm2-tmux"
       ];
       config =''
         let g:deoplete#enable_at_startup = 1

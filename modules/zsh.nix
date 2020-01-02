@@ -19,7 +19,6 @@
       ll = "ls -l";
       ls = "ls --color=tty";
       scp =" scp -rC";
-      tmux = "tmux -2";
       wp = "j";
     };
   };
