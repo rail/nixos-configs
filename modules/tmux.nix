@@ -35,9 +35,6 @@ in
       # ctrl+left/right cycles thru windows
       bind-key -n C-right next
       bind-key -n C-left prev
-
-      set -g @continuum-restore 'on'
-      set -g @continuum-save-interval '1' # minutes
       ${pluginConfig}
     '';
   };
