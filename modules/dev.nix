@@ -25,6 +25,7 @@ in
     virtualenv
     virtualenvwrapper
     unstable.pythonPackages.isort
+    unstable.pythonPackages.tox
 
   ];
 

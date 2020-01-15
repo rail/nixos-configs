@@ -2,6 +2,7 @@
 
 let
   lockerCommand = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
+  unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
 in
 {
   i18n = {
@@ -122,8 +123,7 @@ in
     dejavu_fonts
     fira-code
     fira-code-symbols
-    font-awesome-ttf
-    font-awesome_5
+    font-awesome_4
     freefont_ttf
     hack-font
     liberation_ttf
@@ -140,6 +140,7 @@ in
     extraPackages = with pkgs; [
       feh
       i3status
+      unstable.i3status-rust
       libnotify
       rofi
       python3.pkgs.py3status

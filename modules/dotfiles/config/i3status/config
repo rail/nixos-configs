@@ -9,7 +9,7 @@ general {
 
 order += "external_script prs"
 # order += "github"
-order += "weather_owm"
+# order += "weather_owm"
 order += "backlight"
 order += "volume_status"
 # order += "wifi"
