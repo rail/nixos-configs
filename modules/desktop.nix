@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   lockerCommand = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
@@ -32,7 +32,12 @@ in
     zeroconf.discovery.enable = true;
     zeroconf.publish.enable = true;
   };
-  hardware.bluetooth.enable = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+    package = pkgs.bluezFull;
+  };
 
   virtualisation.docker = {
     enable = true;
@@ -116,25 +121,29 @@ in
 
   programs.autojump.enable = true;
 
-  fonts.fonts = with pkgs; [
-    anonymousPro
-    cantarell_fonts
-    corefonts
-    dejavu_fonts
-    fira-code
-    fira-code-symbols
-    font-awesome_4
-    freefont_ttf
-    hack-font
-    liberation_ttf
-    material-icons
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    powerline-fonts
-    source-code-pro
-    weather-icons
-  ];
+  fonts = {
+    fontconfig.dpi = 144;
+    fontconfig.penultimate.enable = true;
+    fonts = with pkgs; [
+      anonymousPro
+      cantarell_fonts
+      corefonts
+      dejavu_fonts
+      fira-code
+      fira-code-symbols
+      font-awesome_4
+      freefont_ttf
+      hack-font
+      liberation_ttf
+      material-icons
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      powerline-fonts
+      source-code-pro
+      weather-icons
+    ];
+  };
 
   services.xserver.windowManager.i3 = {
     extraPackages = with pkgs; [
@@ -147,5 +156,8 @@ in
       i3lock-color
     ];
   };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.powertop.enable = true;
 
 }
