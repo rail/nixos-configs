@@ -7,12 +7,8 @@ general {
     color_bad = "#dc322f"
 }
 
-order += "external_script prs"
-# order += "github"
-# order += "weather_owm"
 order += "backlight"
 order += "volume_status"
-# order += "wifi"
 order += "battery_level"
 order += "clock"
 order += "keyboard_layout"
@@ -109,11 +105,4 @@ github {
     auth_token = shell(pass show personal/github-py3status-token)
     format = "{notifications}"
     format_notifications = "GH: {notifications_count}"
-}
-
-external_script prs {
-    cache_timeout = 180
-    format = " {output} "
-    script_path = "~/bin/prs"
-    on_click 1 = "exec firefox https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+review-requested%3Arail"
 }
