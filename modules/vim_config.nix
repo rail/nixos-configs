@@ -246,6 +246,7 @@ let
         "rust-vim"
         "vim-isort"
         "LanguageClient-neovim"
+        "tagbar"
       ];
       config = ''
           let g:LanguageClient_serverCommands = {
