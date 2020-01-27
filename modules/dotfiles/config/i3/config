@@ -223,23 +223,14 @@ exec_always --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpapers/curre
 
 # {{{1 Rules
 for_window [class="Transmission-gtk"] floating enable
-for_window [class="Totem"] floating enable
-for_window [class="VidyoDesktop"] floating enable
-for_window [class="VidyoDesktop"] sticky enable
 for_window [class="pinentry"] floating enable
 for_window [class="Firefox" window_role="About"] floating enable
-for_window [class="Gnome-clocks"] floating enable
-# for_window [class="VirtualBox"] floating enable
-for_window [class="Gnome-calendar"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="mpv"] floating enable
-for_window [class="mpv"] sticky enable
-for_window [class="mpv"] resize set 640 480
-for_window [class="mpv"] move position center
-for_window [floating] border normal
-for_window [class="zoom"] floating enable
-for_window [class="zoom"] sticky enable
+for_window [class="mpv"] floating enable, sticky enable, resize set 640 480, move position center
 no_focus   [class="mpv"]
+for_window [class="zoom"] floating enable, sticky enable
+for_window [title="^Picture-in-Picture$"] floating enable, sticky enable
+for_window [floating] border normal
 
 # {{{1 outputs
 workspace "$ws1" output DP1

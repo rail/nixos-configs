@@ -72,8 +72,10 @@ in
     displayManager.gdm.enable = false;
     displayManager.lightdm = {
       enable = true;
-      greeters.gtk.indicators = [ "~host" "~spacer" "~clock" "~spacer" "~a11y" "~session" "~power"];
-      background = "/home/rail/.background-image";
+      greeters.mini = {
+            enable = true;
+            user = "rail";
+        };
     };
     desktopManager = {
       default = "none";
@@ -158,6 +160,5 @@ in
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  powerManagement.powertop.enable = true;
 
 }
