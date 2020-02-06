@@ -12,6 +12,7 @@ in
     rustup
     llvmPackages_5.stdenv.cc # rustup needs it
     sops
+    unstable.vscode
 
     # Python
     autopep8
