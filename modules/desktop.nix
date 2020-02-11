@@ -6,9 +6,10 @@ let
 in
 {
   i18n = {
-    consoleFont = "Lat2-Terminus16";
+    consoleFont = "ter-132n";
     consoleKeyMap = "us";
     defaultLocale = "en_CA.UTF-8";
+    consolePackages = [ pkgs.terminus_font ];
   };
 
   time.timeZone = "America/Toronto";
@@ -20,7 +21,9 @@ in
   boot = {
     cleanTmpDir = true;
     tmpOnTmpfs = true;
+    earlyVconsoleSetup = true;
   };
+
   services.timesyncd.enable = true;
 
   hardware.pulseaudio = {
