@@ -33,8 +33,6 @@
     version = 2;
     device = "nodev";
     efiSupport = true;
-    enableCryptodisk = true;
-    zfsSupport = true;
   };
 
   boot.loader.efi = {
