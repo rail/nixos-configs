@@ -69,18 +69,19 @@
       fsType = "zfs";
     };
 
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/";
+    { device = "/dev/disk/by-uuid/1628db81-5a33-45b1-879d-8a408646b50c";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/";
+    { device = "/dev/disk/by-uuid/C85B-FBCD";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/"; }
+    [ { device = "/dev/disk/by-uuid/8d6f3004-1d57-4aa2-9715-a4abb67b14eb"; }
     ];
 
 }

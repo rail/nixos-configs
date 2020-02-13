@@ -10,10 +10,10 @@
       ./neovim.nix
       ./soft.nix
       ./ssh.nix
-      ./sway.nix
+      # ./sway.nix
       ./tmux.nix
       ./users.nix
       ./zsh.nix
-      ./virtualbox.nix
+      # ./virtualbox.nix
     ];
 }

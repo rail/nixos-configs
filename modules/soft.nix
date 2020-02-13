@@ -77,12 +77,7 @@ in
     yubikey-personalization-gui
     kitty
     zip
-    (unstable.zoom-us.overrideAttrs (super: {
-      postInstall = ''
-        ${super.postInstall}
-        wrapProgram $out/bin/zoom-us --set LIBGL_ALWAYS_SOFTWARE 1
-      '';
-    }))
+    unstable.zoom-us
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
