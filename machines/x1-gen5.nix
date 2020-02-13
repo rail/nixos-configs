@@ -35,7 +35,44 @@
   };
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.plymouth.enable = true;
+
+  nix.maxJobs = pkgs.lib.mkDefault 4;
+  powerManagement.cpuFreqGovernor = pkgs.lib.mkDefault "powersave";
+
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    device = "nodev";
+    efiSupport = true;
+    enableCryptodisk = true;
+    zfsSupport = true;
+  };
+
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot/efi";
+  };
+
+  # # ZFS
+  boot.supportedFilesystems = [ "zfs" ];
+  # boot.zfs = {
+  #   enableUnstable = true;
+  #   devNodes = "/dev/mapper";
+  #   forceImportAll = true;
+  #   forceImportRoot = true;
+  # };
+
+  services.throttled.enable = true;
+  hardware.trackpoint.device = "TPPS/2 Elan TrackPoint";
+  services.fwupd.enable = true;
+
+  boot.initrd.luks.devices = [
+    {
+      name = "encrypted";
+      device = "/dev/disk/by-uuid/51d61b94-3120-4b85-a861-4d0c3a1a7c5b";
+      preLVM = true;
+    }
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/10aaef35-8d86-4d95-bb52-844f0ef230f8";
@@ -52,6 +89,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/railz" =
+    { device = "rpool/HOME";
+      fsType = "zfs";
+    };
+
   fileSystems."/boot/efi" =
     { device = "/dev/disk/by-uuid/92CC-A0CA";
       fsType = "vfat";
@@ -61,35 +103,4 @@
     [ { device = "/dev/disk/by-uuid/3e7204e3-9a21-4124-b82c-62c125c94ff2"; }
     ];
 
-  nix.maxJobs = pkgs.lib.mkDefault 4;
-  powerManagement.cpuFreqGovernor = pkgs.lib.mkDefault "powersave";
-
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    device = "nodev";
-    efiSupport = true;
-  };
-
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot/efi";
-  };
-
-  boot.initrd.luks.devices = [
-    {
-      name = "encrypted";
-      device = "/dev/disk/by-uuid/51d61b94-3120-4b85-a861-4d0c3a1a7c5b";
-      preLVM = true;
-    }
-  ];
-
-  # # ZFS
-  # boot.supportedFilesystems = [ "zfs" ];
-  # boot.zfs.enableUnstable = true;
-  # boot.loader.grub.zfsSupport = true;
-
-  services.throttled.enable = true;
-  hardware.trackpoint.device = "TPPS/2 Elan TrackPoint";
-  services.fwupd.enable = true;
 }
