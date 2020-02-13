@@ -1,17 +1,6 @@
-## How to reinstall:
-# cryptsetup luksOpen /dev/nvme0n1p8 railz
-# lvchange -ay railz
-# mount /dev/mapper/railz-nixos /mnt
-# mount /dev/mapper/railz-home /mnt/home
-## mounting /boot and /boot/efi separately makes nixos-rebuild to not install
-## kernels on a small EFI partition
-# mount /dev/nvme0n1p6 /mnt/boot (ext4)
-# mount /dev/nvme0n1p3 /mnt/boot/efi/ (shared efi partition)
-# swapon /dev/mapper/railz-swap
+## How to partition: see x1-gen5-zfs.sh
 # nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 # nix-channel --update
-## disable builtins.fetchTarball based expressions, because the installer is
-## unable to fetch them and unpack into a read-only store
 # nixos-install
 ## to reinstall EFI grub:
 # NIXOS_INSTALL_BOOTLOADER=1 /run/current-system/bin/switch-to-configuration boot
@@ -53,7 +42,7 @@
     efiSysMountPoint = "/boot/efi";
   };
 
-  # # ZFS
+  # ZFS
   boot.supportedFilesystems = [ "zfs" ];
   # boot.zfs = {
   #   enableUnstable = true;
