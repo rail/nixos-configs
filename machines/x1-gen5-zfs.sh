@@ -34,7 +34,7 @@ w
 y
 end_of_commands
 
-bootrtprobe $DISK
+partprobe $DISK
 sleep 10
 
 mkfs.vfat /dev/disk/by-partlabel/efi
@@ -80,3 +80,4 @@ mkdir -p /mnt/boot/efi
 mount /dev/disk/by-partlabel/efi /mnt/boot/efi
 
 # nixos-generate-config --root /mnt
+# copy /boot, /boot/efi and swap ids
