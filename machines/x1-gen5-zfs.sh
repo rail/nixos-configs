@@ -3,7 +3,7 @@ set -e
 DISK=/dev/sda
 PASS=$1
 
-gdisk ${diskdevice} >/dev/null <<end_of_commands
+gdisk ${DISK} >/dev/null <<end_of_commands
 o
 Y
 n
