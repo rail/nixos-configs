@@ -42,6 +42,7 @@
 
   # ZFS
   boot.supportedFilesystems = [ "zfs" ];
+  services.zfs.autoScrub.enable = true;
   # boot.zfs = {
   #   enableUnstable = true;
   #   devNodes = "/dev/mapper";
@@ -66,6 +67,11 @@
 
   fileSystems."/home" =
     { device = "rpool/HOME";
+      fsType = "zfs";
+    };
+
+  fileSystems."/var/lib/docker" =
+    { device = "rpool/DOCKER";
       fsType = "zfs";
     };
 

@@ -45,7 +45,7 @@ in
 
   virtualisation.docker = {
     enable = true;
-    storageDriver = "overlay2";
+    storageDriver = "zfs";
     autoPrune.enable = true;
   };
 

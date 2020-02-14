@@ -60,6 +60,7 @@ mem="$(grep MemTotal /proc/meminfo | awk '{print $2$3}')"
 
 zfs create -o mountpoint=none -o reservation=1G rpool/ROOT
 zfs create -o mountpoint=legacy -o reservation=1G rpool/ROOT/NIXOS
+zfs create -o mountpoint=legacy -o reservation=1G rpool/DOCKER
 zfs create -o mountpoint=legacy -o reservation=1G -o com.sun:auto-snapshot=true  rpool/HOME
 zfs create -V "${mem}" -b $(getconf PAGESIZE) -o compression=zle \
     -o logbias=throughput -o sync=always -o primarycache=metadata \
@@ -74,8 +75,12 @@ mount -t zfs rpool/ROOT/NIXOS /mnt
 mkdir -p /mnt/home
 mount -t zfs rpool/HOME /mnt/home
 
+mkdir -p /mnt/var/lib/docker
+mount -t zfs rpool/DOCKER /mnt/var/lib/docker
+
 mkdir -p /mnt/boot
 mount /dev/disk/by-partlabel/boot /mnt/boot
+
 mkdir -p /mnt/boot/efi
 mount /dev/disk/by-partlabel/efi /mnt/boot/efi
 
