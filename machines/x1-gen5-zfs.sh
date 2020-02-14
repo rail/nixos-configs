@@ -1,6 +1,6 @@
 set -e
 
-DISK=/dev/sda
+DISK=/dev/nvme0n1
 PASS=$1
 
 gdisk ${DISK} >/dev/null <<end_of_commands
