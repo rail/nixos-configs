@@ -54,7 +54,6 @@
   hardware.trackpoint.device = "TPPS/2 Elan TrackPoint";
   services.fwupd.enable = true;
 
-
   fileSystems."/" =
     { device = "rpool/ROOT/NIXOS";
       encrypted = {
@@ -75,19 +74,18 @@
       fsType = "zfs";
     };
 
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1628db81-5a33-45b1-879d-8a408646b50c";
+    { device = "/dev/disk/by-uuid/d3edbf0a-62f6-496e-bf08-74989c9a111c";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/C85B-FBCD";
+    { device = "/dev/disk/by-uuid/5125-C44F";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/8d6f3004-1d57-4aa2-9715-a4abb67b14eb"; }
+    [ { device = "/dev/disk/by-uuid/e207e8a2-db40-4d96-9ff2-0b4529176d42"; }
     ];
 
 }
