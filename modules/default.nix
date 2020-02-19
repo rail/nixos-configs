@@ -3,7 +3,6 @@
 {
   imports =
     [
-      ./borgbackup.nix
       ./desktop.nix
       ./dev.nix
       ./home.nix
@@ -15,5 +14,6 @@
       ./users.nix
       ./zsh.nix
       ./virtualbox.nix
+      ./znapzend.nix
     ];
 }
