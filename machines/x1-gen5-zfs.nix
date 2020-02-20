@@ -43,6 +43,7 @@
   # ZFS
   boot.supportedFilesystems = [ "zfs" ];
   services.zfs.autoScrub.enable = true;
+  boot.zfs.requestEncryptionCredentials = true;
   # boot.zfs = {
   #   enableUnstable = true;
   #   devNodes = "/dev/mapper";
