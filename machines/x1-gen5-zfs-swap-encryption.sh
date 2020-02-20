@@ -1,7 +1,6 @@
 set -e
 
 DISK=/dev/nvme0n1
-PASS=$1
 mem="$(grep MemTotal /proc/meminfo | awk '{print $2$3}')"
 
 gdisk ${DISK} >/dev/null <<end_of_commands
