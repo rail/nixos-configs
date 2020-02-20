@@ -62,7 +62,6 @@ zpool create -O atime=off \
             rpool /dev/disk/by-partlabel/rpool
 
 
-zfs create -o mountpoint=none -o reservation=1G rpool/ROOT
 zfs create -o mountpoint=legacy -o reservation=1G rpool/NIXOS
 zfs create -o mountpoint=legacy -o reservation=1G rpool/DOCKER
 zfs create -o mountpoint=legacy -o reservation=1G -o com.sun:auto-snapshot=true  rpool/HOME
