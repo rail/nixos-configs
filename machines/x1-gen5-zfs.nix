@@ -42,14 +42,8 @@
 
   # ZFS
   boot.supportedFilesystems = [ "zfs" ];
-  services.zfs.autoScrub.enable = true;
   boot.zfs.requestEncryptionCredentials = true;
-  # boot.zfs = {
-  #   enableUnstable = true;
-  #   devNodes = "/dev/mapper";
-  #   forceImportAll = true;
-  #   forceImportRoot = true;
-  # };
+  services.zfs.autoScrub.enable = true;
 
   services.throttled.enable = true;
   hardware.trackpoint.device = "TPPS/2 Elan TrackPoint";
