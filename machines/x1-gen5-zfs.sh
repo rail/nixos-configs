@@ -54,4 +54,5 @@ mkdir -p /mnt/boot/efi
 mount /dev/disk/by-partlabel/efi /mnt/boot/efi
 
 # nixos-generate-config --root /mnt
+# nixos-generate-config --root /mnt --show-hardware-config
 # copy /boot, /boot/efi and swap ids
