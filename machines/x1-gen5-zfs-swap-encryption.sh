@@ -3,44 +3,17 @@ set -e
 DISK=/dev/nvme0n1
 mem="$(grep MemTotal /proc/meminfo | awk '{print $2$3}')"
 
-gdisk ${DISK} >/dev/null <<end_of_commands
-o
-Y
-n
-1
+wipefs -af $DISK
+sgdisk -Zo $DISK
 
-+1024M
-EF00
-n
-2
-
-+4096M
-8300
-n
-3
-
-+${mem}
-8200
-n
-4
-
-
-8300
-c
-1
-efi
-c
-2
-boot
-c
-3
-swap
-c
-4
-rpool
-w
-y
-end_of_commands
+# /boot/efi
+sgdisk -n1:0:+1024M -t1:EF00 -c1:efi $DISK
+# /boot
+sgdisk -n2:0:+4096M -t2:8300 -c2:boot $DISK
+# swap
+sgdisk -n3:0:+${mem} -t3:8200 -c3:swap $DISK
+# zfs
+sgdisk -n4:0:0 -t4:8300 -c4:rpool $DISK
 
 partprobe $DISK
 sleep 10
