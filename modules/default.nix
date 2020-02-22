@@ -14,6 +14,6 @@
       ./users.nix
       ./zsh.nix
       ./virtualbox.nix
-      ./znapzend.nix
+      # ./znapzend.nix
     ];
 }

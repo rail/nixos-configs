@@ -50,12 +50,7 @@
   services.fwupd.enable = true;
 
   fileSystems."/" =
-    { device = "rpool/ROOT/NIXOS";
-      encrypted = {
-        enable = true;
-        blkDev = "/dev/disk/by-partlabel/cryptroot";
-        label = "encrypted_root";
-      };
+    { device = "rpool/NIXOS";
       fsType = "zfs";
     };
 
@@ -64,23 +59,28 @@
       fsType = "zfs";
     };
 
+  # fileSystems."/rpool/VARIOUS" =
+  #   { device = "rpool/VARIOUS";
+  #     fsType = "zfs";
+  #   };
+
   fileSystems."/var/lib/docker" =
     { device = "rpool/DOCKER";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/d3edbf0a-62f6-496e-bf08-74989c9a111c";
+    { device = "/dev/disk/by-uuid/4253b41b-670f-4962-9832-3099120fed21";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/5125-C44F";
+    { device = "/dev/disk/by-uuid/1251-A898";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/e207e8a2-db40-4d96-9ff2-0b4529176d42"; }
+    [ { device = "/dev/disk/by-uuid/432324a0-ac55-4098-82fb-2b2f8149bbaa"; }
     ];
 
 }
