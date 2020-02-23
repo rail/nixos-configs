@@ -7,7 +7,7 @@
 {
   imports =
     [
-      ./machines/x1-gen5-zfs.nix
+      ./machines/x1-gen5-zfs-no-enc.nix
       ./modules
     ];
 

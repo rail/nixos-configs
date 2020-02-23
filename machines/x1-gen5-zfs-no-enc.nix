@@ -70,17 +70,17 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/d3edbf0a-62f6-496e-bf08-74989c9a111c";
+    { device = "/dev/disk/by-uuid/044c721d-21ed-4295-9caf-1d4d1ad9557d";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/5125-C44F";
+    { device = "/dev/disk/by-uuid/F3F7-7D62";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/e207e8a2-db40-4d96-9ff2-0b4529176d42"; }
+    [ { device = "/dev/disk/by-uuid/29f8f8a0-70cf-4186-baaa-560be3ca2f10"; }
     ];
 
 }
