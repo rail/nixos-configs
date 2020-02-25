@@ -9,8 +9,8 @@ in
   environment.systemPackages = with pkgs; with pkgs.python3Packages; [
     arcanist
     (google-cloud-sdk.override (oldAttrs: { python = pkgs.python2; }))
-    rustup
-    llvmPackages_5.stdenv.cc # rustup needs it
+    # rustup
+    # llvmPackages_5.stdenv.cc # rustup needs it
     sops
     unstable.vscode
 

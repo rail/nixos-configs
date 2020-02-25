@@ -7,10 +7,7 @@ in
 {
   # boot.plymouth.enable = true;
   i18n = {
-    consoleFont = "ter-132n";
-    consoleKeyMap = "us";
     defaultLocale = "en_CA.UTF-8";
-    consolePackages = [ pkgs.terminus_font ];
   };
 
   time.timeZone = "America/Toronto";
@@ -22,7 +19,12 @@ in
   boot = {
     cleanTmpDir = true;
     tmpOnTmpfs = true;
-    earlyVconsoleSetup = true;
+  };
+  console = {
+    earlySetup = true;
+    packages = [ pkgs.terminus_font ];
+    font = "ter-132n";
+    keyMap = "us";
   };
 
   services.timesyncd.enable = true;
@@ -74,6 +76,7 @@ in
     videoDrivers = [ "intel" ];
     # GDM breaks xbacklight!!! booooooo
     displayManager.gdm.enable = false;
+    displayManager.defaultSession = "none+i3";
     displayManager.lightdm = {
       enable = true;
       greeters.mini = {
@@ -82,12 +85,10 @@ in
         };
     };
     desktopManager = {
-      default = "none";
       gnome3.enable = true;
       xterm.enable = false;
     };
     windowManager = {
-      default = "i3";
       i3.enable = true;
     };
     xautolock =  {

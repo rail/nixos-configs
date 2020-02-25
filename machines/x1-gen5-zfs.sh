@@ -37,7 +37,7 @@ zpool create -O atime=off \
 
 zfs create -o mountpoint=legacy -o reservation=1G rpool/NIXOS
 zfs create -o mountpoint=legacy -o reservation=1G rpool/DOCKER
-zfs create -o mountpoint=legacy -o reservation=1G -o com.sun:auto-snapshot=true  rpool/HOME
+zfs create -o mountpoint=legacy -o reservation=1G rpool/HOME
 
 mount -t zfs rpool/NIXOS /mnt
 

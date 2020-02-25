@@ -16,7 +16,7 @@ in
     terminal = "screen-256color";
     baseIndex = 1;
     historyLimit = 10000;
-    extraTmuxConf = ''
+    extraConfig = ''
       unbind %
       bind - split-window -v
       unbind '"'
