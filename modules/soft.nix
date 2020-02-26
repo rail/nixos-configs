@@ -38,6 +38,7 @@ in
     iw
     jq
     jwhois
+    konversation
     latest.firefox-nightly-bin
     libreoffice-fresh
     lshw
@@ -59,6 +60,7 @@ in
     powertop
     psmisc
     pwgen
+    quassel
     rsync
     silver-searcher
     strace
