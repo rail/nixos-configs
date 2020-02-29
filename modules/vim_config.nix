@@ -314,8 +314,17 @@ let
         # The fancy start screen for Vim.
         # https://github.com/mhinz/vim-startify
         "vim-startify"
+        "nerdtree"
+        "nerdtree-git-plugin"
       ];
       config = ''
+        autocmd VimEnter *
+                \   if !argc()
+                \ |   Startify
+                \ |   NERDTree
+                \ |   wincmd w
+                \ | endif
+        nnoremap <F4> :call NERDTreeToggle()<CR>
         let g:startify_enable_special         = 0
         let g:startify_files_number           = 8
         let g:startify_relative_path          = 1

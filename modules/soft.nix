@@ -69,6 +69,7 @@ in
     transmission-gtk
     tree
     unzip
+    weechat
     wget
     whois
     xclip
