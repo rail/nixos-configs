@@ -19,7 +19,7 @@
 
   boot = {
     kernelModules = [ "kvm-intel" "acpi_call" ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   };
 
@@ -59,28 +59,23 @@
       fsType = "zfs";
     };
 
-  # fileSystems."/rpool/VARIOUS" =
-  #   { device = "rpool/VARIOUS";
-  #     fsType = "zfs";
-  #   };
-
   fileSystems."/var/lib/docker" =
     { device = "rpool/DOCKER";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4253b41b-670f-4962-9832-3099120fed21";
+    { device = "/dev/disk/by-uuid/43f1b228-12c2-4acb-9083-713e925f302a";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/1251-A898";
+    { device = "/dev/disk/by-uuid/9BE5-4D82";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/432324a0-ac55-4098-82fb-2b2f8149bbaa"; }
+    [ { device = "/dev/disk/by-uuid/fa7b8c26-ee72-49e1-bdc7-4749e1571900"; }
     ];
 
 }
