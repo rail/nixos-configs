@@ -83,26 +83,3 @@ clock {
     on_click 2 = "exec gnome-calendar"
     color = "#c0c5ce"
 }
-
-weather_owm {
-    api_key = shell(pass show personal/openweathermap.api)
-    cache_timeout = 7200
-    city = "Dundas"
-    country = "Canada"
-    forecast_include_today = True
-    forecast_days = 2
-    format = "{temperature} {forecast}"
-    unit_temperature = "C"
-    format_temperature = "[\?color=all {current:.0f}°{unit}]"
-    icon_rain = "☂"
-    icon_thunderstorm = "☔"
-    on_click 1 = "exec firefox https://darksky.net/forecast/43.2598,-79.9607/ca12/en"
-    request_timeout = 60
-}
-
-github {
-    username = "rail"
-    auth_token = shell(pass show personal/github-py3status-token)
-    format = "{notifications}"
-    format_notifications = "GH: {notifications_count}"
-}

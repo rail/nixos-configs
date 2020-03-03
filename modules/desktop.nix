@@ -5,7 +5,9 @@ let
   unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
 in
 {
+  # Disabled due to https://github.com/NixOS/nixpkgs/issues/44965
   # boot.plymouth.enable = true;
+
   i18n = {
     defaultLocale = "en_CA.UTF-8";
   };
@@ -16,10 +18,13 @@ in
   # copy the system configuration into nix-store
   system.copySystemConfiguration = true;
   security.sudo.wheelNeedsPassword = false;
+  security.rtkit.enable = true;
+
   boot = {
     cleanTmpDir = true;
     tmpOnTmpfs = true;
   };
+
   console = {
     earlySetup = true;
     packages = [ pkgs.terminus_font ];
@@ -50,8 +55,6 @@ in
     storageDriver = "zfs";
     autoPrune.enable = true;
   };
-
-  security.rtkit.enable = true;
 
   services.printing = {
     enable = true;
