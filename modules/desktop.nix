@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 
 let
-  lockerCommand = "${pkgs.i3lock-color}/bin/i3lock-color --clock --indicator";
   unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
 in
 {
@@ -94,18 +93,6 @@ in
     windowManager = {
       i3.enable = true;
     };
-    xautolock =  {
-      enable = true;
-      killer = null;
-      extraOptions = [ "-lockaftersleep" ];
-      locker = lockerCommand;
-      nowlocker = lockerCommand;
-    };
-  };
-
-  programs.xss-lock = {
-    enable = true;
-    inherit lockerCommand;
   };
 
   environment.gnome3.excludePackages = with pkgs.gnome3; [
@@ -163,7 +150,6 @@ in
       libnotify
       rofi
       python3.pkgs.py3status
-      i3lock-color
     ];
   };
 

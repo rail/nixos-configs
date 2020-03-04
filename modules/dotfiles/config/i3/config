@@ -163,7 +163,7 @@ bindsym $mod+Mod1+Up move workspace to output up
 bindsym $mod+Mod1+Down move workspace to output down
 bindsym $mod+Tab workspace back_and_forth
 
-bindsym Ctrl+$mod+l exec xautolock -locknow
+bindsym Ctrl+$mod+l exec light-locker-command -l
 # sticky window
 bindsym $mod+Shift+s sticky toggle
 
@@ -220,6 +220,7 @@ bar {
 # {{{1 startup
 exec_always --no-startup-id xinput --disable "Synaptics TM3289-002"
 exec_always --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current
+exec --no-startup-id light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend
 
 # {{{1 Rules
 for_window [class="Transmission-gtk"] floating enable

@@ -15,5 +15,6 @@
       ./zsh.nix
       ./virtualbox.nix
       ./znapzend.nix
+      ./lightlocker.nix
     ];
 }
