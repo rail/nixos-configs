@@ -19,6 +19,7 @@
     };
     shellAliases = {
       l = "exa -alh";
+      la = "exa -alh";
       ll = "exa -l";
       ls = "exa";
       scp =" scp -rC";
