@@ -1,6 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [
+    exa
+  ];
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
@@ -15,9 +18,9 @@
       theme = "frisk";
     };
     shellAliases = {
-      l = "ls -alh";
-      ll = "ls -l";
-      ls = "ls --color=tty";
+      l = "exa -alh";
+      ll = "exa -l";
+      ls = "exa";
       scp =" scp -rC";
       wp = "j";
     };

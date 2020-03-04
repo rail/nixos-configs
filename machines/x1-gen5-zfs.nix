@@ -13,7 +13,7 @@
     ];
 
   networking = {
-    hostName = "rhyme";
+    hostName = "porch";
     hostId = "e2ee7197";
   };
 
