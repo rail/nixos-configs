@@ -16,5 +16,6 @@
       ./virtualbox.nix
       ./znapzend.nix
       ./lightlocker.nix
+      ./emacs.nix # TODO: add more things
     ];
 }
