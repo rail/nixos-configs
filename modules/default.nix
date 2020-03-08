@@ -13,9 +13,9 @@
       ./tmux.nix
       ./users.nix
       ./zsh.nix
-      ./virtualbox.nix
+      # ./virtualbox.nix
       ./znapzend.nix
       ./lightlocker.nix
-      ./emacs.nix # TODO: add more things
+      # ./emacs.nix # TODO: add more things
     ];
 }

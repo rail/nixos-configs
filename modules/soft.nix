@@ -81,6 +81,8 @@ in
     kitty
     zip
     unstable.zoom-us
+    emacs
+    ispell
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
