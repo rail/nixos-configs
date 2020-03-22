@@ -81,10 +81,15 @@ in
     displayManager.defaultSession = "none+i3";
     displayManager.lightdm = {
       enable = true;
+      background = "/home/rail/Pictures/wallpapers/current";
       greeters.mini = {
             enable = true;
             user = "rail";
         };
+      autoLogin = {
+        enable = true;
+        user = "rail";
+      };
     };
     desktopManager = {
       gnome3.enable = true;
@@ -154,5 +159,8 @@ in
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  services.flatpak.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
 }

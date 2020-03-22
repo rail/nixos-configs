@@ -15,6 +15,7 @@
     virtualenv
     virtualenvwrapper
     isort
+    mypy
   ];
 
   environment.variables = {
