@@ -4,6 +4,8 @@
   environment.systemPackages = with pkgs; with pkgs.python3Packages; [
     arcanist
     (google-cloud-sdk.override (oldAttrs: { python = pkgs.python2; }))
+    rustup
+    clang
     sops
 
     # Python

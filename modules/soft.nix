@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
   nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
-  unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
 in
 
 {
@@ -80,7 +79,7 @@ in
     yubikey-personalization-gui
     kitty
     zip
-    unstable.zoom-us
+    zoom-us
     emacs
     ispell
   ];
@@ -90,5 +89,6 @@ in
     SNAP_NAME = "firefox";
     # let `less` behave like `cat` if there less than 1 page
     LESS = "-F -X";
+    QT_SCALE_FACTOR = "1.5";
   };
 }

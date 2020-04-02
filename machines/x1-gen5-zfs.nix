@@ -1,5 +1,5 @@
 ## How to partition: see x1-gen5-zfs.sh
-# nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+# nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 # nix-channel --update
 # nixos-install
 ## to reinstall EFI grub:

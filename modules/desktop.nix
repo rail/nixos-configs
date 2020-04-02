@@ -1,8 +1,5 @@
 { pkgs, lib, ... }:
 
-let
-  unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
-in
 {
   # Disabled due to https://github.com/NixOS/nixpkgs/issues/44965
   # boot.plymouth.enable = true;
@@ -151,10 +148,11 @@ in
     extraPackages = with pkgs; [
       feh
       i3status
-      unstable.i3status-rust
+      i3status-rust
       libnotify
       rofi
       python3.pkgs.py3status
+      xkblayout-state
     ];
   };
 

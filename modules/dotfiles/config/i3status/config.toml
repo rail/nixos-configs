@@ -1,0 +1,53 @@
+[theme]
+name = "plain"
+[theme.overrides]
+idle_bg = "#343d46"
+info_bg = "#343d46"
+good_bg = "#343d46"
+warning_bg = "#343d46"
+critical_bg = "#343d46"
+separator_bg = "#343d46"
+# separator = " "
+separator = "  "
+
+idle_fg = "#65737e"
+info_fg = "#65737e"
+good_fg = "#65737e"
+# warning_fg = "#65737e"
+# critical_fg = "#65737e"
+separator_fg = "#65737e"
+
+[icons]
+name = "awesome"
+[icons.overrides]
+backlight_empty = "✲ "
+backlight_partial1 = "✲ "
+backlight_partial2 = "✲ "
+backlight_partial3 = "✲ "
+backlight_full = "✲ "
+
+[[block]]
+block = "focused_window"
+max_width = 40
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "sound"
+on_click = "pavucontrol"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}% {time}"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%R"
+
+[[block]]
+block = "custom"
+command = "xkblayout-state print %s"
+interval = 1
