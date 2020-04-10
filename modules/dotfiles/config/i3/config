@@ -222,6 +222,7 @@ bar {
 # {{{1 startup
 exec_always --no-startup-id xinput --disable "Synaptics TM3289-002"
 exec_always --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current
+exec --no-startup-id autorandr --change
 exec --no-startup-id light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend --lock-on-lid
 
 # {{{1 Rules

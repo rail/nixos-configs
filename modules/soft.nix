@@ -16,6 +16,8 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    exercism
+    ripgrep
     starship
     binutils
     ctags

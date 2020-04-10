@@ -7,6 +7,7 @@
     rustup
     clang
     sops
+    vscode
 
     # Python
     autopep8
