@@ -46,13 +46,6 @@ in
 
     services.network-manager-applet.enable = true;
 
-    services.cbatticon = {
-      enable = true;
-      iconType = "symbolic";
-      lowLevelPercent = 15;
-      criticalLevelPercent = 5;
-    };
-
     services.dunst = {
       enable = true;
       settings = {
