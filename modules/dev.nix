@@ -8,6 +8,7 @@
     clang
     sops
     vscode
+    yarn
 
     # Python
     autopep8
@@ -19,6 +20,7 @@
     virtualenvwrapper
     isort
     mypy
+    python-language-server
   ];
 
   environment.variables = {
