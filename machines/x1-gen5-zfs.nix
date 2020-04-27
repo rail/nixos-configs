@@ -59,6 +59,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/persist" =
+    { device = "rpool/safe/persist";
+      fsType = "zfs";
+    };
+
   fileSystems."/var/lib/docker" =
     { device = "rpool/DOCKER";
       fsType = "zfs";

@@ -24,7 +24,6 @@ in
     curl
     dnsutils
     docker_compose
-    efibootmgr
     feedreader
     file
     fzf
@@ -32,7 +31,6 @@ in
     gitAndTools.diff-so-fancy
     gitAndTools.gitFull
     gnupg
-    google-chrome
     htop
     imagemagick
     imapfilter
@@ -41,16 +39,12 @@ in
     jwhois
     konversation
     latest.firefox-nightly-bin
-    libreoffice-fresh
+    libreoffice
     lshw
     lsof
-    magic-wormhole
     mc
-    mdbook
     mercurial
     mpv
-    mtr
-    netcat-gnu
     nix-prefetch-scripts
     p7zip
     pamixer
@@ -61,16 +55,12 @@ in
     powertop
     psmisc
     pwgen
-    quassel
     rsync
     silver-searcher
     strace
-    tcpdump
-    telnet
     transmission-gtk
     tree
     unzip
-    weechat
     wget
     whois
     xclip
@@ -78,7 +68,6 @@ in
     xorg.xhost
     xorg.xinput
     youtube-dl
-    yubikey-personalization-gui
     kitty
     zip
     zoom-us
