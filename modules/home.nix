@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  home-manager = builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz;
+  home-manager = builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-20.03.tar.gz;
   base16-scheme = "oceanicnext";
   base16 = pkgs.stdenv.mkDerivation {
     name = "base16-builder";

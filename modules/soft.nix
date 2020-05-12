@@ -70,7 +70,11 @@ in
     youtube-dl
     kitty
     zip
-    zoom-us
+    (zoom-us.overrideAttrs (old:
+      {
+        version = "5.0.398100.0427";
+      }
+    ))
     emacs
     ispell
   ];

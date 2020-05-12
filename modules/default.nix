@@ -14,7 +14,7 @@
       ./users.nix
       ./zsh.nix
       # ./virtualbox.nix
-      ./znapzend.nix
+      # ./znapzend.nix
       ./lightlocker.nix
       # ./emacs.nix # TODO: add more things
     ];
