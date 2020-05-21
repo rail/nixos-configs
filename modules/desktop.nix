@@ -75,7 +75,7 @@
     videoDrivers = [ "intel" ];
     # GDM breaks xbacklight!!! booooooo
     displayManager.gdm.enable = false;
-    displayManager.defaultSession = "none+i3";
+    displayManager.defaultSession = "none+xmonad";
     displayManager.lightdm = {
       enable = true;
       background = "/home/rail/Pictures/wallpapers/current";
@@ -127,6 +127,7 @@
       anonymousPro
       cantarell_fonts
       corefonts
+      jetbrains-mono
       dejavu_fonts
       fira-code
       fira-code-symbols

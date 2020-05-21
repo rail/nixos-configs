@@ -35,6 +35,7 @@ in
         source = ./dotfiles/config;
         recursive = true;
       };
+      ".xmonad/xmonad.hs".source = ./dotfiles/xmonad/xmonad.hs;
 
     };
 

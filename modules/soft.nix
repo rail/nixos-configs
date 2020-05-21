@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
+  unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
 in
 
 {
@@ -70,12 +71,8 @@ in
     youtube-dl
     kitty
     zip
-    (zoom-us.overrideAttrs (old:
-      {
-        version = "5.0.398100.0427";
-      }
-    ))
     emacs
+    unstable.zoom-us
     ispell
   ];
   environment.variables = {
