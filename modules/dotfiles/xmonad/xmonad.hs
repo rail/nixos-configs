@@ -8,7 +8,7 @@ import XMonad.Actions.CopyWindow
 import XMonad.Actions.CycleWS (toggleWS)
 
 -- layouts
-import XMonad.Layout.NoBorders (smartBorders)
+import XMonad.Layout.NoBorders (smartBorders, noBorders)
 import XMonad.Layout.Spacing (smartSpacing)
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
 
@@ -125,12 +125,15 @@ mySimpleKeys =
     , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
     , ("M-C-l", spawn "light-locker-command -l")
     , ("M-S-m", spawn "autorandr --change && feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current")
-    , ("M-s", windows copyToAll)   -- copy window to all workspaces
-    , ("M-S-s", killAllOtherCopies)  -- kill copies of window on other workspaces
+    , ("M-s", toggleCopyToAll)   -- Toggle sticky window state
     , ("M-a", sendMessage MirrorExpand)
     , ("M-z", sendMessage MirrorShrink)
     , ("M-`", toggleWS) -- switch to previous workspace, similar to i3's workspace_auto_back_and_forth
     ]
+        where
+            toggleCopyToAll = wsContainingCopies >>= \ws -> case ws of
+                                                              [] -> windows copyToAll
+                                                              _ -> killAllOtherCopies
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -258,15 +261,15 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --
 --
 -- avoidStruts to avoid window overlapping of xmobar
-myLayout = smartBorders . avoidStruts $ tiled ||| grid ||| Mirror tiled ||| Full
+myLayout = avoidStruts $ tiled ||| grid ||| Mirror tiled ||| noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
      grid    = renamed [Replace "Grid"]
-               $ addTopBar $ smartSpacing 10
+               $ smartBorders $ addTopBar $ smartSpacing 10
                $ Grid (16/10)
 
      tiled   = renamed [Replace "Tall"]
-               $ addTopBar $ smartSpacing 10
+               $ smartBorders $ addTopBar $ smartSpacing 10
                $ ResizableTall nmaster delta ratio []
 
      -- The default number of windows in the master pane
@@ -339,7 +342,6 @@ myStartupHook = do
     spawnOnce "light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend --lock-on-lid"
     spawnOnce "feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current"
     spawnOnce "xinput --disable \"Synaptics TM3289-002\""
-    spawnOnce "stalonetray -c ~/.config/stalonetray/config"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

@@ -57,7 +57,6 @@ in
     psmisc
     pwgen
     rsync
-    silver-searcher
     strace
     transmission-gtk
     tree
