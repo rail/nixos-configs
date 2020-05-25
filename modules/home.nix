@@ -49,26 +49,6 @@ in
 
     services.blueman-applet.enable = true;
 
-    services.stalonetray = {
-      enable = true;
-      config = {
-        background = "#343d46";
-        decorations = null;
-        transparent = true;
-        dockapp_mode = null;
-        geometry = "1x1-4-4";
-        kludges = "force_icons_size";
-        grow_gravity = "NE";
-        icon_gravity = "NE";
-        icon_size = 42;
-        sticky = true;
-        window_strut = null;
-        window_layer = "bottom";
-        no_shrink = true;
-        skip_taskbar = true;
-      };
-    };
-
     services.dunst = {
       enable = true;
       settings = {
