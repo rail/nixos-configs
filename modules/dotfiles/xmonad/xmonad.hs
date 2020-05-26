@@ -30,6 +30,7 @@ import XMonad.Prompt.ConfirmPrompt
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Util.Cursor (setDefaultCursor)
 
 
 import qualified XMonad.StackSet as W
@@ -342,6 +343,7 @@ myStartupHook = do
     spawnOnce "light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend --lock-on-lid"
     spawnOnce "feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current"
     spawnOnce "xinput --disable \"Synaptics TM3289-002\""
+    setDefaultCursor xC_left_ptr
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
