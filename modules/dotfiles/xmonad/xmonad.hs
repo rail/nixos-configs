@@ -10,7 +10,7 @@ import XMonad.Actions.CycleWS (toggleWS)
 -- layouts
 import XMonad.Layout.NoBorders (smartBorders, noBorders)
 import XMonad.Layout.Spacing (smartSpacing)
-import XMonad.Layout.Renamed (renamed, Rename(Replace))
+import XMonad.Layout.Named
 
 import XMonad.Layout.GridVariants (Grid(Grid))
 import XMonad.Layout.ResizableTile
@@ -265,11 +265,11 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout = avoidStruts $ tiled ||| grid ||| Mirror tiled ||| noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
-     grid    = renamed [Replace "Grid"]
+     grid    = named "Grid"
                $ smartBorders $ addTopBar $ smartSpacing 10
                $ Grid (16/10)
 
-     tiled   = renamed [Replace "Tall"]
+     tiled   = named "Tall"
                $ smartBorders $ addTopBar $ smartSpacing 10
                $ ResizableTall nmaster delta ratio []
 

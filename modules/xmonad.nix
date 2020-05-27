@@ -29,4 +29,7 @@
       };
     };
   };
+  fonts.fonts = with pkgs; [
+    weather-icons
+  ];
 }

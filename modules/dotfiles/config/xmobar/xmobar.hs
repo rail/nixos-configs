@@ -1,6 +1,7 @@
 Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
        , additionalFonts = [ "xft:FontAwesome:pixelsize=22:antialias=true:hinting=true"
                            , "xft:MaterialIcons:pixelsize=22:antialias=true:hinting=true"
+                           , "xft:Weather Icons:style=Regular:pixelsize=22:antialias=true:hinting=true"
                            ]
        , borderColor = "black"
        , border = TopB
@@ -30,6 +31,7 @@ Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
                     , Run UnsafeStdinReader
                     , Run Brightness [ "-t", "Br: <percent>%", "--", "-D", "intel_backlight" ] 60
                     , Run Kbd []
+                    , Run ComX "/home/rail/bin/openweathermap" [] "Err..." "weather" 300
                     , Run Volume "default" "Master"
                         [ "-t", "<status>", "--"
                         , "--on", "<fc=#859900><fn=1>\xf028</fn> <volume>%</fc>"
@@ -42,6 +44,6 @@ Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
        , alignSep = "}{"
        , template = " %UnsafeStdinReader% \
                     \}{ \
-                    \<action=pavucontrol>%default:Master%</action> | \
+                    \%weather% | <action=pavucontrol>%default:Master%</action> | \
                     \%bright% | %wlp4s0wi% | %battery% | <fc=#ee9a00>%date%</fc> | %kbd% "
        }
