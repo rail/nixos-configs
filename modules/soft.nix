@@ -73,6 +73,7 @@ in
     emacs
     unstable.zoom-us
     ispell
+    virt-manager
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";

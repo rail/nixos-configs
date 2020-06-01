@@ -44,6 +44,7 @@ Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
        , alignSep = "}{"
        , template = " %UnsafeStdinReader% \
                     \}{ \
-                    \%weather% | <action=pavucontrol>%default:Master%</action> | \
+                    \<action=firefox https://darksky.net/forecast/43.26,-79.961/ca12/en>%weather%</action> | \
+                    \<action=pavucontrol>%default:Master%</action> | \
                     \%bright% | %wlp4s0wi% | %battery% | <fc=#ee9a00>%date%</fc> | %kbd% "
        }

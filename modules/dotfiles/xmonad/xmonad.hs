@@ -6,6 +6,8 @@ import System.Exit
 import XMonad.Actions.NoBorders (toggleBorder)
 import XMonad.Actions.CopyWindow
 import XMonad.Actions.CycleWS (toggleWS)
+import XMonad.Actions.DynamicProjects
+import XMonad.Actions.SpawnOn
 
 -- layouts
 import XMonad.Layout.NoBorders (smartBorders, noBorders)
@@ -20,7 +22,7 @@ import XMonad.Layout.NoFrillsDecoration
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops   -- required for xcomposite in obs to work
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doSideFloat, Side(SE))
+import XMonad.Hooks.ManageHelpers
 
 -- prompt
 import XMonad.Prompt (XPPosition(Top, CenteredAt), amberXPConfig, font, position, height)
@@ -113,9 +115,9 @@ myNormalBorderColor  = base04
 myFocusedBorderColor = base09
 myFont = "xft:Fira Code:pixelsize=32:hinting=true:antialias=true"
 
-myXPConfig = amberXPConfig { font = myFont
-                           , position = CenteredAt (1/3) (1/2)
-                           , height = 42}
+promptTheme = amberXPConfig { font = myFont
+                            , position = CenteredAt (1/3) (1/2)
+                            , height = 42}
 
 mySimpleKeys =
     [ ("<XF86AudioRaiseVolume>", spawn "pamixer -i 5")
@@ -130,6 +132,9 @@ mySimpleKeys =
     , ("M-a", sendMessage MirrorExpand)
     , ("M-z", sendMessage MirrorShrink)
     , ("M-`", toggleWS) -- switch to previous workspace, similar to i3's workspace_auto_back_and_forth
+    , ("M-.", switchProjectPrompt promptTheme)
+    , ("M-/", shiftToProjectPrompt promptTheme)
+    , ("M-,", renameProjectPrompt promptTheme)
     ]
         where
             toggleCopyToAll = wsContainingCopies >>= \ws -> case ws of
@@ -202,7 +207,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), confirmPrompt myXPConfig "Quit XMonad?" $ io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask, xK_q     ), confirmPrompt promptTheme "Quit XMonad?" $ io (exitWith ExitSuccess))
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
@@ -297,14 +302,19 @@ myLayout = avoidStruts $ tiled ||| grid ||| Mirror tiled ||| noBorders Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = manageDocks <+> (isFullscreen --> doFullFloat) <+> composeAll
+myManageHook = manageDocks <+> composeAll
     [ className =? "Transmission-gtk" --> doFloat
     , className =? "pinentry"         --> doFloat
     , className =? "Pavucontrol"      --> doFloat
     , className =? "mpv"              --> doFloat
     , className =? "zoom"             --> doFloat
     , resource  =? "desktop_window"   --> doIgnore
+    , className =? "Xmessage"         --> doCenterFloat
     , stringProperty "WM_WINDOW_ROLE" =? "PictureInPicture" --> doSideFloat SE
+    , stringProperty "WM_WINDOW_ROLE" =? "pop-up"               --> doCenterFloat
+    , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> doCenterFloat
+    , isFullscreen --> doFullFloat
+    , isDialog --> doCenterFloat
     ]
 
 -- doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
@@ -330,7 +340,7 @@ myEventHook = ewmhDesktopsEventHook
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
 myLogHook = return ()
-
+--
 ------------------------------------------------------------------------
 -- Startup hook
 
@@ -353,9 +363,13 @@ myStartupHook = do
 main = do
     xmproc1 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobar.hs"
     xmproc2 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobar.hs"
-    xmonad $ docks $ {- TODO: need xmonad-contrib 0.16 ewmhFullscreen $ -} ewmh defaults
-        { logHook =
-            dynamicLogWithPP xmobarPP
+    xmonad
+       $ ewmh -- TODO: need xmonad-contrib 0.16 ewmhFullscreen $
+       $ docks
+       $ dynamicProjects projects
+       $ defaults
+           { logHook =
+              dynamicLogWithPP xmobarPP
                 { ppOutput = \x -> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
                 , ppCurrent = xmobarColor base0A "" . wrap "[" "]" -- Current workspace in xmobar
                 , ppTitle = xmobarColor base0B "" . shorten 60 }
@@ -404,3 +418,20 @@ topBarTheme = def
     }
 
 addTopBar = noFrillsDeco shrinkText topBarTheme
+
+projects :: [Project]
+projects =
+  [ Project { projectName      = "gecko"
+            , projectDirectory = "~/work/repos/mozilla-unified"
+            , projectStartHook = Just $ do spawnOn "gecko" (myTerminal ++ " tmux")
+                                           spawnOn "gecko" (myTerminal ++ " tmux")
+                                           spawnOn "gecko" (myTerminal ++ " tmux")
+            }
+
+  , Project { projectName      = "shipit"
+            , projectDirectory = "~/work/git/shipit"
+            , projectStartHook = Just $ do spawnOn "shipit" (myTerminal ++ " tmux")
+                                           spawnOn "shipit" (myTerminal ++ " tmux")
+                                           spawnOn "shipit" "firefox --new-window https://localhost:8010"
+            }
+  ]
