@@ -96,18 +96,31 @@ yellow = base0A
 --
 -- myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
-xmobarEscape = concatMap doubleLts
-  where
-        doubleLts '<' = "<<"
-        doubleLts x   = [x]
+-- wsNames = [ "1: shell"
+--           , "2: code"
+--           , "3: test"
+--           , "4: www"
+--           , "5"
+--           , "6"
+--           , "7: files"
+--           , "8"
+--           , "9"
+--           ]
+wsNames = [ "α"
+          , "β"
+          , "γ"
+          , "δ"
+          , "ε"
+          , "6"
+          , "7: files"
+          , "8"
+          , "9"
+          ]
 
-myWorkspaces :: [String]
-myWorkspaces = clickable . (map xmobarEscape)
-               $ map show [1..9]
-  where
-        clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
-                      (i,ws) <- zip [1..9] l,
-                      let n = i ]
+myWorkspaces = [ xmobarAction ("xdotool key super+" ++ show(n)) "1" ws |
+               (i,ws) <- zip [1..9] wsNames,
+               let n = i ]
+
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -132,9 +145,6 @@ mySimpleKeys =
     , ("M-a", sendMessage MirrorExpand)
     , ("M-z", sendMessage MirrorShrink)
     , ("M-`", toggleWS) -- switch to previous workspace, similar to i3's workspace_auto_back_and_forth
-    , ("M-.", switchProjectPrompt promptTheme)
-    , ("M-/", shiftToProjectPrompt promptTheme)
-    , ("M-,", renameProjectPrompt promptTheme)
     ]
         where
             toggleCopyToAll = wsContainingCopies >>= \ws -> case ws of
@@ -354,6 +364,7 @@ myStartupHook = do
     spawnOnce "feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current"
     spawnOnce "xinput --disable \"Synaptics TM3289-002\""
     setDefaultCursor xC_left_ptr
+    setWMName "LG3D"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -371,7 +382,10 @@ main = do
            { logHook =
               dynamicLogWithPP xmobarPP
                 { ppOutput = \x -> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-                , ppCurrent = xmobarColor base0A "" . wrap "[" "]" -- Current workspace in xmobar
+                , ppSep = " :: "
+                -- , ppWsSep = " | "
+                , ppVisible = xmobarColor base0D "" . wrap "(" ")"
+                , ppCurrent = xmobarColor base0A ""
                 , ppTitle = xmobarColor base0B "" . shorten 60 }
         } `additionalKeysP` mySimpleKeys
 
@@ -421,17 +435,17 @@ addTopBar = noFrillsDeco shrinkText topBarTheme
 
 projects :: [Project]
 projects =
-  [ Project { projectName      = "gecko"
-            , projectDirectory = "~/work/repos/mozilla-unified"
-            , projectStartHook = Just $ do spawnOn "gecko" (myTerminal ++ " tmux")
-                                           spawnOn "gecko" (myTerminal ++ " tmux")
-                                           spawnOn "gecko" (myTerminal ++ " tmux")
+  [ Project { projectName      = myWorkspaces!!3
+            , projectDirectory = "~/"
+            , projectStartHook = Just $ spawnOn (myWorkspaces!!3) "firefox"
             }
 
-  , Project { projectName      = "shipit"
-            , projectDirectory = "~/work/git/shipit"
-            , projectStartHook = Just $ do spawnOn "shipit" (myTerminal ++ " tmux")
-                                           spawnOn "shipit" (myTerminal ++ " tmux")
-                                           spawnOn "shipit" "firefox --new-window https://localhost:8010"
+  , Project { projectName      = myWorkspaces!!0
+            , projectDirectory = "~/"
+            , projectStartHook = Just $ spawnOn (myWorkspaces!!0) (myTerminal ++ " tmux")
+            }
+  , Project { projectName      = myWorkspaces!!6
+            , projectDirectory = "~/"
+            , projectStartHook = Just $ spawnOn (myWorkspaces!!6) "nautilus"
             }
   ]
