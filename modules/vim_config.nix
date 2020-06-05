@@ -246,7 +246,6 @@ let
         "rust-vim"
         "vim-isort"
         "LanguageClient-neovim"
-        "tagbar"
       ];
       config = ''
           let g:LanguageClient_serverCommands = {
@@ -314,17 +313,13 @@ let
         # The fancy start screen for Vim.
         # https://github.com/mhinz/vim-startify
         "vim-startify"
-        "nerdtree"
-        "nerdtree-git-plugin"
       ];
       config = ''
         autocmd VimEnter *
                 \   if !argc()
                 \ |   Startify
-                \ |   NERDTree
                 \ |   wincmd w
                 \ | endif
-        nnoremap <F4> :call NERDTreeToggle()<CR>
         let g:startify_enable_special         = 0
         let g:startify_files_number           = 8
         let g:startify_relative_path          = 1
@@ -372,10 +367,9 @@ let
         "vim-auto-save"
         "vim-expand-region"
         "vim-commentary"
-        "vim-orgmode"
-        "vim-speeddating"
         "vim-better-whitespace"
         "vim-surround"
+        "undotree"
       ];
       config = ''
         " Use region expanding
@@ -393,11 +387,12 @@ let
 
     # MISC
     { plugins = [
-        "ctrlp-vim"
         "vim-signify"
         "fzf-vim"
       ];
       config =''
+        nmap <silent> <C-p> :Files<CR>
+        nmap <silent> <C-g> :BCommits<CR>
       '';
     }
 
@@ -422,92 +417,13 @@ let
 
     #  COMPLETION
     { plugins = [
-        # "deoplete-nvim"
-        # "deoplete-jedi"
-        # "deoplete-ternjs"
         "jedi-vim"
       ];
       config =''
-        let g:deoplete#enable_at_startup = 1
-        let g:deoplete#auto_complete_delay = 0
-        inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-        " autocmd BufEnter * call ncm2#enable_for_buffer()
-        set completeopt=noinsert,menuone,noselect
       '';
     }
-    # # which-key
-    # { plugins = [
-    #     "vim-which-key"
-    #   ];
-    #   config =''
-    #     let g:mapleader = "\<Space>"
-    #     let g:maplocalleader = ','
-    #     nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-    #     nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-    #     set timeoutlen=500
 
-    #     let g:which_key_map =  {}
-    #     let g:which_key_localmap =  {}
-
-    #     autocmd VimEnter * call which_key#register('<Space>', "g:which_key_map")
-    #     autocmd VimEnter * call which_key#register(',', "g:which_key_localmap")
-    #     nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
-    #     vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
-
-    #     let g:which_key_map.b = {
-    #           \ 'name' : '+buffer' ,
-    #           \ 'b' : ['Buffers'   , 'fzf-buffer']      ,
-    #           \ 'h' : ['Startify'  , 'home-buffer']     ,
-    #           \ '1' : ['b1'        , 'buffer 1']        ,
-    #           \ '2' : ['b2'        , 'buffer 2']        ,
-    #           \ '3' : ['b3'        , 'buffer 3']        ,
-    #           \ '4' : ['b4'        , 'buffer 4']        ,
-    #           \ '5' : ['b5'        , 'buffer 5']        ,
-    #           \ '6' : ['b6'        , 'buffer 6']        ,
-    #           \ '7' : ['b7'        , 'buffer 7']        ,
-    #           \ '8' : ['b8'        , 'buffer 8']        ,
-    #           \ '9' : ['b9'        , 'buffer 9']        ,
-    #           \ '0' : ['b0'        , 'buffer 0']        ,
-    #           \ 'd' : ['bd'        , 'delete-buffer']   ,
-    #           \ 'f' : ['bfirst'    , 'first-buffer']    ,
-    #           \ 'l' : ['blast'     , 'last-buffer']     ,
-    #           \ 'n' : ['bnext'     , 'next-buffer']     ,
-    #           \ 'p' : ['bprevious' , 'previous-buffer'] ,
-    #           \ }
-
-    #     let g:which_key_map.w = {
-    #       \ 'name' : '+windows' ,
-    #       \ 'w' : ['Windows'    , 'fzf-window']            ,
-    #       \ 'W' : ['<C-W>w'     , 'other-window']          ,
-    #       \ 'd' : ['<C-W>c'     , 'delete-window']         ,
-    #       \ '-' : ['<C-W>s'     , 'split-window-below']    ,
-    #       \ '|' : ['<C-W>v'     , 'split-window-right']    ,
-    #       \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
-    #       \ 'h' : ['<C-W>h'     , 'window-left']           ,
-    #       \ 'j' : ['<C-W>j'     , 'window-below']          ,
-    #       \ 'l' : ['<C-W>l'     , 'window-right']          ,
-    #       \ 'k' : ['<C-W>k'     , 'window-up']             ,
-    #       \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
-    #       \ 'J' : ['resize +5'  , 'expand-window-below']   ,
-    #       \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
-    #       \ 'K' : ['resize -5'  , 'expand-window-up']      ,
-    #       \ '=' : ['<C-W>='     , 'balance-window']        ,
-    #       \ 's' : ['<C-W>s'     , 'split-window-below']    ,
-    #       \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
-    #       \ }
-
-    #     let g:which_key_map.f = {
-    #       \ 'f' : ['Files'      , 'fzf-files']            ,
-    #       \ }
-
-    #     autocmd! FileType which_key
-    #     autocmd  FileType which_key set laststatus=0 noshowmode noruler
-    #       \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-
-    #   '';
-    # }
-    # completion2
+    # COC
     { plugins = [
         "coc-css"
         "coc-nvim"
@@ -631,8 +547,8 @@ let
         " Use <TAB> for selections ranges.
         " NOTE: Requires 'textDocument/selectionRange' support from the language server.
         " coc-tsserver, coc-python are the examples of servers that support it.
-        nmap <silent> <TAB> <Plug>(coc-range-select)
-        xmap <silent> <TAB> <Plug>(coc-range-select)
+        "nmap <silent> <TAB> <Plug>(coc-range-select)
+        "xmap <silent> <TAB> <Plug>(coc-range-select)
 
         " Add `:Format` command to format current buffer.
         command! -nargs=0 Format :call CocAction('format')
@@ -659,7 +575,7 @@ let
         nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
         " Search workspace symbols.
         nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-        " Do default action for next item.
+        "Do default action for next item.
         nnoremap <silent> <space>j  :<C-u>CocNext<CR>
         " Do default action for previous item.
         nnoremap <silent> <space>k  :<C-u>CocPrev<CR>

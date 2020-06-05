@@ -96,26 +96,7 @@ yellow = base0A
 --
 -- myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
--- wsNames = [ "1: shell"
---           , "2: code"
---           , "3: test"
---           , "4: www"
---           , "5"
---           , "6"
---           , "7: files"
---           , "8"
---           , "9"
---           ]
-wsNames = [ "α"
-          , "β"
-          , "γ"
-          , "δ"
-          , "ε"
-          , "6"
-          , "7: files"
-          , "8"
-          , "9"
-          ]
+wsNames = map show [1..9]
 
 myWorkspaces = [ xmobarAction ("xdotool key super+" ++ show(n)) "1" ws |
                (i,ws) <- zip [1..9] wsNames,
@@ -364,7 +345,6 @@ myStartupHook = do
     spawnOnce "feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current"
     spawnOnce "xinput --disable \"Synaptics TM3289-002\""
     setDefaultCursor xC_left_ptr
-    setWMName "LG3D"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

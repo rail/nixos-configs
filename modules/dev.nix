@@ -9,6 +9,8 @@
     sops
     vscode
     yarn
+    gcc
+    clang
 
     # Python
     autopep8

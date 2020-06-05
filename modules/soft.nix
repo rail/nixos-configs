@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
+  master = (import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/master.tar.gz) { config = {allowUnfree = true; };});
   unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
 in
 
@@ -17,6 +18,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    alacritty
     exercism
     ripgrep
     starship
@@ -71,7 +73,7 @@ in
     kitty
     zip
     emacs
-    unstable.zoom-us
+    master.zoom-us
     ispell
     virt-manager
   ];

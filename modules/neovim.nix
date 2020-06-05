@@ -1,5 +1,6 @@
 { pkgs, ... }:
 let
+  pkgs = (import <nixos-unstable> { config = {allowUnfree = true; };});
   neovim = pkgs.neovim.override {
     vimAlias = true;
     viAlias = true;
@@ -7,7 +8,10 @@ let
   };
 in
 {
-  environment.systemPackages = [ neovim ];
+  environment.systemPackages = [
+    neovim
+    pkgs.bat # fzf syntax highlite
+  ];
   environment.variables = {
     EDITOR = pkgs.lib.mkForce "nvim";
   };
