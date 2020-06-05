@@ -20,8 +20,8 @@
     python3Full
     virtualenv
     virtualenvwrapper
-    isort
-    mypy
+    # isort
+    # mypy
     python-language-server
   ];
 

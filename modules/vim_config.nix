@@ -244,28 +244,26 @@ let
         # https://github.com/LnL7/vim-nix
         "vim-nix"
         "rust-vim"
-        "vim-isort"
-        "LanguageClient-neovim"
+        # "LanguageClient-neovim"
       ];
       config = ''
-          let g:LanguageClient_serverCommands = {
-            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-            \ 'python': ['pyls'],
-          \ }
-          let g:LanguageClient_useVirtualText = 0
-          set completefunc=LanguageClient#complete
-          " set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-          nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-          " Or map each action separately
-          nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-          nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-          nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+          "let g:LanguageClient_serverCommands = {
+          "  \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+          "  \ 'python': ['pyls'],
+          "\ }
+          "let g:LanguageClient_useVirtualText = 0
+          "set completefunc=LanguageClient#complete
+          "" set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+          "nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+          "" Or map each action separately
+          "nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+          "nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+          "nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
       '';
     }
 
     # THEME
     { plugins = [
-        "vim-one"
         "vim-airline"
         "vim-airline-themes"
         "vim-highlightedyank"
@@ -275,19 +273,17 @@ let
       config = ''
         set termguicolors
         set background=dark
-        " colorscheme one
         colorscheme base16-oceanicnext
-        " colorscheme base16-atelier-plateau-light
         let g:one_allow_italics = 1
-        let g:airline_theme='one'
+        let g:airline_theme='onedark'
         let g:airline#extensions#tabline#enabled = 1
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#formatter = 'unique_tail'
         let g:highlightedyank_highlight_duration = 200
-        let g:autofmt_autosave = 1
-        let g:rustfmt_autosave = 1
-        let g:rustfmt_emit_files = 1
-        let g:rustfmt_fail_silently = 0
+        "let g:autofmt_autosave = 1
+        "let g:rustfmt_autosave = 1
+        "let g:rustfmt_emit_files = 1
+        "let g:rustfmt_fail_silently = 0
         " let g:rust_clip_command = 'xclip -selection clipboard'
       '';
     }
@@ -397,31 +393,31 @@ let
     }
 
     # LINTING
-    { plugins = [
-        "ale"
-      ];
-      config =''
-        let g:ale_lint_on_save = 1
-        let g:ale_lint_on_text_changed = 1
-        let g:ale_lint_on_enter = 1
-        let g:ale_fixers = {
-            \ 'rust': ['rustfmt'],
-            \}
-        let g:ale_fix_on_save = 1
-        " airline thingy
-        let g:airline#extensions#ale#enabled = 1
-        nmap <silent> <C-n> <Plug>(ale_next_wrap)
-        nmap <silent> <C-N> <Plug>(ale_previous_wrap)
-      '';
-    }
+    # { plugins = [
+    #     "ale"
+    #   ];
+    #   config =''
+    #     let g:ale_lint_on_save = 1
+    #     let g:ale_lint_on_text_changed = 1
+    #     let g:ale_lint_on_enter = 1
+    #     let g:ale_fixers = {
+    #         \ 'rust': ['rustfmt'],
+    #         \}
+    #     let g:ale_fix_on_save = 1
+    #     " airline thingy
+    #     let g:airline#extensions#ale#enabled = 1
+    #     nmap <silent> <C-n> <Plug>(ale_next_wrap)
+    #     nmap <silent> <C-N> <Plug>(ale_previous_wrap)
+    #   '';
+    # }
 
-    #  COMPLETION
-    { plugins = [
-        "jedi-vim"
-      ];
-      config =''
-      '';
-    }
+    # #  COMPLETION
+    # { plugins = [
+    #     "jedi-vim"
+    #   ];
+    #   config =''
+    #   '';
+    # }
 
     # COC
     { plugins = [
