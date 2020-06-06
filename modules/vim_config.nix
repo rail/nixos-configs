@@ -579,7 +579,8 @@ let
         nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
         " FZF floating window
-        let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+        let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+        let g:fzf_preview_window = 'right:65%'
 
         let g:coc_node_path = '${pkgs.nodejs}/bin/node'
 
