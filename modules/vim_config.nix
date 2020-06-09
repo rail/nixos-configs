@@ -383,7 +383,6 @@ let
 
     # MISC
     { plugins = [
-        "vim-signify"
         "fzf-vim"
       ];
       config =''
