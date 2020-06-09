@@ -8,6 +8,7 @@ import XMonad.Actions.CopyWindow
 import XMonad.Actions.CycleWS (toggleWS)
 import XMonad.Actions.DynamicProjects
 import XMonad.Actions.SpawnOn
+import XMonad.Actions.CopyWindow
 
 -- layouts
 import XMonad.Layout.NoBorders (smartBorders, noBorders)
@@ -123,15 +124,24 @@ mySimpleKeys =
     , ("M-C-l", spawn "light-locker-command -l")
     , ("M-S-m", spawn "autorandr --change && feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current")
     , ("M-s", toggleCopyToAll)   -- Toggle sticky window state
+    -- resize windows next to master
     , ("M-a", sendMessage MirrorExpand)
     , ("M-z", sendMessage MirrorShrink)
-    , ("M-`", toggleWS) -- switch to previous workspace, similar to i3's workspace_auto_back_and_forth
+    -- switch to previous workspace, similar to i3's workspace_auto_back_and_forth
+    , ("M-`", toggleWS)
+    -- Toggle floating
+    , ("M-t", withFocused toggleFloat)
+    -- Toggle borders of the focused window
+    , ("M-g",  withFocused toggleBorder)
     ]
         where
             toggleCopyToAll = wsContainingCopies >>= \ws -> case ws of
                                                               [] -> windows copyToAll
                                                               _ -> killAllOtherCopies
 
+            toggleFloat w = windows (\s -> if M.member w (W.floating s)
+                            then W.sink w s
+                            else (W.float w (W.RationalRect (1/3) (1/4) (1/2) (4/5)) s))
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -183,7 +193,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_l     ), sendMessage Expand)
 
     -- Push window back into tiling
-    , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+    -- , ((modm,               xK_t     ), withFocused $ windows . W.sink)
 
     -- Increment the number of windows in the master area
     , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
@@ -203,8 +213,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
-    -- Toggle borders of the focused window
-    , ((modm,  xK_g ),   withFocused toggleBorder)
     ]
     ++
 
@@ -214,7 +222,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --
     [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]]
     ++
 
     --
