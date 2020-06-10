@@ -34,10 +34,12 @@ import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Cursor (setDefaultCursor)
+import XMonad.Util.SpawnNamedPipe
 
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+import Data.Maybe
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -338,7 +340,23 @@ myEventHook = ewmhDesktopsEventHook
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = do
+    -- Mark workspaces with copied windows
+    copies <- wsContainingCopies
+    let checkForCopies ws | ws `elem` copies =
+                            xmobarColor base08 "" $ ws
+                          | otherwise = ws
+    xmproc0 <- getNamedPipe "xmproc0"
+    xmproc1 <- getNamedPipe "xmproc1"
+    dynamicLogWithPP xmobarPP
+        { ppOutput =
+            maybe (\s -> return ()) hPutStrLn xmproc0 <+>
+            maybe (\s -> return ()) hPutStrLn xmproc1
+        , ppSep = " :: "
+        , ppHidden = checkForCopies -- highlight the workspaces with copies of focused window
+        , ppVisible = xmobarColor base0D "" . wrap "(" ")"
+        , ppCurrent = xmobarColor base0A ""
+        , ppTitle = xmobarColor base0B "" . shorten 60 }
 --
 ------------------------------------------------------------------------
 -- Startup hook
@@ -348,6 +366,8 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 myStartupHook = do
+    spawnNamedPipe "xmobar -x 0 ~/.config/xmobar/xmobar.hs" "xmproc0"
+    spawnNamedPipe "xmobar -x 1 ~/.config/xmobar/xmobar.hs" "xmproc1"
     spawnOnce "autorandr --change"
     spawnOnce "light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend --lock-on-lid"
     spawnOnce "feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current"
@@ -360,22 +380,11 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    xmproc1 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobar.hs"
-    xmproc2 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobar.hs"
     xmonad
        $ ewmh -- TODO: need xmonad-contrib 0.16 ewmhFullscreen $
        $ docks
        $ dynamicProjects projects
-       $ defaults
-           { logHook =
-              dynamicLogWithPP xmobarPP
-                { ppOutput = \x -> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-                , ppSep = " :: "
-                -- , ppWsSep = " | "
-                , ppVisible = xmobarColor base0D "" . wrap "(" ")"
-                , ppCurrent = xmobarColor base0A ""
-                , ppTitle = xmobarColor base0B "" . shorten 60 }
-        } `additionalKeysP` mySimpleKeys
+       $ defaults `additionalKeysP` mySimpleKeys
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
