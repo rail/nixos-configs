@@ -275,7 +275,7 @@ let
         set background=dark
         colorscheme base16-oceanicnext
         let g:one_allow_italics = 1
-        let g:airline_theme='onedark'
+        let g:airline_theme='base16_oceanicnext'
         let g:airline#extensions#tabline#enabled = 1
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#formatter = 'unique_tail'
