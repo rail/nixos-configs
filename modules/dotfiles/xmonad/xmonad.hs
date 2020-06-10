@@ -136,6 +136,11 @@ mySimpleKeys =
     -- Toggle borders of the focused window
     , ("M-g",  withFocused toggleBorder)
     ]
+
+    ++
+    -- M-c 1..9 - Copy window to a particular workspace
+    [("M-c " ++ (show i), windows $ copy ws) | (i,ws) <- zip [1..9] myWorkspaces]
+
         where
             toggleCopyToAll = wsContainingCopies >>= \ws -> case ws of
                                                               [] -> windows copyToAll
@@ -224,7 +229,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --
     [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
     ++
 
     --
