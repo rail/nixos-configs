@@ -309,6 +309,7 @@ let
         # The fancy start screen for Vim.
         # https://github.com/mhinz/vim-startify
         "vim-startify"
+        "vim-multiple-cursors"
       ];
       config = ''
         autocmd VimEnter *

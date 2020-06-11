@@ -199,9 +199,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Expand the master area
     , ((modm,               xK_l     ), sendMessage Expand)
 
-    -- Push window back into tiling
-    -- , ((modm,               xK_t     ), withFocused $ windows . W.sink)
-
     -- Increment the number of windows in the master area
     , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
 
@@ -348,9 +345,9 @@ myEventHook = ewmhDesktopsEventHook
 myLogHook = do
     -- Mark workspaces with copied windows
     copies <- wsContainingCopies
-    let checkForCopies ws | ws `elem` copies =
-                            xmobarColor base08 "" $ ws
-                          | otherwise = ws
+    let hiliteCopies ws | ws `elem` copies =
+                          xmobarColor base08 "" $ ws
+                        | otherwise = ws
     xmproc0 <- getNamedPipe "xmproc0"
     xmproc1 <- getNamedPipe "xmproc1"
     dynamicLogWithPP xmobarPP
@@ -358,7 +355,7 @@ myLogHook = do
             maybe (\s -> return ()) hPutStrLn xmproc0 <+>
             maybe (\s -> return ()) hPutStrLn xmproc1
         , ppSep = " :: "
-        , ppHidden = checkForCopies -- highlight the workspaces with copies of focused window
+        , ppHidden = hiliteCopies -- highlight the workspaces with copies of focused window
         , ppVisible = xmobarColor base0D "" . wrap "(" ")"
         , ppCurrent = xmobarColor base0A ""
         , ppTitle = xmobarColor base0B "" . shorten 60 }
