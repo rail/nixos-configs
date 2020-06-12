@@ -1,45 +1,48 @@
-import XMonad
-import Data.Monoid
-import System.Exit
+import           Data.Monoid
+import           System.Exit
+import           XMonad
 
 -- actions
-import XMonad.Actions.NoBorders (toggleBorder)
-import XMonad.Actions.CopyWindow
-import XMonad.Actions.CycleWS (toggleWS)
-import XMonad.Actions.DynamicProjects
-import XMonad.Actions.SpawnOn
-import XMonad.Actions.CopyWindow
+import           XMonad.Actions.CopyWindow
+import           XMonad.Actions.CopyWindow
+import           XMonad.Actions.CycleWS           (toggleWS)
+import           XMonad.Actions.DynamicProjects
+import           XMonad.Actions.NoBorders         (toggleBorder)
+import           XMonad.Actions.SpawnOn
 
 -- layouts
-import XMonad.Layout.NoBorders (smartBorders, noBorders)
-import XMonad.Layout.Spacing (smartSpacing)
-import XMonad.Layout.Named
+import           XMonad.Layout.Named
+import           XMonad.Layout.NoBorders          (noBorders, smartBorders)
+import           XMonad.Layout.Spacing            (smartSpacing)
 
-import XMonad.Layout.GridVariants (Grid(Grid))
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.NoFrillsDecoration
+import           XMonad.Layout.GridVariants       (Grid (Grid))
+import           XMonad.Layout.NoFrillsDecoration
+import           XMonad.Layout.ResizableTile
 
 -- hooks
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops   -- required for xcomposite in obs to work
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageHelpers
 
 -- prompt
-import XMonad.Prompt (XPPosition(Top, CenteredAt), amberXPConfig, font, position, height)
-import XMonad.Prompt.ConfirmPrompt
+import           XMonad.Prompt                    (XPPosition (CenteredAt, Top),
+                                                   amberXPConfig, font, height,
+                                                   position)
+import           XMonad.Prompt.ConfirmPrompt
 
 -- util
-import XMonad.Util.Run
-import XMonad.Util.SpawnOnce
-import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Util.Cursor (setDefaultCursor)
-import XMonad.Util.SpawnNamedPipe
+import           XMonad.Util.Cursor               (setDefaultCursor)
+import           XMonad.Util.EZConfig             (additionalKeysP)
+import           XMonad.Util.NamedScratchpad
+import           XMonad.Util.Run
+import           XMonad.Util.SpawnNamedPipe
+import           XMonad.Util.SpawnOnce
 
 
-import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
-import Data.Maybe
+import qualified Data.Map                         as M
+import           Data.Maybe
+import qualified XMonad.StackSet                  as W
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -135,6 +138,7 @@ mySimpleKeys =
     , ("M-t", withFocused toggleFloat)
     -- Toggle borders of the focused window
     , ("M-g",  withFocused toggleBorder)
+    , ("M-C-m", namedScratchpadAction scratchpads "musicForProgramming")
     ]
 
     ++
@@ -305,19 +309,19 @@ myLayout = avoidStruts $ tiled ||| grid ||| Mirror tiled ||| noBorders Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = manageDocks <+> composeAll
-    [ className =? "Transmission-gtk" --> doFloat
-    , className =? "pinentry"         --> doFloat
-    , className =? "Pavucontrol"      --> doFloat
-    , className =? "mpv"              --> doFloat
-    , className =? "zoom"             --> doFloat
-    , resource  =? "desktop_window"   --> doIgnore
-    , className =? "Xmessage"         --> doCenterFloat
-    , stringProperty "WM_WINDOW_ROLE" =? "PictureInPicture" --> doSideFloat SE
-    , stringProperty "WM_WINDOW_ROLE" =? "pop-up"               --> doCenterFloat
-    , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> doCenterFloat
-    , isFullscreen --> doFullFloat
-    , isDialog --> doCenterFloat
+myManageHook = manageDocks <+> composeOne
+    [ className =? "Transmission-gtk" -?> doFloat
+    , className =? "pinentry"         -?> doFloat
+    , className =? "Pavucontrol"      -?> doFloat
+    , className =? "mpv"              -?> doFloat
+    , className =? "zoom"             -?> doFloat
+    , resource  =? "desktop_window"   -?> doIgnore
+    , className =? "Xmessage"         -?> doCenterFloat
+    , stringProperty "WM_WINDOW_ROLE" =? "PictureInPicture" -?> doSideFloat SE
+    , stringProperty "WM_WINDOW_ROLE" =? "pop-up"               -?> doCenterFloat
+    , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" -?> doCenterFloat
+    , isFullscreen -?> doFullFloat
+    , isDialog -?> doCenterFloat
     ]
 
 -- doRectFloat (W.RationalRect (1/6) (1/6) (2/3) (2/3))
@@ -448,3 +452,12 @@ projects =
             , projectStartHook = Just $ spawnOn (myWorkspaces!!6) "nautilus"
             }
   ]
+
+scratchpads = [
+              NS
+                "musicForProgramming"
+                "firefox --private-window https://www.musicforprogramming.net/"
+                (isInProperty "_NET_WM_NAME" "musicForProgramming")
+                defaultFloating
+
+              ]

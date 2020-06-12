@@ -245,6 +245,7 @@ let
         "vim-nix"
         "rust-vim"
         # "LanguageClient-neovim"
+        "vim-stylish-haskell"
       ];
       config = ''
           "let g:LanguageClient_serverCommands = {
@@ -259,6 +260,7 @@ let
           "nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
           "nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
           "nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+          let g:stylish_haskell_command = '${pkgs.stylish-haskell}/bin/stylish-haskell'
       '';
     }
 
@@ -340,6 +342,7 @@ let
         let g:startify_bookmarks = [
           \ { 'c': '/etc/nixos/modules/vim_config.nix' },
           \ { 's': '~/work/git/shipit' },
+          \ { 'n': '/etc/nixos' },
           \ ]
 
         let g:startify_custom_footer =
