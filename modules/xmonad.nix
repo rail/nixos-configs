@@ -7,6 +7,7 @@
     picom
     stalonetray
     xdotool
+    xkb-switch
   ];
   home-manager.users.rail = {
     services.stalonetray = {

@@ -3,7 +3,8 @@
   programs.adb.enable = true;
   environment.systemPackages = with pkgs; with pkgs.python3Packages; [
     arcanist
-    (google-cloud-sdk.override (oldAttrs: { python = pkgs.python2; }))
+    # (google-cloud-sdk.override (oldAttrs: { python = pkgs.python2; }))
+    google-cloud-sdk
     rustup
     clang
     sops

@@ -451,6 +451,13 @@ projects =
             , projectDirectory = "~/"
             , projectStartHook = Just $ spawnOn (myWorkspaces!!6) "nautilus"
             }
+  , Project { projectName      = myWorkspaces!!7
+            , projectDirectory = "~/work/git/shipit"
+            , projectStartHook = Just $ do
+                spawnOn (myWorkspaces!!7) (myTerminal ++ " -- tmux -c 'cd ~/work/git/shipit && source ~/.taskcluster/relpro-dev.sh && docker-compose up'")
+                spawnOn (myWorkspaces!!7) "firefox --new-window https://localhost:8010"
+                spawnOn (myWorkspaces!!7) (myTerminal ++ " -- tmux -c 'cd ~/work/git/shipit/frontend && vim'")
+            }
   ]
 
 scratchpads = [
