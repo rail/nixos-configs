@@ -150,7 +150,7 @@ let
     set winwidth=100
 
     " Enable true color for neovim
-    let $NVIM_TUI_ENABLE_TRUE_COLOR = 0
+    let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
     " Enables cursor similar to gui programs
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
@@ -246,6 +246,7 @@ let
         "rust-vim"
         # "LanguageClient-neovim"
         "vim-stylish-haskell"
+        "vim-orgmode"
       ];
       config = ''
           "let g:LanguageClient_serverCommands = {
@@ -267,6 +268,7 @@ let
     # THEME
     { plugins = [
         "vim-airline"
+        # TODO: lightline
         "vim-airline-themes"
         "vim-highlightedyank"
         "vim-signify"

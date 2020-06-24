@@ -138,7 +138,7 @@ mySimpleKeys =
     , ("M-t", withFocused toggleFloat)
     -- Toggle borders of the focused window
     , ("M-g",  withFocused toggleBorder)
-    , ("M-C-m", namedScratchpadAction scratchpads "musicForProgramming")
+    , ("M-d", namedScratchpadAction scratchpads "terminal")
     ]
 
     ++
@@ -460,11 +460,5 @@ projects =
             }
   ]
 
-scratchpads = [
-              NS
-                "musicForProgramming"
-                "firefox --private-window https://www.musicforprogramming.net/"
-                (isInProperty "_NET_WM_NAME" "musicForProgramming")
-                defaultFloating
-
+scratchpads = [ NS "terminal" "alacritty -t scratchpad" (title =? "scratchpad") doCenterFloat
               ]
