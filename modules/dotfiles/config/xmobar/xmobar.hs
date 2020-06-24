@@ -1,12 +1,11 @@
 Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
-       , additionalFonts = [ "xft:FontAwesome:pixelsize=22:antialias=true:hinting=true"
-                           , "xft:MaterialIcons:pixelsize=22:antialias=true:hinting=true"
+       , additionalFonts = [ "xft:MaterialIcons:pixelsize=22:antialias=true:hinting=true"
                            , "xft:Weather Icons:style=Regular:pixelsize=22:antialias=true:hinting=true"
                            ]
        , borderColor = "black"
        , border = TopB
        , bgColor = "#343d46"
-       , fgColor = "#8fa1b3"
+       , fgColor = "#d8dee9"
        -- , position = Bottom
        , position = BottomSize C 85 48
        , lowerOnStart = False
@@ -15,28 +14,38 @@ Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
        , iconRoot = "."
        , allDesktops = True
        , overrideRedirect = False
-       , commands = [ Run Wireless "wlp4s0"
-                        [ "-a", "l"
-                        , "-x", "-"
-                        , "-t", "<fc=#6c71c4><fn=1>\xf1eb</fn> <essid> <quality>%</fc>"
-                        , "-L", "50"
-                        , "-H", "75"
-                        -- , "-l", "#dc322f" -- red
-                        , "-l", "#6c71c4" -- violet
-                        , "-n", "#6c71c4" -- violet
-                        , "-h", "#6c71c4" -- violet
-                        ] 10
-                    , Run Battery [ "-t", "<fn=1></fn> <left>% / <timeleft>" ] 60
-                    , Run Date "%a %d, %H:%M" "date" 10
+       , commands = [ Run Kbd []
                     , Run UnsafeStdinReader
-                    , Run Brightness [ "-t", "Br: <percent>%", "--", "-D", "intel_backlight" ] 60
-                    , Run Kbd []
-                    , Run ComX "/home/rail/bin/openweathermap" [] "Err..." "weather" 300
+                    , Run Date "<fn=1>\xe24f</fn> %a %d, %H:%M" "date" 10
+                    , Run ComX
+                        "/home/rail/bin/openweathermap" [] "Err..." "weather" 300
+                    , Run Wireless "wlp4s0"
+                        [ "-t", "<fc=#d8dee9><fn=1>\xe63e</fn> <essid> <quality>%</fc>"
+                        , "-a", "l"
+                        , "-x", "-"
+                        , "-l", "#d8dee9"
+                        , "-n", "#d8dee9"
+                        , "-h", "#d8dee9"
+                        ] 30
+                    , Run Battery
+                        [ "-t" , "<leftipat><left>%"
+                        , "--"
+                        , "--on-icon-pattern", "<fn=1>\xe1a3</fn>"
+                        , "--off-icon-pattern", "<fn=1>\xe1a4</fn>"
+                        , "--idle-icon-pattern", "<fn=1>\xe1a3</fn>"
+                        ] 60
+                    , Run Brightness
+                        [ "-t"
+                        , "<fn=1>\xe3ab</fn> <percent>%"
+                        , "--"
+                        , "-D", "intel_backlight"
+                        ] 60
                     , Run Volume "default" "Master"
-                        [ "-t", "<status>", "--"
-                        , "--on", "<fc=#859900><fn=1>\xf028</fn> <volume>%</fc>"
-                        , "--onc", "#859900"
-                        , "--off", "<fc=#dc322f><fn=1>\xf026</fn> MUTE</fc>"
+                        [ "-t", "<status>"
+                        , "--"
+                        , "--on", "<fn=1>\xe050</fn> <volume>%"
+                        , "--onc", "#d8dee9"
+                        , "--off", "<fn=1>\xe04f</fn>"
                         , "--offc", "#dc322f"
                         ] 10
                     ]
@@ -46,6 +55,6 @@ Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
                     \}{ \
                     \<action=`firefox https://darksky.net/forecast/43.26,-79.961/ca12/en`>%weather%</action> | \
                     \<action=`pavucontrol`>%default:Master%</action> | \
-                    \%bright% | %wlp4s0wi% | %battery% | <fc=#ee9a00>%date%</fc> | \
-                    \<action=`xkb-switch -n`>%kbd%</action> "
+                    \%bright% | %wlp4s0wi% | %battery% | %date% | \
+                    \<action=`xkb-switch -n`><fn=1></fn> %kbd%</action> "
        }
