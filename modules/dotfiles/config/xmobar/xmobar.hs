@@ -1,6 +1,7 @@
 Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
        , additionalFonts = [ "xft:MaterialIcons:pixelsize=22:antialias=true:hinting=true"
                            , "xft:Weather Icons:style=Regular:pixelsize=22:antialias=true:hinting=true"
+                           , "xft:Font Awesome 5 Brands:style=Regular:pixelsize=28:antialias=true:hinting=true"
                            ]
        , borderColor = "black"
        , border = TopB
@@ -51,7 +52,8 @@ Config { font = "xft:Fira Code:pixelsize=22:antialias=true:hinting=true"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %UnsafeStdinReader% \
+       , template = " <fc=#ec5F67><fn=3></fn></fc>  \
+                    \%UnsafeStdinReader% \
                     \}{ \
                     \<action=`firefox https://darksky.net/forecast/43.26,-79.961/ca12/en`>%weather%</action> | \
                     \<action=`pavucontrol`>%default:Master%</action> | \

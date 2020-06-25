@@ -124,23 +124,14 @@
     fontconfig.dpi = 144;
     fontconfig.penultimate.enable = true;
     fonts = with pkgs; [
-      anonymousPro
       cantarell_fonts
-      corefonts
-      jetbrains-mono
-      dejavu_fonts
       fira-code
       fira-code-symbols
-      font-awesome_4
-      freefont_ttf
-      hack-font
-      liberation_ttf
+      font-awesome
       material-icons
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      powerline-fonts
-      source-code-pro
       weather-icons
     ];
   };

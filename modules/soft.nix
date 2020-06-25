@@ -41,7 +41,8 @@ in
     jq
     jwhois
     konversation
-    latest.firefox-nightly-bin
+    # latest.firefox-nightly-bin
+    firefox
     libreoffice
     lshw
     lsof
