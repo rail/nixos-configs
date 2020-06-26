@@ -5,17 +5,19 @@ import           XMonad
 -- actions
 import           XMonad.Actions.CopyWindow
 import           XMonad.Actions.CopyWindow
-import           XMonad.Actions.CycleWS           (toggleWS)
+import           XMonad.Actions.CycleWS              (toggleWS)
 import           XMonad.Actions.DynamicProjects
-import           XMonad.Actions.NoBorders         (toggleBorder)
+import           XMonad.Actions.NoBorders            (toggleBorder)
 import           XMonad.Actions.SpawnOn
 
 -- layouts
 import           XMonad.Layout.Named
-import           XMonad.Layout.NoBorders          (noBorders, smartBorders)
-import           XMonad.Layout.Spacing            (smartSpacing)
+import           XMonad.Layout.NoBorders             (noBorders, smartBorders)
+import           XMonad.Layout.Spacing               (smartSpacing)
 
-import           XMonad.Layout.GridVariants       (Grid (Grid))
+import           XMonad.Layout.GridVariants          (Grid (Grid))
+import           XMonad.Layout.MultiToggle
+import           XMonad.Layout.MultiToggle.Instances (StdTransformers (NBFULL, NOBORDERS))
 import           XMonad.Layout.NoFrillsDecoration
 import           XMonad.Layout.ResizableTile
 
@@ -26,23 +28,22 @@ import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.ManageHelpers
 
 -- prompt
-import           XMonad.Prompt                    (XPPosition (CenteredAt, Top),
-                                                   amberXPConfig, font, height,
-                                                   position)
+import           XMonad.Prompt                       (XPPosition (CenteredAt, Top),
+                                                      amberXPConfig, font,
+                                                      height, position)
 import           XMonad.Prompt.ConfirmPrompt
 
 -- util
-import           XMonad.Util.Cursor               (setDefaultCursor)
-import           XMonad.Util.EZConfig             (additionalKeysP)
-import           XMonad.Util.NamedScratchpad
+import           XMonad.Util.Cursor                  (setDefaultCursor)
+import           XMonad.Util.EZConfig                (additionalKeysP)
 import           XMonad.Util.Run
 import           XMonad.Util.SpawnNamedPipe
 import           XMonad.Util.SpawnOnce
 
 
-import qualified Data.Map                         as M
+import qualified Data.Map                            as M
 import           Data.Maybe
-import qualified XMonad.StackSet                  as W
+import qualified XMonad.StackSet                     as W
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -137,8 +138,8 @@ mySimpleKeys =
     -- Toggle floating
     , ("M-t", withFocused toggleFloat)
     -- Toggle borders of the focused window
-    , ("M-g",  withFocused toggleBorder)
-    , ("M-d", namedScratchpadAction scratchpads "terminal")
+    , ("M-g", withFocused toggleBorder)
+    , ("M-f", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
     ]
 
     ++
@@ -274,7 +275,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --
 --
 -- avoidStruts to avoid window overlapping of xmobar
-myLayout = avoidStruts $ tiled ||| grid ||| Mirror tiled ||| noBorders Full
+myLayout = avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) $ tiled ||| grid ||| Mirror tiled ||| noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
      grid    = named "Grid"
@@ -451,14 +452,4 @@ projects =
             , projectDirectory = "~/"
             , projectStartHook = Just $ spawnOn (myWorkspaces!!6) "nautilus"
             }
-  , Project { projectName      = myWorkspaces!!7
-            , projectDirectory = "~/work/git/shipit"
-            , projectStartHook = Just $ do
-                spawnOn (myWorkspaces!!7) (myTerminal ++ " -- tmux -c 'cd ~/work/git/shipit && source ~/.taskcluster/relpro-dev.sh && docker-compose up'")
-                spawnOn (myWorkspaces!!7) "firefox --new-window https://localhost:8010"
-                spawnOn (myWorkspaces!!7) (myTerminal ++ " -- tmux -c 'cd ~/work/git/shipit/frontend && vim'")
-            }
   ]
-
-scratchpads = [ NS "terminal" "alacritty -t scratchpad" (title =? "scratchpad") doCenterFloat
-              ]
