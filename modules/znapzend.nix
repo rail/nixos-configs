@@ -24,8 +24,9 @@ in
     enable = true;
     autoCreation = true;
     pure = true;
-    # features.sendRaw = true;
+    features.sendRaw = true;
     zetup = {
+      # to create: sudo zfs send -w rpool/HOME@...  | sudo zfs receive -F backup/HOME
       "rpool/HOME" = {
         plan = "4hour=>15min,2day=>1hour,7day=>1day,3week=>1week";
         enable = true;
@@ -36,6 +37,7 @@ in
           };
         };
       };
+      # to create: sudo zfs send -w rpool/NIXOS@...  | sudo zfs receive -F backup/NIXOS
       "rpool/NIXOS" = {
         plan = "1day=>1hour,7day=>1day,3week=>1week";
         enable = true;
