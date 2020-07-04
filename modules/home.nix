@@ -47,7 +47,7 @@ in
 
     services.network-manager-applet.enable = true;
 
-    services.blueman-applet.enable = true;
+    # services.blueman-applet.enable = true;
     services.cbatticon = {
       enable = true;
       criticalLevelPercent = 15;
