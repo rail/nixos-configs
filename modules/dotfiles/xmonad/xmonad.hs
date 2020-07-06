@@ -7,6 +7,7 @@ import           XMonad.Actions.CopyWindow
 import           XMonad.Actions.CopyWindow
 import           XMonad.Actions.CycleWS              (toggleWS)
 import           XMonad.Actions.DynamicProjects
+import           XMonad.Actions.FloatKeys
 import           XMonad.Actions.NoBorders            (toggleBorder)
 import           XMonad.Actions.SpawnOn
 
@@ -140,6 +141,10 @@ mySimpleKeys =
     -- Toggle borders of the focused window
     , ("M-g", withFocused toggleBorder)
     , ("M-f", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
+    , ("M-<Right>", withFocused (keysMoveWindow (200,0)))
+    , ("M-<Left>", withFocused (keysMoveWindow (-200,0)))
+    , ("M-<Up>", withFocused (keysMoveWindow (0,-200)))
+    , ("M-<Down>", withFocused (keysMoveWindow (0,200)))
     ]
 
     ++
