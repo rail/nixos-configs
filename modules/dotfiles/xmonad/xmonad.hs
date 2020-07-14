@@ -145,6 +145,10 @@ mySimpleKeys =
     , ("M-<Left>", withFocused (keysMoveWindow (-200,0)))
     , ("M-<Up>", withFocused (keysMoveWindow (0,-200)))
     , ("M-<Down>", withFocused (keysMoveWindow (0,200)))
+    , ("M-S-<Right>", withFocused (keysMoveWindow (50,0)))
+    , ("M-S-<Left>", withFocused (keysMoveWindow (-50,0)))
+    , ("M-S-<Up>", withFocused (keysMoveWindow (0,-50)))
+    , ("M-S-<Down>", withFocused (keysMoveWindow (0,50)))
     ]
 
     ++
@@ -158,7 +162,7 @@ mySimpleKeys =
 
             toggleFloat w = windows (\s -> if M.member w (W.floating s)
                             then W.sink w s
-                            else (W.float w (W.RationalRect (1/3) (1/4) (1/2) (4/5)) s))
+                            else (W.float w (W.RationalRect (1/4) (1/4) (1/2) (1/2)) s))
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --

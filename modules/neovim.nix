@@ -14,5 +14,6 @@ in
   ];
   environment.variables = {
     EDITOR = pkgs.lib.mkForce "nvim";
+    BAT_THEME = "base16";
   };
 }

@@ -30,7 +30,7 @@ in
     feedreader
     file
     fzf
-    gist
+    unstable.gist
     gitAndTools.diff-so-fancy
     gitAndTools.gitFull
     gnupg
