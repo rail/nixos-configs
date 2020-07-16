@@ -12,7 +12,7 @@
     di = diff -U8 --patch-with-stat --binary
     du = diff -U8 --patch-with-stat --binary @{u}...
     in = log ..@{u}
-    nb = !sh -c 'git checkout -b $1 origin/master' -
+    nb = !sh -c 'git checkout -b $1 origin/main' -
     ki = difftool --no-symlinks --dir-diff
     ku = difftool --no-symlinks --dir-diff --binary @{u}...
 
