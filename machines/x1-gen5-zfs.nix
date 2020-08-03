@@ -19,8 +19,7 @@
 
   boot = {
     kernelModules = [ "kvm-intel" "acpi_call" ];
-    # kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_5_6;
+    kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   };
 

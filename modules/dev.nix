@@ -22,7 +22,7 @@
     virtualenv
     virtualenvwrapper
     # isort
-    # mypy
+    mypy
     python-language-server
 
     # gecko

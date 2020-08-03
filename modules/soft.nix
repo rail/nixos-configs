@@ -41,8 +41,7 @@ in
     jq
     jwhois
     konversation
-    # latest.firefox-nightly-bin
-    firefox
+    latest.firefox-beta-bin
     libreoffice
     lshw
     lsof
@@ -77,6 +76,8 @@ in
     master.zoom-us
     ispell
     virt-manager
+    (pkgs.callPackage ../packages/gh-cli {})
+    zstd
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
