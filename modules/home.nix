@@ -1,22 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   home-manager = builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-20.03.tar.gz;
-  base16-scheme = "oceanicnext";
-  base16 = pkgs.stdenv.mkDerivation {
-    name = "base16-builder";
-    src = builtins.fetchTarball {
-      url = "https://github.com/auduchinok/base16-builder/archive/51e3ad4d447fc3f1f539d0bfe33c851728fb6b5f.tar.gz";
-      sha256 = "1qir689h38c6jr7fbbqbc3029544zgv41lrrqdcq26kcwxcwjrz1";
-    };
-    nativeBuildInputs = [pkgs.ruby];
-    buildPhase = "${pkgs.ruby}/bin/ruby base16 -s schemes/${base16-scheme}.yml";
-    installPhase = ''
-      mkdir -p $out
-      cp -r output/* $out
-    '';
-  };
-  xresources = "${base16}/xresources/base16-${base16-scheme}.dark.256.xresources";
+  oceanicnext = builtins.readFile (pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/pinpox/base16-xresources/master/xresources/base16-oceanicnext-256.Xresources";
+    sha256 = "0rdxsxf30sw2q1nm5mcjf4avgdlj4n0apjblh05dlp3an7ya3ibn";
+  });
 in
 {
   imports = [ "${home-manager}/nixos" ];
@@ -42,7 +31,7 @@ in
     xresources.properties = {
       "Xft.dpi" = 144;
       "Xcursor.size" = 48;
-      extraConfig = builtins.readFile xresources;
+      extraConfig = oceanicnext;
     };
 
     services.network-manager-applet.enable = true;
