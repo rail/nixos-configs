@@ -78,6 +78,7 @@ in
     virt-manager
     (pkgs.callPackage ../packages/gh-cli {})
     zstd
+    signal-desktop
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";
@@ -85,6 +86,6 @@ in
     SNAP_NAME = "firefox";
     # let `less` behave like `cat` if there less than 1 page
     LESS = "-F -X";
-    QT_SCALE_FACTOR = "1.5";
+    # QT_SCALE_FACTOR = "1.5";
   };
 }

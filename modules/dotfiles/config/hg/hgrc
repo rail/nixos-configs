@@ -3,6 +3,8 @@
 username = Rail Aliiev <rail@mozilla.com>
 merge = internal:merge
 ignore = ~/.config/hg/ignore
+tweakdefaults = true
+interface = curses
 
 [diff]
 git = 1
@@ -18,11 +20,11 @@ showfunc = 1
 apply = import --no-commit -f
 # git diff master...branch == hg diff -r "ancestor(default, mock)" -r mock
 stripo = strip --no-backup 'outgoing()'
+wip = log --graph --rev=wip --template=wip
+smart-annotate = annotate -w --skip ignored_changesets
 
 [extensions]
 parentrevspec =
-color =
-pager =
 rebase =
 hgext.graphlog =
 hgext.mq =
@@ -40,13 +42,40 @@ push-to-try = ~/.mozbuild/version-control-tools/hgext/push-to-try
 mozext = ~/.mozbuild/version-control-tools/hgext/mozext
 show =
 fsmonitor =
+absorb =
+evolve = /home/rail/.mozbuild/evolve/hgext3rd/evolve
+blackbox =
 
 [mozext]
 ircnick = rail
 
 [pager]
 pager = LESS='FSRX' less
-attend = log, help, diff, grep, glog, qdiff
 
 [mozilla]
 ircnick = rail
+
+[rebase]
+experimental.inmemory = yes
+
+[revsetalias]
+wip = (parents(not public()) or not public() or . or (head() and branch(default))) and (not obsolete() or orphan()^) and not closed() and not (fxheads() - date(-90))
+ignored_changesets = desc("ignore-this-changeset") or extdata(get_ignored_changesets)
+
+[templates]
+wip = '{label("wip.branch", if(branches,"{branches} "))}{label(ifeq(graphnode,"x","wip.obsolete","wip.{phase}"),"{rev}:{node|short}")}{label("wip.user", " {author|user}")}{label("wip.tags", if(tags," {tags}"))}{label("wip.tags", if(fxheads," {fxheads}"))}{if(bookmarks," ")}{label("wip.bookmarks", if(bookmarks,bookmarks))}{label(ifcontains(rev, revset("parents()"), "wip.here"), " {desc|firstline}")}'
+[color]
+wip.bookmarks = yellow underline
+wip.branch = yellow
+wip.draft = green
+wip.here = red
+wip.obsolete = none
+wip.public = blue
+wip.tags = yellow
+wip.user = magenta
+
+[experimental]
+graphshorten = true
+
+[extdata]
+get_ignored_changesets = shell:cat `hg root`/.hg-annotate-ignore-revs 2> /dev/null || true
