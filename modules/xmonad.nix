@@ -8,6 +8,7 @@
     stalonetray
     xdotool
     xkb-switch
+    nitrogen
   ];
   home-manager.users.rail = {
     services.stalonetray = {

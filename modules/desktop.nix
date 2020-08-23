@@ -149,7 +149,4 @@
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-
-  services.flatpak.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 }

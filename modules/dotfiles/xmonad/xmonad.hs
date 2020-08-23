@@ -129,7 +129,7 @@ mySimpleKeys =
     , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 5")
     , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
     , ("M-C-l", spawn "light-locker-command -l")
-    , ("M-S-m", spawn "autorandr --change && feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current")
+    , ("M-S-m", spawn "autorandr --change && nitrogen --restore")
     , ("M-s", toggleCopyToAll)   -- Toggle sticky window state
     -- resize windows next to master
     , ("M-a", sendMessage MirrorExpand)
@@ -387,7 +387,7 @@ myStartupHook = do
     spawnNamedPipe "xmobar -x 1 ~/.config/xmobar/xmobar.hs" "xmproc1"
     spawnOnce "autorandr --change"
     spawnOnce "light-locker --lock-after-screensaver=10 --late-locking --idle-hint --lock-on-suspend --lock-on-lid"
-    spawnOnce "feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current"
+    spawnOnce "nitrogen --restore"
     spawnOnce "xinput --disable \"Synaptics TM3289-002\""
     setDefaultCursor xC_left_ptr
 

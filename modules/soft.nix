@@ -40,7 +40,6 @@ in
     iw
     jq
     jwhois
-    konversation
     latest.firefox-beta-bin
     libreoffice
     lshw

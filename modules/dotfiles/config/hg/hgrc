@@ -1,6 +1,6 @@
 [ui]
 # editor = ~/.hgext/hgeditor
-username = Rail Aliiev <rail@mozilla.com>
+username = Rail Aliiev <rail@iqchoice.com>
 merge = internal:merge
 ignore = ~/.config/hg/ignore
 tweakdefaults = true
