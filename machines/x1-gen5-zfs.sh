@@ -1,5 +1,10 @@
 set -e
 
+# to wipe the disk:
+# 1. print system info
+# dmidecode -t system | head -n14
+# shred -v -n1 /dev/xxx
+
 DISK=/dev/nvme0n1
 mem="$(grep MemTotal /proc/meminfo | awk '{print $2$3}')"
 
