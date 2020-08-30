@@ -58,6 +58,10 @@ mount /dev/disk/by-partlabel/boot /mnt/boot
 mkdir -p /mnt/boot/efi
 mount /dev/disk/by-partlabel/efi /mnt/boot/efi
 
+zfs create -o mountpoint=/home/rail/Downloads rpool/nobackup/Downloads
+zfs create -o mountpoint=/home/rail/Videos rpool/nobackup/Videos
+zfs create -o mountpoint="/home/rail/VirtualBox VMs" rpool/nobackup/VirtualBoxVMs
+
 # nixos-generate-config --root /mnt
 # nixos-generate-config --root /mnt --show-hardware-config
 # copy /boot, /boot/efi and swap ids
