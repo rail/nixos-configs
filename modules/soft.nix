@@ -1,15 +1,10 @@
 { pkgs, ... }:
 let
-  nixpkgs-mozilla = builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz;
   master = (import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/master.tar.gz) { config = {allowUnfree = true; };});
   unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
 in
 
 {
-  nixpkgs.overlays = [
-    (import nixpkgs-mozilla)
-  ];
-
   nixpkgs.config.allowUnfree = true;
   programs.bash.enableCompletion = true;
   programs.gnupg.agent = {
@@ -40,7 +35,7 @@ in
     iw
     jq
     jwhois
-    latest.firefox-beta-bin
+    firefox
     libreoffice
     lshw
     lsof

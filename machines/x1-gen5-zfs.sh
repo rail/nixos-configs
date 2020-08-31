@@ -40,28 +40,33 @@ zpool create -O atime=off \
             rpool /dev/disk/by-partlabel/rpool
 
 
-zfs create -o mountpoint=legacy -o reservation=1G rpool/NIXOS
-zfs create -o mountpoint=legacy -o reservation=1G rpool/DOCKER
-zfs create -o mountpoint=legacy -o reservation=1G rpool/HOME
+zfs create -o mountpoint=none rpool/local
+zfs create -o mountpoint=none rpool/safe
 
-mount -t zfs rpool/NIXOS /mnt
+zfs create -o mountpoint=legacy -o reservation=1G rpool/local/root
+zfs create -o mountpoint=legacy -o reservation=1G rpool/local/nix
+zfs create -o mountpoint=legacy -o reservation=1G rpool/local/docker
+zfs create -o mountpoint=legacy -o reservation=1G rpool/safe/home
 
-mkdir -p /mnt/home
-mount -t zfs rpool/HOME /mnt/home
+mkdir -p \
+    /mnt/var/lib/docker \
+    /mnt/home \
+    /mnt/boot/efi \
+    /mnt/nix
 
-mkdir -p /mnt/var/lib/docker
-mount -t zfs rpool/DOCKER /mnt/var/lib/docker
-
-mkdir -p /mnt/boot
+mount -t zfs rpool/local/root /mnt
+mount -t zfs rpool/local/nix /mnt/nix
+mount -t zfs rpool/local/docker /mnt/var/lib/docker
+mount -t zfs rpool/safe/home /mnt/home
 mount /dev/disk/by-partlabel/boot /mnt/boot
-
-mkdir -p /mnt/boot/efi
 mount /dev/disk/by-partlabel/efi /mnt/boot/efi
-
-zfs create -o mountpoint=/home/rail/Downloads rpool/nobackup/Downloads
-zfs create -o mountpoint=/home/rail/Videos rpool/nobackup/Videos
-zfs create -o mountpoint="/home/rail/VirtualBox VMs" rpool/nobackup/VirtualBoxVMs
 
 # nixos-generate-config --root /mnt
 # nixos-generate-config --root /mnt --show-hardware-config
 # copy /boot, /boot/efi and swap ids
+
+# create these after generating configs, so they are not in the list of legacy
+# mounted volumes
+zfs create -o mountpoint=/home/rail/Downloads rpool/local/Downloads
+zfs create -o mountpoint=/home/rail/Videos rpool/local/Videos
+zfs create -o mountpoint="/home/rail/VirtualBox VMs" rpool/local/VirtualBoxVMs

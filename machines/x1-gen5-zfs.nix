@@ -50,32 +50,36 @@
   services.fwupd.enable = true;
 
   fileSystems."/" =
-    { device = "rpool/NIXOS";
+    { device = "rpool/local/root";
       fsType = "zfs";
     };
 
-  fileSystems."/home" =
-    { device = "rpool/HOME";
+  fileSystems."/nix" =
+    { device = "rpool/local/nix";
       fsType = "zfs";
     };
 
   fileSystems."/var/lib/docker" =
-    { device = "rpool/DOCKER";
+    { device = "rpool/local/docker";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home" =
+    { device = "rpool/safe/home";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/43f1b228-12c2-4acb-9083-713e925f302a";
+    { device = "/dev/disk/by-uuid/fe1a7b0b-8b7c-44d1-9954-554562ae6269";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/9BE5-4D82";
+    { device = "/dev/disk/by-uuid/5769-80FE";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/fa7b8c26-ee72-49e1-bdc7-4749e1571900"; }
+    [ { device = "/dev/disk/by-uuid/71dd8a2d-f1ae-48b2-b32e-f12a662728e7"; }
     ];
-
 }
