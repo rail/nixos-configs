@@ -31,7 +31,6 @@ in
     gnupg
     htop
     imagemagick
-    imapfilter
     iw
     jq
     jwhois
@@ -40,10 +39,8 @@ in
     lshw
     lsof
     mc
-    mercurial
     mpv
     nix-prefetch-scripts
-    p7zip
     pamixer
     pass
     pavucontrol
@@ -71,7 +68,6 @@ in
     ispell
     virt-manager
     (pkgs.callPackage ../packages/gh-cli {})
-    zstd
     signal-desktop
   ];
   environment.variables = {

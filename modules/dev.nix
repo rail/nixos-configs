@@ -25,11 +25,6 @@
     mypy
     python-language-server
 
-    # gecko
-    gnumake
-    nodejs_latest
-    autoconf213
-    watchman
   ];
 
   environment.variables = {
