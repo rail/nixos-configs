@@ -1,24 +1,5 @@
-{ config, pkgs, ... }:
-let
-  nixos-unstable = import <nixos-unstable> {
-    # Include the nixos config when importing nixos-unstable
-    # But remove packageOverrides to avoid infinite recursion
-    config = removeAttrs config.nixpkgs.config [ "packageOverrides" ];
-  };
-in
+{ ... }:
 {
-  ######## The following section can be deleted, when 20.09 is out
-  # disable 20.03 outdated znapzend module
-  disabledModules = [ "services/backup/znapzend.nix" ];
-  # use the module from unstable
-  imports = [
-    <nixos-unstable/nixos/modules/services/backup/znapzend.nix>
-  ];
-  # the same for the package
-  nixpkgs.config.packageOverrides = pkgs: {
-    znapzend = nixos-unstable.znapzend;
-  };
-  ######## The section above can be deleted, when 20.09 is out
 
   services.znapzend = {
     enable = true;

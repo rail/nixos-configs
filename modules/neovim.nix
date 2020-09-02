@@ -1,6 +1,5 @@
 { pkgs, ... }:
 let
-  pkgs = (import <nixos-unstable> { config = {allowUnfree = true; };});
   neovim = pkgs.neovim.override {
     vimAlias = true;
     viAlias = true;

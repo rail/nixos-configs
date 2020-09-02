@@ -83,10 +83,10 @@
             enable = true;
             user = "rail";
         };
-      autoLogin = {
-        enable = true;
-        user = "rail";
-      };
+    };
+    displayManager.autoLogin = {
+      enable = true;
+      user = "rail";
     };
     desktopManager = {
       gnome3.enable = true;
@@ -111,9 +111,6 @@
     defaultTarget = "laptop";
   };
 
-  # make /dev/hidraw* devices 660
-  hardware.u2f.enable = true;
-
   nix = {
     useSandbox = true;
   };
@@ -122,7 +119,6 @@
 
   fonts = {
     fontconfig.dpi = 144;
-    fontconfig.penultimate.enable = true;
     fonts = with pkgs; [
       cantarell_fonts
       fira-code

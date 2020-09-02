@@ -1,8 +1,4 @@
 { pkgs, ... }:
-let
-  master = (import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/master.tar.gz) { config = {allowUnfree = true; };});
-  unstable = (import <nixos-unstable> { config = {allowUnfree = true; };});
-in
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -25,9 +21,11 @@ in
     feedreader
     file
     fzf
-    unstable.gist
+    exa
+    gist
     gitAndTools.diff-so-fancy
     gitAndTools.gitFull
+    perl# required by many things
     gnupg
     htop
     imagemagick
@@ -64,7 +62,7 @@ in
     kitty
     zip
     emacs
-    master.zoom-us
+    zoom-us
     ispell
     virt-manager
     (pkgs.callPackage ../packages/gh-cli {})

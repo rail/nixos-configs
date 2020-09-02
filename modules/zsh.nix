@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    exa
-  ];
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
