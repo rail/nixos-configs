@@ -19,5 +19,6 @@
       # ./emacs.nix # TODO: add more things
       ./fd.nix
       ./xmonad.nix
+      ./persist.nix
     ];
 }

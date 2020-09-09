@@ -64,9 +64,9 @@
     emacs
     zoom-us
     ispell
-    virt-manager
     (pkgs.callPackage ../packages/gh-cli {})
     signal-desktop
+    google-chrome
   ];
   environment.variables = {
     BROWSER = pkgs.lib.mkForce "firefox";

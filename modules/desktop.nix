@@ -50,8 +50,6 @@
     autoPrune.enable = true;
   };
 
-  virtualisation.libvirtd.enable = true;
-
   services.printing = {
     enable = true;
     drivers = with pkgs; [ gutenprint gutenprintBin hplip ];

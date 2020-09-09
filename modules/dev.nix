@@ -2,16 +2,14 @@
 {
   programs.adb.enable = true;
   environment.systemPackages = with pkgs; with pkgs.python3Packages; [
-    arcanist
     # (google-cloud-sdk.override (oldAttrs: { python = pkgs.python2; }))
-    google-cloud-sdk
+    # google-cloud-sdk
     rustup
     clang
-    sops
-    vscode
+    # sops
+    # vscode
     yarn
     gcc
-    clang
 
     # Python
     autopep8
@@ -23,8 +21,7 @@
     virtualenvwrapper
     # isort
     mypy
-    python-language-server
-
+#    python-language-server
   ];
 
   environment.variables = {

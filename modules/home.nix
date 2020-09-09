@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  home-manager = builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-20.03.tar.gz;
+  home-manager = builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz;
   oceanicnext = builtins.readFile (pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/pinpox/base16-xresources/master/xresources/base16-oceanicnext-256.Xresources";
     sha256 = "0rdxsxf30sw2q1nm5mcjf4avgdlj4n0apjblh05dlp3an7ya3ibn";

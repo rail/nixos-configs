@@ -44,6 +44,7 @@ zfs create -o mountpoint=none rpool/local
 zfs create -o mountpoint=none rpool/safe
 
 zfs create -o mountpoint=legacy -o reservation=1G rpool/local/root
+zfs snapshot rpool/local/root@blank
 zfs create -o mountpoint=legacy -o reservation=1G rpool/local/nix
 zfs create -o mountpoint=legacy -o reservation=1G rpool/local/docker
 zfs create -o mountpoint=legacy -o reservation=1G rpool/safe/home
