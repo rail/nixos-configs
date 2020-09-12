@@ -30,7 +30,7 @@ in
 
     xresources = {
       properties = {
-        "Xft.dpi" = 144;
+        #"Xft.dpi" = 144;
         "Xcursor.size" = 48;
       };
       extraConfig = oceanicnext;

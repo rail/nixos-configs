@@ -116,7 +116,7 @@
   programs.autojump.enable = true;
 
   fonts = {
-    fontconfig.dpi = 144;
+    # fontconfig.dpi = 144;
     fonts = with pkgs; [
       cantarell_fonts
       fira-code

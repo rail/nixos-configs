@@ -22,6 +22,7 @@
     # isort
     mypy
 #    python-language-server
+    terraform-full
   ];
 
   environment.variables = {
