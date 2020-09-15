@@ -8,6 +8,10 @@ in
     source = "${persist_root}/etc/NetworkManager/system-connections/";
   };
 
+  environment.etc."nixos" = {
+    source = "${persist_root}/etc/nixos";
+  };
+
   # systemd.tmpfiles.rules = [
   #   "L /var/lib/bluetooth - - - - ${persist_root}/var/lib/bluetooth"
   # ];
